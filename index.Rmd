@@ -7,6 +7,15 @@ site: bookdown::bookdown_site
 
 # Introduction {#introduction .unnumbered}
 
+```{r, include=FALSE}
+knitr::opts_chunk$set(
+  comment = "#>",
+  fig.width = 13,
+  fig.height = 12,
+  tidy = TRUE
+)
+```
+
 ```{r index-load-packaged,include=FALSE}
 
 library(ArabBarometR)
@@ -104,7 +113,7 @@ When adding demographic variable columns and creating dummy columns from variabl
 To learn more about see the section [A Note on Piping](#piping-note) in the Appendix.
 
 
-[Chapter 1](#chapter-1) introduces the functions used to prepare the data.
+[Chapter 1](#prepare-data) introduces the functions used to prepare the data.
 
 
 ```{r index-prep-ex-data, include=FALSE, cache=TRUE}

@@ -24,16 +24,16 @@ Furthermore, the `calculate_` and `plot_` functions that are used together have 
 
 The first two required inputs for any `calculate_` function are:
 
-1. `.ab` : An Arab Barometer data frame
-2. `.var` : A variable name from the Arab Barometer data frame
+1. `ab_data` : An Arab Barometer data frame
+2. `ab_var` : A variable name from the Arab Barometer data frame
 
-The `.ab` parameter is specifically referring to Arab Barometer data. The `calculate_` function will look for certain features in the data frame that are specific to Arab Barometer data.
+The `ab_data` parameter is specifically referring to Arab Barometer data. The `calculate_` function will look for certain features in the data frame that are specific to Arab Barometer data.
 
 All other parameters^[As of 2023-01-23; some of this will likely change in the near future.] are set to default values. More details on the specifics of the other parameters and their defaults are provided throughout the guide.
 
 ## `plot_` functions {-}
 
-The only required input for the (paired) `plot_` functions is `.df`. The parameter `.df` is the data frame output of the paired `calculate_` function. That is, the `plot_` function expects its input to be the output of its matching `calculate_` function. For example, `plot_X` expects its input to be the output of `calculate_X` and `plot_Y` expects its input to be the output of `calculate_Y`.
+The only required input for the (paired) `plot_` functions is `ab_summary`. The parameter `ab_summary` is the data frame output of the paired `calculate_` function. That is, the `plot_` function expects its input to be the output of its matching `calculate_` function. For example, `plot_X` expects its input to be the output of `calculate_X` and `plot_Y` expects its input to be the output of `calculate_Y`.
 
 **NOTE:** Currently not all `plot_` functions have matching `calculate_` functions. As the package continues to develop, most (if not all) `plot_` functions will be broken up into a matching `calculate_` and `plot_` function pair. 
 

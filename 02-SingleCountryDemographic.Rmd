@@ -8,7 +8,7 @@ This chapter will cover how to make a frequency graph by a demographic for a sin
 
 This section will go over how to make a one-off frequency graph by a demographic for a single country.
 
-**You will get a warning when you use the `plot_demographic_smry_individual()` function. Do not be afraid.** The warning is a result of the function forcing the order of the bars. You can safely ignore it. It is displayed in the example code at the top of this tutorial to demonstrate everything is ok, but suppressed for the rest of the chapter.
+**You will get a warning when you use the `plot_ind_smry_dem()` function. Do not be afraid.** The warning is a result of the function forcing the order of the bars. You can safely ignore it. It is displayed in the example code at the top of this tutorial to demonstrate everything is ok, but suppressed for the rest of the chapter.
 
 ### TL;DR {#tldr-chapter2-single -}
 
@@ -17,10 +17,10 @@ At the end, your code will look like the following:
 ```{r 02.1-Complete-Code-Example, eval=FALSE}
 
 survey1 %>%
-  calculate_demographic_smry_individual("Q1COVID19",
+  calculate_ind_smry_dem("Q1COVID19",
                                         "gender",
                                         "Algeria") %>%
-  plot_demographic_smry_individual(.caption = "Arab Barometer Wave VI, Survey I, Algeria")
+  plot_ind_smry_dem(.caption = "Arab Barometer Wave VI, Survey I, Algeria")
 
 
 ```
@@ -30,10 +30,10 @@ That code will produce the following graph:
 ```{r 02.2-Complete-Graph-Example, echo=FALSE, fig.dim=c(13,12)}
 
 survey1 %>%
-  calculate_demographic_smry_individual("Q1COVID19",
-                                        .dem = "gender",
-                                        .country = "Algeria") %>%
-  plot_demographic_smry_individual(.caption = "Arab Barometer Wave VI, Survey I, Algeria")
+  calculate_ind_smry_dem("Q1COVID19",
+                                        demographic = "gender",
+                                        select_country = "Algeria") %>%
+  plot_ind_smry_dem(.caption = "Arab Barometer Wave VI, Survey I, Algeria")
 
 ```
 
@@ -42,18 +42,18 @@ Notice these messages and warnings? That's ok! You can ignore them. In the rest 
 
 ### Creating a Summary
 
-The first step in creating a plot is to gather the data you want to display and organize it. You do this with the `calculate_demographic_smry_individual()` function.
+The first step in creating a plot is to gather the data you want to display and organize it. You do this with the `calculate_ind_smry_dem()` function.
 
-Just like `calculate_smry_individual()`, the four main parameters you need to provide to this function are (1) the data you are using, (2) the variable you want to plot, (3) the demographic you want to divide the variable by, and (4) the country you want to plot it for. To see all the input parameters for the function, type the code `?calculate_demographic_smry_individual` in your R console.
+Just like `calculate_smry_individual()`, the four main parameters you need to provide to this function are (1) the data you are using, (2) the variable you want to plot, (3) the demographic you want to divide the variable by, and (4) the country you want to plot it for. To see all the input parameters for the function, type the code `?calculate_ind_smry_dem` in your R console.
 
 In this example, the variable we want to plot is `Q1COVID19`, the demographic we want to compare is `gender`, and the country we want to plot it for is **Algeria**^[If the style of this code is confusing, see [Create a Summary in Chapter 1][Single Country Overall Graphs]].
 
 ```{r 02.3-summary, eval=FALSE}
 
 survey1 %>%                                                    # Data
-  calculate_demographic_smry_individual("Q1COVID19",           # Variable to summarize  
-                                        .dem = "gender",       # Demographic
-                                        .country = "Algeria")  # Country
+  calculate_ind_smry_dem("Q1COVID19",           # Variable to summarize  
+                                        demographic = "gender",       # Demographic
+                                        select_country = "Algeria")  # Country
 
 ```
 
@@ -63,9 +63,9 @@ The above code will produce the following output:
 ```{r 02.4-summary, echo=FALSE,warning=FALSE,message=FALSE}
 
 survey1 %>%                                                    # Data
-  calculate_demographic_smry_individual("Q1COVID19",           # Variable to summarize  
-                                        .dem = "gender",       # Demographic
-                                        .country = "Algeria")  # Country
+  calculate_ind_smry_dem("Q1COVID19",           # Variable to summarize  
+                                        demographic = "gender",       # Demographic
+                                        select_country = "Algeria")  # Country
 
 ```
 
@@ -76,9 +76,9 @@ Let's save our gender demographic summary and move on to plotting it.
 ```{r 02.7-summary, eval=FALSE}
 
 Q1COVID19_gender <- survey1 %>%
-  calculate_demographic_smry_individual("Q1COVID19",
-                                        .dem = "gender",
-                                        .country = "Algeria")
+  calculate_ind_smry_dem("Q1COVID19",
+                                        demographic = "gender",
+                                        select_country = "Algeria")
 
 ```
 
@@ -86,9 +86,9 @@ Q1COVID19_gender <- survey1 %>%
 ```{r 02.8-summary, echo=FALSE,warning=FALSE,message=FALSE}
 
 Q1COVID19_gender <- survey1 %>%
-  calculate_demographic_smry_individual("Q1COVID19",
-                                        .country = "Algeria",
-                                        .dem = "gender")
+  calculate_ind_smry_dem("Q1COVID19",
+                                        select_country = "Algeria",
+                                        demographic = "gender")
 
 ```
 
@@ -96,15 +96,15 @@ Q1COVID19_gender <- survey1 %>%
 ### Plotting the Summary
 
 
-The next step is plot the summary we just created. To do this, we use the function `plot_demographic_smry_individual()`.
+The next step is plot the summary we just created. To do this, we use the function `plot_ind_smry_dem()`.
 
-There is only *one* necessary parameter to use `plot_smry_individual()`: the summary data frame. For a complete list of acceptable parameters and documentation, you can run `?plot_demographic_smry_individual` in your R console.
+There is only *one* necessary parameter to use `plot_smry_individual()`: the summary data frame. For a complete list of acceptable parameters and documentation, you can run `?plot_ind_smry_dem` in your R console.
 
 Now, we can plug our summary into the plot function:
 
 ```{r 02.9-plot, eval=FALSE}
 
-plot_demographic_smry_individual(Q1COVID19_gender)
+plot_ind_smry_dem(Q1COVID19_gender)
 
 ```
 
@@ -113,7 +113,7 @@ The above code is the same as:
 ```{r 02.10-plot, eval=FALSE}
 
 Q1COVID19_gender %>%
-  plot_demographic_smry_individual()
+  plot_ind_smry_dem()
 
 ```
 
@@ -121,7 +121,7 @@ Both stylings of code produce the following graph:
 
 ```{r 02.11-plot, echo=FALSE, fig.dim=c(13,12),warning=FALSE,message=FALSE}
 
-plot_demographic_smry_individual(Q1COVID19_gender)
+plot_ind_smry_dem(Q1COVID19_gender)
 
 ```
 
@@ -130,7 +130,7 @@ Yet again, we see the caption needs to be changed. We can change it the same way
 ```{r 02.12-plot, eval=FALSE}
 
 Q1COVID19_gender %>%
-  plot_demographic_smry_individual(
+  plot_ind_smry_dem(
     .caption = "Arab Barometer Wave VI, Survey I, Algeria"
   )
 
@@ -141,7 +141,7 @@ Now we have the graph:
 ```{r 02.13-plot, echo=FALSE, fig.dim=c(13,12),warning=FALSE,message=FALSE}
 
 Q1COVID19_gender %>%
-  plot_demographic_smry_individual(
+  plot_ind_smry_dem(
     .caption = "Arab Barometer Wave VI, Survey I, Algeria"
   )
 
@@ -149,15 +149,15 @@ Q1COVID19_gender %>%
 ```
 
 
-Since `Q1COVID19_gender` is the same as `survey1 %>% calculate_demographic_smry_individual("Q1COVID19","gender","Algeria")`, we can substitute the former with the latter to get the original code in our example. This will give us the same plot that we just created.
+Since `Q1COVID19_gender` is the same as `survey1 %>% calculate_ind_smry_dem("Q1COVID19","gender","Algeria")`, we can substitute the former with the latter to get the original code in our example. This will give us the same plot that we just created.
 
 ```{r 02.14-plot, eval=FALSE}
 
 survey1 %>%
-  calculate_demographic_smry_individual("Q1COVID19",
+  calculate_ind_smry_dem("Q1COVID19",
                                         "gender",
                                         "Algeria") %>%
-  plot_demographic_smry_individual(.caption = "Arab Barometer Wave VI, Survey I, Algeria")
+  plot_ind_smry_dem(.caption = "Arab Barometer Wave VI, Survey I, Algeria")
 
 
 
@@ -193,13 +193,13 @@ names(variables_2_plot) <- c("Q1COVID19",
 gender_summaries <- survey1
 
 gender_summaries <- survey1 %>%
-  calculate_demographic_smry_individual(variables_2_plot,
+  calculate_ind_smry_dem(variables_2_plot,
                                         "gender",
                                         "Algeria") 
 
      #.......................Plot the summaries.......................
 gender_plots <- map(gender_summaries,
-                    plot_demographic_smry_individual,
+                    plot_ind_smry_dem,
                     .caption = "Arab Barometer Wave VI, Survey I")
 
 ```
@@ -222,13 +222,13 @@ names(variables_2_plot) <- c("Q1COVID19",
 
      #......................Create the summaries......................
 gender_summaries <- survey1 %>%
-  calculate_demographic_smry_individual(variables_2_plot,
+  calculate_ind_smry_dem(variables_2_plot,
                                         "gender",
                                         "Algeria") 
 
      #.......................Plot the summaries.......................
 gender_plots <- map(gender_summaries,
-                    plot_demographic_smry_individual,
+                    plot_ind_smry_dem,
                     .caption = "Arab Barometer Wave VI, Survey I")
 
 ```
@@ -264,12 +264,12 @@ Let's begin.
 
 ### Create Summaries
 
-The same function used to create a single summary is used to create many summaries: `calculate_demographic_smry_individual()`. Recall it takes four parameters: (1) the data you are using, (2) the variable(s) you want to plot, (3) the demographic you want the data summarized by and (4) the country you are creating the plot for. Now, instead of one variable, you supply the list of variables.
+The same function used to create a single summary is used to create many summaries: `calculate_ind_smry_dem()`. Recall it takes four parameters: (1) the data you are using, (2) the variable(s) you want to plot, (3) the demographic you want the data summarized by and (4) the country you are creating the plot for. Now, instead of one variable, you supply the list of variables.
 
 ```{r 02.20-summaries, eval=FALSE}
 
 survey1 %>%                                               # Data
-  calculate_demographic_smry_individual(variables_2_plot, # Variables to summarize
+  calculate_ind_smry_dem(variables_2_plot, # Variables to summarize
                                         "gender",         # Demographic
                                         "Algeria")        # Country
 
@@ -277,7 +277,7 @@ survey1 %>%                                               # Data
 
 The above code produces a nested named list. Each element in the list is another named list. Each element in the outer list is named for a variable you want to create summaries for. The inner list of each element is a summary with the data grouped by `age`, `gender`, `income`, and `education`. You can think of it like the following bullet point list:
 
-* `calculate_demographic_smry_individual` output
+* `calculate_ind_smry_dem` output
   * `Q1COVID19`
     * `gender` Q1COVID19 summary grouped by gender
   * `Q2061A`
@@ -291,7 +291,7 @@ Let's save this outcome as an object and move on to plotting.
 ```{r 02.22-summaries, eval=FALSE, message=FALSE}
 
 gender_summaries <- survey1 %>%                                               
-  calculate_demographic_smry_individual(variables_2_plot, 
+  calculate_ind_smry_dem(variables_2_plot, 
                                         "gender",
                                         "Algeria")  
 
@@ -302,7 +302,7 @@ gender_summaries <- survey1 %>%
 ```{r 02.23-summaries, echo=FALSE}
 
 gender_summaries <- survey1 %>%                                               
-  calculate_demographic_smry_individual(variables_2_plot, 
+  calculate_ind_smry_dem(variables_2_plot, 
                                         "gender",
                                         "Algeria")  
 
@@ -311,7 +311,7 @@ gender_summaries <- survey1 %>%
 
 ### Plot the Summaries {#plot-many-graphs-single-country-demographic}
 
-Again, the same function to create one plot is used to create many plots: `plot_demographic_smry_individual()`. Just like in Chapter 1, we need to use the `map` function.
+Again, the same function to create one plot is used to create many plots: `plot_ind_smry_dem()`. Just like in Chapter 1, we need to use the `map` function.
 
 In this case, you supply the list of summaries you just created, and the `plot_demographic_sumry_individual()` function. The code follows:
 
@@ -319,7 +319,7 @@ In this case, you supply the list of summaries you just created, and the `plot_d
 
 map(
   gender_summaries,                        # List of summaries
-  plot_demographic_smry_individual         # Plotting function
+  plot_ind_smry_dem         # Plotting function
 )
 
 ```
@@ -330,7 +330,7 @@ The code produces the following output:
 
 map(
   gender_summaries,                       # List of summaries
-  plot_demographic_smry_individual         # Plotting function
+  plot_ind_smry_dem         # Plotting function
 )
 
 ```
@@ -342,7 +342,7 @@ Notice, yet again, the caption needs to be changed. To change the caption for al
 ```{r 02.26-plots, figures-side, fig.show="hold", out.width="50%",warning=FALSE,message=FALSE}
 map(
   gender_summaries,                              # List of summaries
-  plot_demographic_smry_individual,              # Plotting function
+  plot_ind_smry_dem,              # Plotting function
   .caption = "Arab Barometer Wave VI, Survey I"  # Caption
 )
 
@@ -355,7 +355,7 @@ Congratulations! You have created three plots at once. You can store them in as 
 
 gender_plots <- map(
   gender_summaries,                              # List of summaries
-  plot_demographic_smry_individual,              # Plotting function
+  plot_ind_smry_dem,              # Plotting function
   .caption = "Arab Barometer Wave VI, Survey I"  # Caption
 )
 
@@ -366,7 +366,7 @@ gender_plots <- map(
 
 gender_plots <- map(
   gender_summaries,                              # List of summaries
-  plot_demographic_smry_individual,              # Plotting function
+  plot_ind_smry_dem,              # Plotting function
   .caption = "Arab Barometer Wave VI, Survey I"  # Caption
 )
 
@@ -413,6 +413,6 @@ You can learn how to change the colors for the comparative trend graph in [the c
 
 There are several points in this code when warnings or messages will appear **even if you are using the code correctly.** No need to panic. You can read about all of the messages and warnings that may appear *even when the code is correct* in the section [How do I Understand (some) Messages, Warnings, and Errors](#standard-warnings).
 
-The function `calculate_demographic_smry_individual()` will produce a join message. You can read a bit about that [here](#messages-join).
+The function `calculate_ind_smry_dem()` will produce a join message. You can read a bit about that [here](#messages-join).
 
-The function `plot_demographic_smry_individual()` will produce a `position_dodge()` warning. You can read a bit about that [here](#warning-dodge).
+The function `plot_ind_smry_dem()` will produce a `position_dodge()` warning. You can read a bit about that [here](#warning-dodge).

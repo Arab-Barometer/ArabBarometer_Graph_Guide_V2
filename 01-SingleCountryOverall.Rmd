@@ -14,9 +14,9 @@ At the end, your code will look like the following:
 ```{r 01.1-Complete-Code-Example, eval=FALSE}
 
 survey1 %>%
-  calculate_smry_individual("Q1COVID19",
-                            "Algeria") %>%
-  plot_smry_individual(.caption = "Arab Barometer Wave VI, Survey I, Algeria")
+  calculate_ind_smry("Q1COVID19",
+                     "Algeria") %>%
+  plot_ind_smry(.caption = "Arab Barometer Wave VI, Survey I, Algeria")
 
 
 ```
@@ -24,12 +24,12 @@ survey1 %>%
 That code will produce the following graph:
 
 
-```{r 01.2-Complete-Graph-Example, echo=FALSE, fig.dim=c(13,12),warning=FALSE,message=FALSE}
+```{r 01.2-Complete-Graph-Example, echo=FALSE ,warning=FALSE,message=FALSE}
 
 survey1 %>%
-  calculate_smry_individual("Q1COVID19",
+  calculate_ind_smry("Q1COVID19",
                             "Algeria") %>%
-  plot_smry_individual(.caption = "Arab Barometer Wave VI, Survey I")
+  plot_ind_smry(.caption = "Arab Barometer Wave VI, Survey I")
 
 
 ```
@@ -40,16 +40,16 @@ Let's go!
 
 The first step in creating a plot is to gather the data you want to display and organize it. You do this with the `create_smry_individual()` function.
 
-The three main parameters you need to provide to this function are (1) the data you are using, (2) the variable you want to plot, and (3) the country you want to plot it for. To see all the input parameters for the function, type the code `?calculate_smry_individual` in your R console.
+The three main parameters you need to provide to this function are (1) the data you are using, (2) the variable you want to plot, and (3) the country you want to plot it for. To see all the input parameters for the function, type the code `?calculate_ind_smry` in your R console.
 
 In this example, the variable we want to plot is `Q1COVID19` and the country we want to plot it for is **Algeria**.
 
 ```{r 01.3-summary, eval=FALSE}
 
-calculate_smry_individual(
-  .ab = survey1,            # The data you are using
-  .var = "Q1COVID19",       # The variable you want to plot
-  .country = "Algeria"      # The country you want to plot it for
+calculate_ind_smry(
+  ab_data = survey1,            # The data you are using
+  ab_var = "Q1COVID19",       # The variable you want to plot
+  select_country = "Algeria"      # The country you want to plot it for
 )
 
 ```
@@ -58,7 +58,7 @@ The above is the same as:
 
 ```{r 01.4-summary, eval=FALSE}
 
-calculate_smry_individual(survey1,"Q1COVID19","Algeria")
+calculate_ind_smry(survey1,"Q1COVID19","Algeria")
 
 ```
 
@@ -69,7 +69,7 @@ Which is the same as:
 
 
 survey1 %>%
-  calculate_smry_individual("Q1COVID19",
+  calculate_ind_smry("Q1COVID19",
                             "Algeria")
 
 ```
@@ -82,7 +82,7 @@ The output of any of the above expressions is the same:
 
 
 survey1 %>%
-  calculate_smry_individual("Q1COVID19",
+  calculate_ind_smry("Q1COVID19",
                             "Algeria")
 
 ```
@@ -101,23 +101,23 @@ Let's store the summary as an object and move on.
 
 
 Q1COVID19_summary <- survey1 %>%
-  calculate_smry_individual("Q1COVID19",
+  calculate_ind_smry("Q1COVID19",
                             "Algeria")
 
 ```
 
 ### Plot the Summary {#chapter-1-1-2}
 
-The next step is plot the summary we just created. To do this, we use the function `plot_smry_individual()`.
+The next step is plot the summary we just created. To do this, we use the function `plot_ind_smry()`.
 
-There is only *one* necessary parameter to use `plot_smry_individual()`: the summary data frame. For a complete list of acceptable parameters and documentation, you can run `?plot_smry_individual` in your R console.
+There is only *one* necessary parameter to use `plot_ind_smry()`: the summary data frame. For a complete list of acceptable parameters and documentation, you can run `?plot_ind_smry` in your R console.
 
 Now, we can plug our summary into the plot function:
 
 ```{r 01.8-plot, eval=FALSE}
 
-plot_smry_individual(
-  .df = Q1COVID19_summary  # The summary data frame
+plot_ind_smry(
+  ab_summary = Q1COVID19_summary  # The summary data frame
 )
 
 ```
@@ -127,7 +127,7 @@ The above code is the same as:
 ```{r 01.9-plot, eval=FALSE}
 
 Q1COVID19_summary %>%
-  plot_smry_individual()
+  plot_ind_smry()
 
 ```
 
@@ -136,14 +136,14 @@ Which is the SAME as:
 ```{r 01.10-plot, eval=FALSE}
 
 survey1 %>%
-  calculate_smry_individual("Q1COVID19",
+  calculate_ind_smry("Q1COVID19",
                             "Algeria") %>%
-  plot_smry_individual()
+  plot_ind_smry()
 
 
 ```
 
-We can do this because `Q1COVID19_summary` is equal to `survey1 %>% calculate_smry_individual("Q1COVID19", "Algeria")`.
+We can do this because `Q1COVID19_summary` is equal to `survey1 %>% calculate_ind_smry("Q1COVID19", "Algeria")`.
 
 
 Any of the above code gives the following graph:
@@ -152,9 +152,9 @@ Any of the above code gives the following graph:
 ```{r 01.11-plot, echo=FALSE, fig.dim=c(13,12),warning=FALSE,message=FALSE}
 
 survey1 %>%
-  calculate_smry_individual("Q1COVID19",
+  calculate_ind_smry("Q1COVID19",
                             "Algeria") %>%
-  plot_smry_individual()
+  plot_ind_smry()
 
 
 ```
@@ -166,9 +166,9 @@ Almost done! Notice how the caption says **Arab Barometer Wave N (DATE)**? Let's
 ```{r 01.12-plot, eval=FALSE}
 
 survey1 %>%
-  calculate_smry_individual("Q1COVID19",
+  calculate_ind_smry("Q1COVID19",
                             "Algeria") %>%
-  plot_smry_individual(
+  plot_ind_smry(
     .caption = "Arab Barometer Wave VI, Survey I, Algeria"  # NEW caption
   )
 
@@ -181,9 +181,9 @@ Now we have the plot we started with! We're done!
 ```{r 01.13-plot, echo=FALSE, fig.dim=c(13,12),warning=FALSE,message=FALSE}
 
 survey1 %>%
-  calculate_smry_individual("Q1COVID19",
+  calculate_ind_smry("Q1COVID19",
                             "Algeria") %>%
-  plot_smry_individual(
+  plot_ind_smry(
     .caption = "Arab Barometer Wave VI, Survey I, Algeria"  # NEW caption
   )
 
@@ -219,7 +219,7 @@ names(variables_2_plot) <- c("Q1COVID19",
                              "Q609")
 
      #......................Create the summaries......................
-summaries <- calculate_smry_individual(
+summaries <- calculate_ind_smry(
   survey1,
   variables_2_plot,
   "Algeria"
@@ -227,7 +227,7 @@ summaries <- calculate_smry_individual(
 
      #.......................Plot the summaries.......................
 plots <- map(summaries,
-             plot_smry_individual,
+             plot_ind_smry,
              .caption = "Arab Barometer Wave VI, Survey I")
 
 ```
@@ -249,7 +249,7 @@ names(variables_2_plot) <- c("Q1COVID19",
                              "Q609")
 
      #......................Create the summaries......................
-summaries <- calculate_smry_individual(
+summaries <- calculate_ind_smry(
   survey1,
   variables_2_plot,
   "Algeria"
@@ -257,7 +257,7 @@ summaries <- calculate_smry_individual(
 
      #.......................Plot the summaries.......................
 plots <- map(summaries,
-             plot_smry_individual,
+             plot_ind_smry,
              .caption = "Arab Barometer Wave VI, Survey I")
 ```
 
@@ -316,13 +316,13 @@ Now, you have a named list of variables. Time to summarize them.
 
 ### Create Summaries {#chapter-1-2-2}
 
-A nice thing about `calculate_smry_individual()` is that the user can create many summaries just as easily as creating a single summary.
+A nice thing about `calculate_ind_smry()` is that the user can create many summaries just as easily as creating a single summary.
 
 Recall it takes three parameters: (1) the data you are using, (2) the variable you want to plot, and (3) the country you are creating the plot for. Now, instead of just one variable we want to plot, we can feed it our list of variables.
 
 ```{r 01.20-summaries, eval=FALSE}
 
-summaries <- calculate_smry_individual(
+summaries <- calculate_ind_smry(
   survey1,          # Data we are using
   variables_2_plot, # List of variables to plot
   "Algeria"         # Country we want to focus on
@@ -334,7 +334,7 @@ The code above produces a named list. Each element in the list is a summary of a
 
 ```{r 01.23-summaries, echo=FALSE,warning=FALSE,message=FALSE}
 
-summaries <- calculate_smry_individual(
+summaries <- calculate_ind_smry(
   survey1,          # Data we are using
   variables_2_plot, # List of variables to plot
   "Algeria"         # Country we want to focus on
@@ -348,7 +348,7 @@ Let's save this outcome as an object and move on to plotting.
 ```{r 01.24-summaries, eval=FALSE}
 
 
-summaries <- calculate_smry_individual(
+summaries <- calculate_ind_smry(
   survey1,          
   variables_2_plot, 
   "Algeria"         
@@ -363,7 +363,7 @@ When you want to do something many times, the `purrr` package comes in extremely
 
 In particular, the `map()` function from the `purrr` package allows the user to feed a vector or list into a function and returns a list of the output. More information can be found in the Appendix section called [Using a `map()`](#using-map).
 
-In the previous section we created a list of variables. Now, with the help of the `map()` function, we feed them to `plot_smry_individual()`.
+In the previous section we created a list of variables. Now, with the help of the `map()` function, we feed them to `plot_ind_smry()`.
 
 The code follows:
 
@@ -371,7 +371,7 @@ The code follows:
 
 map(
   summaries,            # List (our summaries)
-  plot_smry_individual  # Function (plotting function)
+  plot_ind_smry  # Function (plotting function)
 )
 
 ```
@@ -381,7 +381,7 @@ The code produces the following output:
 ```{r 01.26-plots, figures-side, fig.show="hold", out.width="50%",message=FALSE}
 map(
   summaries,            # List of summaries
-  plot_smry_individual  # Plotting function
+  plot_ind_smry  # Plotting function
 )
 
 ```
@@ -393,7 +393,7 @@ Notice, yet again, the caption needs to be changed. To change the caption for al
 ```{r 01.27-plots, figures-side, fig.show="hold", out.width="50%"}
 map(
   summaries,                                     # List (our summaries)
-  plot_smry_individual,                          # Function (plotting function)
+  plot_ind_smry,                          # Function (plotting function)
   .caption = "Arab Barometer Wave VI, Survey I"  # Constant argument (caption)
 )
 
@@ -405,7 +405,7 @@ Congratulations! You have created three plots at once. You can store them in as 
 ```{r 01.28-plots, eval=FALSE}
 plots <- map(
   summaries,                                     
-  plot_smry_individual,                          
+  plot_ind_smry,                          
   .caption = "Arab Barometer Wave VI, Survey I"  
 )
 
@@ -415,7 +415,7 @@ plots <- map(
 ```{r 01.28.5-plots, echo=FALSE,message=FALSE,warning=FALSE}
 plots <- map(
   summaries,                                     # List of summaries
-  plot_smry_individual,                          # Plotting function
+  plot_ind_smry,                          # Plotting function
   .caption = "Arab Barometer Wave VI, Survey I"  # Caption
 )
 

@@ -1,4 +1,4 @@
-# (PART) Data Prepperation Functions {-}
+# (PART) Data Prepperation Functions {- #prepare-data}
 # Preparing Data
 
 Before we create create graphs or look at summaries, we often need to tidy up the data a bit. `ArabBarometR` provides a suite of functions to ease this process. In particular, it is useful to create a character columns: with the names of countries rather than their numeric codes; for commonly used demographics (gender, age, income, education, and settlement); and dummied versions of various variables.
