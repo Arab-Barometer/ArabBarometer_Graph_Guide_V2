@@ -7,9 +7,9 @@ At the end, your code will look like the following:
 
 ```{r 13.1-Complete-Code-Example, eval=FALSE}
 
-calculate_stacked_df(survey1,
+calculate_comp_smry_stacked(survey1,
                      "Q2061A") |>
-  plot_stacked_comp(.caption = "Arab Barometer Wave VI, Survey 1")
+  plot_comp_smry_stacked(.caption = "Arab Barometer Wave VI, Survey 1")
 
 ```
 
@@ -18,9 +18,9 @@ That code will produce the following graph:
 
 ```{r 13.2-Complete-Graph-Example, echo=FALSE, fig.dim=c(13,12)}
 
-calculate_stacked_df(survey1,
+calculate_comp_smry_stacked(survey1,
                      "Q2061A") |>
-  plot_stacked_comp(.caption = "Arab Barometer Wave VI, Survey 1")
+  plot_comp_smry_stacked(.caption = "Arab Barometer Wave VI, Survey 1")
 
 ```
 
@@ -30,16 +30,16 @@ Let's go!
 
 ### Create a Summary
 
-As usual, the first step to creating a stacked bar graph is to summarize the data you want to display. To do this you use the **`calculate_stacked_df()`** function. This function requires two arguments: (1) an Arab Barometer data frame, and (2) the name of the variable you want to graph.
+As usual, the first step to creating a stacked bar graph is to summarize the data you want to display. To do this you use the **`calculate_comp_smry_stacked()`** function. This function requires two arguments: (1) an Arab Barometer data frame, and (2) the name of the variable you want to graph.
 
 For this example, we'll use the first survey of wave six and question `Q2061A`.
 
 
 ```{r 13.3-calculate-step}
 
-calculate_stacked_df(
-  .ab = survey1,   # Data Frame
-  .var = "Q2061A"  # Variable Name
+calculate_comp_smry_stacked(
+  ab_data = survey1,   # Data Frame
+  ab_var = "Q2061A"  # Variable Name
   )
 
 ```
@@ -48,20 +48,20 @@ The data frame is quite long, as it contains the response of every category for 
 
 ```{r 13.4-calculate-object}
 
-stacked_data_frame <- calculate_stacked_df(
-  .ab = survey1,   
-  .var = "Q2061A"  
+stacked_data_frame <- calculate_comp_smry_stacked(
+  ab_data = survey1,   
+  ab_var = "Q2061A"  
   )
 
 ```
 
 ### Plot the Summary
 
-Now that we have the data frame, the next step is to plot it. For this step we use the function **`plot_stacked_comp()`**. The only *required* input is a data frame.
+Now that we have the data frame, the next step is to plot it. For this step we use the function **`plot_comp_smry_stacked()`**. The only *required* input is a data frame.
 
 ```{r 13.5-plot-object, fig.dim=c(13,12)}
 
-plot_stacked_comp(stacked_data_frame)
+plot_comp_smry_stacked(stacked_data_frame)
 
 ```
 
@@ -69,7 +69,7 @@ Similar to many other plots in this guide, the caption is not automatically corr
 
 ```{r 13.6-plot-object-caption, fig.dim=c(13,12)}
 
-plot_stacked_comp(stacked_data_frame,
+plot_comp_smry_stacked(stacked_data_frame,
                   .caption = "Arab Barometer Wave VI, Survey 1")
 
 ```
@@ -78,18 +78,18 @@ We can use the pipe operator^[To learn more about piping and using `%>%` in prog
 
 ```{r 13.7-all-together,eval=FALSE, fig.dim=c(13,12)}
 
-calculate_stacked_df(survey1,
+calculate_comp_smry_stacked(survey1,
                      "Q2061A") |>
-  plot_stacked_comp(.caption = "Arab Barometer Wave VI, Survey 1")
+  plot_comp_smry_stacked(.caption = "Arab Barometer Wave VI, Survey 1")
 ```
 
 This code produces the graph we started with!
 
 ```{r 13.8-all-together,echo=FALSE, fig.dim=c(13,12)}
 
-calculate_stacked_df(survey1,
+calculate_comp_smry_stacked(survey1,
                      "Q2061A") |>
-  plot_stacked_comp(.caption = "Arab Barometer Wave VI, Survey 1")
+  plot_comp_smry_stacked(.caption = "Arab Barometer Wave VI, Survey 1")
 ```
 
 ## Create Many Graphs
@@ -97,14 +97,14 @@ calculate_stacked_df(survey1,
 Normally, stacked graphs tend to be one-offs, but on the off chance you need to make many of them, you can, with the help of the `purrr` package. The steps follow.
 
 1. Create an iterable object (read: list or vector) of variable you want to graph.
-2. Map your object onto the `calculate_stacked_df()` function to create a list of summaries.
-3. Map your list of summaries onto the `plot_stacked_comp()` function to create a list of plots.
+2. Map your object onto the `calculate_comp_smry_stacked()` function to create a list of summaries.
+3. Map your list of summaries onto the `plot_comp_smry_stacked()` function to create a list of plots.
 
 To be clear, there are many, **many** different ways to create code to accomplish the goal of creating many graphs at one time. The method suggested here is only one.
 
 ### Identify the Variables
 
-The first step to create many graphs is to identify all the variables you want to make graphs for. For this example, we'll use `Q2061A`, `Q118_1`, and `Q516A`. We will save it to an object we can map to `plot_stacked_comp()`.
+The first step to create many graphs is to identify all the variables you want to make graphs for. For this example, we'll use `Q2061A`, `Q118_1`, and `Q516A`. We will save it to an object we can map to `plot_comp_smry_stacked()`.
 
 
 ```{r 13.9-variable-list}
@@ -119,22 +119,22 @@ We have save a vector of our three variables to an object called `variables_2_pl
 
 ### Create Many Summaries
 
-The next step is to use the `map()` function from the `purrr` package to create a list of summaries. The `map()` function requires two arguments: (1) an iterable object (e.g., a list or vector), and (2) a function. In the case, our iterable object is `variables_2_plot` and our function is `calculate_stacked_df()`.
+The next step is to use the `map()` function from the `purrr` package to create a list of summaries. The `map()` function requires two arguments: (1) an iterable object (e.g., a list or vector), and (2) a function. In the case, our iterable object is `variables_2_plot` and our function is `calculate_comp_smry_stacked()`.
 
 ```{r 13.10-map-variables-error,error=TRUE}
 
 summary_list <- map(
   variables_2_plot,     # List of variables
-  calculate_stacked_df  # Function to map onto
+  calculate_comp_smry_stacked  # Function to map onto
   )
 
 ```
 
 Oops. What went wrong? Take a moment to guess.
 
-Did you guess that `calculate_stacked_df()` takes two arguments and only one is provided here? If so, you are correct!
+Did you guess that `calculate_comp_smry_stacked()` takes two arguments and only one is provided here? If so, you are correct!
 
-The above code does not provide the data `calculate_stacked_df()` needs to create the data frame; specially `survey1`.
+The above code does not provide the data `calculate_comp_smry_stacked()` needs to create the data frame; specially `survey1`.
 
 The data used to create these summaries is the same every time. That means even though we are changing the variables we want to create summaries for, we can hold the input data constant. You can do this in the `map()` function by including the name of the parameter you want to hold constant, and setting it equal to your constant input. The `map()` function knows to use that input for every variable.
 
@@ -143,8 +143,8 @@ The data used to create these summaries is the same every time. That means even 
 
 summary_list <- map(
   variables_2_plot,     # List of variables
-  calculate_stacked_df, # Function to map onto
-  .ab = survey1         # Constant parameter
+  calculate_comp_smry_stacked, # Function to map onto
+  ab_data = survey1         # Constant parameter
   )
 
 ```
@@ -172,18 +172,18 @@ Excellent. On to plotting.
 
 ### Create Many Plots
 
-Our next step is to take the list of summaries, and map it onto the function `plot_stacked_df()`. This will create a list of plots. We will save it to an object `plot_list`.
+Our next step is to take the list of summaries, and map it onto the function `plot_comp_smry_stacked()`. This will create a list of plots. We will save it to an object `plot_list`.
 
 ```{r 13.14-map-summaries}
 
 plot_list <- map(
   summary_list,
-  plot_stacked_comp
+  plot_comp_smry_stacked
   )
 
 ```
 
-This mapping worked without any extra inputs because `plot_stacked_comp()` requires only one input.
+This mapping worked without any extra inputs because `plot_comp_smry_stacked()` requires only one input.
 
 We can also see that the names of summary list carried through.
 
@@ -210,7 +210,7 @@ The caption should be the same for every graph here. Since the input is constant
 
 plot_list <- map(
   summary_list,
-  plot_stacked_comp,
+  plot_comp_smry_stacked,
   .caption = "Arab Barometer Wave VI, Survey 1"
   )
 
@@ -236,8 +236,8 @@ variables_2_plot <- c("Q2061A",
 
 summary_list <- map(
   variables_2_plot,     
-  calculate_stacked_df, 
-  .ab = survey1         
+  calculate_comp_smry_stacked, 
+  ab_data = survey1         
   )
 
 names(summary_list) <- variables_2_plot
@@ -245,7 +245,7 @@ names(summary_list) <- variables_2_plot
 
 plot_list <- map(
   summary_list,
-  plot_stacked_comp,
+  plot_comp_smry_stacked,
   .caption = "Arab Barometer Wave VI, Survey 1"
   )
 
@@ -259,7 +259,7 @@ You may have noticed the legends of many of these plots running off the page. Ta
 
 ```{r 13.19-legend-example1, fig.dim=c(13,12)}
 
-plot_stacked_comp(stacked_data_frame,
+plot_comp_smry_stacked(stacked_data_frame,
                   .caption = "Arab Barometer Wave VI, Survey 1")
 
 ```
@@ -268,7 +268,7 @@ Two rows does not seem to be enough to see all the categories in the legend. You
 
 ```{r 13.20-legend-example2, fig.dim=c(13,12)}
 
-plot_stacked_comp(stacked_data_frame,
+plot_comp_smry_stacked(stacked_data_frame,
                   .caption = "Arab Barometer Wave VI, Survey 1") +
   guides(fill = guide_legend(nrow = 3))
 

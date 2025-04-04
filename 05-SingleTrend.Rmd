@@ -48,7 +48,6 @@ calculate_ind_trend("Q1COVID19",
   plot_ind_trend(.caption = "Arab Barometer Wave VI, Algeria")
 
 
-
 ```
 
 Let's go!

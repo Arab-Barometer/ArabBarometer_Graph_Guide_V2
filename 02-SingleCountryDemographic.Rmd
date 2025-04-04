@@ -18,8 +18,8 @@ At the end, your code will look like the following:
 
 survey1 %>%
   calculate_ind_smry_dem("Q1COVID19",
-                                        "gender",
-                                        "Algeria") %>%
+                         "gender",
+                         "Algeria") %>%
   plot_ind_smry_dem(.caption = "Arab Barometer Wave VI, Survey I, Algeria")
 
 
@@ -31,8 +31,8 @@ That code will produce the following graph:
 
 survey1 %>%
   calculate_ind_smry_dem("Q1COVID19",
-                                        demographic = "gender",
-                                        select_country = "Algeria") %>%
+                         demographic = "gender",
+                         select_country = "Algeria") %>%
   plot_ind_smry_dem(.caption = "Arab Barometer Wave VI, Survey I, Algeria")
 
 ```
@@ -50,10 +50,10 @@ In this example, the variable we want to plot is `Q1COVID19`, the demographic we
 
 ```{r 02.3-summary, eval=FALSE}
 
-survey1 %>%                                                    # Data
-  calculate_ind_smry_dem("Q1COVID19",           # Variable to summarize  
-                                        demographic = "gender",       # Demographic
-                                        select_country = "Algeria")  # Country
+survey1 %>%                                           # Data
+  calculate_ind_smry_dem("Q1COVID19",                 # Variable to summarize  
+                         demographic = "gender",      # Demographic
+                         select_country = "Algeria")  # Country
 
 ```
 
@@ -62,10 +62,10 @@ The above code will produce the following output:
 
 ```{r 02.4-summary, echo=FALSE,warning=FALSE,message=FALSE}
 
-survey1 %>%                                                    # Data
-  calculate_ind_smry_dem("Q1COVID19",           # Variable to summarize  
-                                        demographic = "gender",       # Demographic
-                                        select_country = "Algeria")  # Country
+survey1 %>%                                           # Data
+  calculate_ind_smry_dem("Q1COVID19",                 # Variable to summarize  
+                         demographic = "gender",      # Demographic
+                         select_country = "Algeria")  # Country
 
 ```
 
@@ -77,8 +77,8 @@ Let's save our gender demographic summary and move on to plotting it.
 
 Q1COVID19_gender <- survey1 %>%
   calculate_ind_smry_dem("Q1COVID19",
-                                        demographic = "gender",
-                                        select_country = "Algeria")
+                         demographic = "gender",
+                         select_country = "Algeria")
 
 ```
 
@@ -87,8 +87,8 @@ Q1COVID19_gender <- survey1 %>%
 
 Q1COVID19_gender <- survey1 %>%
   calculate_ind_smry_dem("Q1COVID19",
-                                        select_country = "Algeria",
-                                        demographic = "gender")
+                         select_country = "Algeria",
+                         demographic = "gender")
 
 ```
 
@@ -155,8 +155,8 @@ Since `Q1COVID19_gender` is the same as `survey1 %>% calculate_ind_smry_dem("Q1C
 
 survey1 %>%
   calculate_ind_smry_dem("Q1COVID19",
-                                        "gender",
-                                        "Algeria") %>%
+                         "gender",
+                         "Algeria") %>%
   plot_ind_smry_dem(.caption = "Arab Barometer Wave VI, Survey I, Algeria")
 
 
@@ -223,8 +223,8 @@ names(variables_2_plot) <- c("Q1COVID19",
      #......................Create the summaries......................
 gender_summaries <- survey1 %>%
   calculate_ind_smry_dem(variables_2_plot,
-                                        "gender",
-                                        "Algeria") 
+                         "gender",
+                         "Algeria") 
 
      #.......................Plot the summaries.......................
 gender_plots <- map(gender_summaries,

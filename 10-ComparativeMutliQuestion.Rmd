@@ -18,10 +18,10 @@ questions_2_compare <- list("Q210",
 question_labels <- c("Is there corruption?",
                       "Is the gov't cracking down?")
 
-calculate_comp_multiq_smry(survey1,
+calculate_comp_smry_multiq(survey1,
                            questions_2_compare,
                            question_labels) |> 
-  plot_comp_multiq_smry(.title = "Perceptions of Corruption in MENA",
+  plot_comp_smry_multiq(.title = "Perceptions of Corruption in MENA",
                            .subtitle = "% saying to a medium or large extent",
                            .caption = "Arab Barometer Wave VI, Survey 1")
 
@@ -38,10 +38,10 @@ questions_2_compare <- list("Q210",
 question_labels <- c("Is there corruption?",
                       "Is the gov't cracking down?")
 
-calculate_comp_multiq_smry(survey1,
+calculate_comp_smry_multiq(survey1,
                            questions_2_compare,
                            question_labels) |> 
-  plot_comp_multiq_smry(.title = "Perceptions of Corruption in MENA",
+  plot_comp_smry_multiq(.title = "Perceptions of Corruption in MENA",
                            .subtitle = "% saying to a medium or large extent",
                            .caption = "Arab Barometer Wave VI, Survey 1")
 
@@ -85,22 +85,22 @@ The object `question_labels` represents the text that will serve to label the re
 
 ## Create a Summary {#chapter-10-2}
 
-Now we create our summary. The function `calculate_comp_multiq_smry()` is used to create a summary for multiple countries that displays responses to multiple questions. There are **three** required arguments. They are: `.ab`, `.questions`, and `.question_labels`.
+Now we create our summary. The function `calculate_comp_smry_multiq()` is used to create a summary for multiple countries that displays responses to multiple questions. There are **three** required arguments. They are: `ab_data`, `ab_vars`, and `ab_labels`.
 
-The parameter `.ab` is the for Arab Barometer data frame.
+The parameter `ab_data` is the for Arab Barometer data frame.
 
-The `.questions` parameter requires a vector of questions. This is how the function knows which questions to include on the graph. We created a list, `questions_2_compare`, in the section above.
+The `ab_vars` parameter requires a vector of questions. This is how the function knows which questions to include on the graph. We created a list, `questions_2_compare`, in the section above.
 
-The `.question_labels` parameter requires a vector of question labels. The labels must appear in the same order as the questions to appear on the graph correctly. We created a vector, `questions_labels`, in the section above.
+The `ab_labels` parameter requires a vector of question labels. The labels must appear in the same order as the questions to appear on the graph correctly. We created a vector, `questions_labels`, in the section above.
 
 Time to fill in our function. The data we are using for the example is `survey1`.
 
 ```{r 10.5-first-summary}
 
-calculate_comp_multiq_smry(
-  .ab = survey1,
-  .questions = questions_2_compare,
-  .question_labels = question_labels
+calculate_comp_smry_multiq(
+  ab_data = survey1,
+  ab_vars = questions_2_compare,
+  ab_labels = question_labels
 )
 
 ```
@@ -111,7 +111,7 @@ Let's save the output to an object we can feed to our plotting function in the n
 
 ```{r 10.6-second-summary}
 
-comp_multiq_smry <- calculate_comp_multiq_smry(
+comp_multiq_smry <- calculate_comp_smry_multiq(
   survey1,
   questions_2_compare,
   question_labels
@@ -122,11 +122,11 @@ comp_multiq_smry <- calculate_comp_multiq_smry(
 
 ## Plot a Comparative Multiquestion Graph {#chapter-10-3}
 
-Next we use the function `plot_comp_multiq_smry()` to create a plot of our summary. The function only requires one parameter, `ab_summary`. We will use the summary we created above and saved to the object `comp_multiq_smry`.
+Next we use the function `plot_comp_smry_multiq()` to create a plot of our summary. The function only requires one parameter, `ab_summary`. We will use the summary we created above and saved to the object `comp_multiq_smry`.
 
 ```{r 10.7-first-graph,fig.dim=c(13,12)}
 
-plot_comp_multiq_smry(
+plot_comp_smry_multiq(
   ab_summary = comp_multiq_smry
 )
 
@@ -140,7 +140,7 @@ The parameters for including a title, subtitle, and caption are the same as they
 
 ```{r 10.6-second-graph, fig.dim=c(13,12), warning=FALSE}
 
-plot_comp_multiq_smry(
+plot_comp_smry_multiq(
   ab_summary = comp_multiq_smry,
   .title = "Perceptions of Corruption in MENA",
   .subtitle = "% saying to a medium or large extent",
@@ -178,10 +178,10 @@ question_labels <- c(
 )
 
 # Plotting the grid questions:
-calculate_comp_multiq_smry(survey1,
+calculate_comp_smry_multiq(survey1,
                            questions_2_compare,
                            question_labels) |> 
-  plot_comp_multiq_smry(.title = "How much trust do you have in...",
+  plot_comp_smry_multiq(.title = "How much trust do you have in...",
                         .subtitle = "% saying they have quite a lot or a great deal",
                         .caption = "Arab Barometer Wave VI, Survey 1")
 
@@ -192,6 +192,6 @@ calculate_comp_multiq_smry(survey1,
 
 There are several points in this code when warnings or messages will appear **even if you are using the code correctly.** No need to panic. You can read about all of the messages and warnings that may appear *even when the code is correct* in the section [How do I Understand (some) Messages, Warnings, and Errors](#standard-warnings).
 
-The function `plot_comp_multiq_smry()` will produce a `position_dodge()` warning. You can read a bit about that [here](#warning-dodge).
+The function `plot_comp_smry_multiq()` will produce a `position_dodge()` warning. You can read a bit about that [here](#warning-dodge).
 
 If you do not supply a title or subtitle, a plot will still be created but you will receive a missing title and/or subtitle warning. You can read more about this [here](#warning-title).

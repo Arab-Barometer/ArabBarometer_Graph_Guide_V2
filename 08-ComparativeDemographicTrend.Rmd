@@ -14,7 +14,7 @@ df_list <- list(
   survey3
 )
 
-survey_dates <- c("Survey 1",
+ab_survey_dates <- c("Survey 1",
                   "Survey 2",
                   "Survey 3")
 
@@ -23,14 +23,14 @@ survey_dates <- c("Survey 1",
 calculate_comp_trend_dem("Q1COVID19",
                              "gender",
                              df_list,
-                             survey_dates) |> 
+                             ab_survey_dates) |> 
   plot_comp_trend_dem(.caption = "Arab Barometer Wave VI")
 
 # One plot per demographic
 calculate_comp_trend_dem("Q1COVID19",
                              "gender",
                              df_list,
-                             survey_dates) |> 
+                             ab_survey_dates) |> 
   plot_comp_trend_dem(.facet_choice = "demographic",
                       .caption = "Arab Barometer Wave VI")
 
@@ -47,7 +47,7 @@ df_list <- list(
   survey3
 )
 
-survey_dates <- c("Survey 1",
+ab_survey_dates <- c("Survey 1",
                   "Suvey 2",
                   "Survey 3")
 
@@ -56,14 +56,14 @@ survey_dates <- c("Survey 1",
 calculate_comp_trend_dem("Q1COVID19",
                          "gender",
                          df_list,
-                         survey_dates) |> 
+                         ab_survey_dates) |> 
   plot_comp_trend_dem(.caption = "Arab Barometer Wave VI")
 
 # One plot per demographic
 calculate_comp_trend_dem("Q1COVID19",
                          "gender",
                          df_list,
-                         survey_dates) |> 
+                         ab_survey_dates) |> 
   plot_comp_trend_dem(.caption = "Arab Barometer Wave VI",
                       .facet_choice = "demographic")
 
@@ -111,7 +111,7 @@ You need a date for each data frame in your data frame list. Otherwise, the func
 
 ```{r 08.4-Single-Trend,echo=T,eval=FALSE}
 
-survey_dates <- c("Survey 1 Year",
+ab_survey_dates <- c("Survey 1 Year",
                   "Survey 2 Year",
                   "Survey 3 Year")
 
@@ -129,21 +129,21 @@ Now that we have defined our data frame list and survey dates, we can create our
 
 To create a demographic trend summary for multiple countries, use the `calculate_comp_trend_dem()` function.
 
-In total, there are *four* necessary parameters: `.var`, `.dem`, `data_frames`, and `survey_dates`. To see a complete list of parameters, including optional ones, use `?calculate_comp_trend_dem()` in your `R` console.
+In total, there are *four* necessary parameters: `ab_var`, `demographic`, `ab_df_list`, and `ab_survey_dates`. To see a complete list of parameters, including optional ones, use `?calculate_comp_trend_dem()` in your `R` console.
 
-The parameter `.var` is the variable you want to plot. **It must have the same name in every data frame in the data frame list.** If the variable you want to plot is named `"Q101"` in one sure, but `"Q102"` in another, the function will not include `"Q102"` in the plot. Computers can do a lot but as of yet they cannot think critically, so the onus is on you.
-
-> The trend data lists from the `Wave8TrendData` package ensure this is true for Wave VIII variables.
-
-The parameter `.dem` is the demographic you want to see the variable trends for. Much like the `.var` parameter, **it must have the same name in every data frame in the data frame list.** If the demographic you want to plot is named `"gender"` in one sure, but `"GENDER"` in another, the function will break.
+The parameter `ab_var` is the variable you want to plot. **It must have the same name in every data frame in the data frame list.** If the variable you want to plot is named `"Q101"` in one sure, but `"Q102"` in another, the function will not include `"Q102"` in the plot. Computers can do a lot but as of yet they cannot think critically, so the onus is on you.
 
 > The trend data lists from the `Wave8TrendData` package ensure this is true for Wave VIII variables.
 
-The parameter `data_frames` is a list of data frames. This is what we created [here](chp8-trend-df-list). 
+The parameter `demographic` is the demographic you want to see the variable trends for. Much like the `ab_var` parameter, **it must have the same name in every data frame in the data frame list.** If the demographic you want to plot is named `"gender"` in one sure, but `"GENDER"` in another, the function will break.
+
+> The trend data lists from the `Wave8TrendData` package ensure this is true for Wave VIII variables.
+
+The parameter `ab_df_list` is a list of data frames. This is what we created [here](chp8-trend-df-list). 
 
 > The data frame lists in the `Wave8TrendData` package do this step for you.
 
-The parameter `survey_dates` is a character vector of dates that will show up on the x-axis of the graph. This is what we created [here](chp8-trend-date-vector).
+The parameter `ab_survey_dates` is a character vector of dates that will show up on the x-axis of the graph. This is what we created [here](chp8-trend-date-vector).
 
 > The data frame lists in the `Wave8TrendData` package do this step for you.
 
@@ -152,10 +152,10 @@ Now let's fill it in.
 ```{r 08.5-First-Example, eval=FALSE}
 
 calculate_comp_trend_dem(
-  .var           = "Q1COVID19",    # Variable to graph
-  .dem           = "gender",       # Demographic to see over time
-  data_frames    = df_list,        # List of data frames
-  survey_dates   = survey_dates    # Vector of survey dates
+  ab_var           = "Q1COVID19",    # Variable to graph
+  demographic           = "gender",       # Demographic to see over time
+  ab_df_list    = df_list,        # List of data frames
+  ab_survey_dates   = ab_survey_dates    # Vector of survey dates
 )
 
 
@@ -163,10 +163,10 @@ calculate_comp_trend_dem(
 
 ```{r 08.6-First-Example, echo=FALSE, fig.dim=c(13,12)}
 comparative_dem_trend_summary <- calculate_comp_trend_dem(
-  .var           = "Q1COVID19",    # Variable to graph
-  .dem           = "gender",       # Demographic to see over time
-  data_frames    = df_list,        # List of data frames
-  survey_dates   = survey_dates    # Vector of survey dates
+  ab_var           = "Q1COVID19",    # Variable to graph
+  demographic           = "gender",       # Demographic to see over time
+  ab_df_list    = df_list,        # List of data frames
+  ab_survey_dates   = ab_survey_dates    # Vector of survey dates
 )
 
 knitr::kable(
@@ -183,7 +183,7 @@ comparative_dem_trend_summary <- calculate_comp_trend_dem(
   "Q1COVID19", 
   "gender",
   df_list,        
-  survey_dates    
+  ab_survey_dates    
   )
 
 ```
@@ -258,14 +258,14 @@ df_list <- list(
   survey3
 )
 
-survey_dates <- c("Survey 1 Year",
+ab_survey_dates <- c("Survey 1 Year",
                   "Survey 2 Year",
                   "Survey 3 Year")
 
 calculate_comp_trend_dem("Q1COVID19",
                              "gender",
                              df_list,
-                             survey_dates) |> 
+                             ab_survey_dates) |> 
   plot_comp_trend_dem(.caption = "Arab Barometer Wave VI")
 
 
@@ -280,14 +280,14 @@ df_list <- list(
   survey3
 )
 
-survey_dates <- c("Survey 1 Year",
+ab_survey_dates <- c("Survey 1 Year",
                   "Survey 2 Year",
                   "Survey 3 Year")
 
 calculate_comp_trend_dem("Q1COVID19",
                              "gender",
                              df_list,
-                             survey_dates) |> 
+                             ab_survey_dates) |> 
   plot_comp_trend_dem(.caption = "Arab Barometer Wave VI")
 
 
@@ -351,7 +351,7 @@ df_list <- list(
   survey3
 )
 
-survey_dates <- c("Survey 1 Year",
+ab_survey_dates <- c("Survey 1 Year",
                   "Survey 2 Year",
                   "Survey 3 Year")
 
@@ -359,7 +359,7 @@ survey_dates <- c("Survey 1 Year",
 plot_comp_trend_dem("Q1COVID19",   
                              "gender",      
                              df_list,       
-                             survey_dates,  
+                             ab_survey_dates,  
                              "demographic",
                              .caption = "Arab Barometer Wave VI")
 
@@ -374,14 +374,14 @@ df_list <- list(
   survey3
 )
 
-survey_dates <- c("Survey 1 Year",
+ab_survey_dates <- c("Survey 1 Year",
                   "Survey 2 Year",
                   "Survey 3 Year")
 
 calculate_comp_trend_dem("Q1COVID19",
                              "gender",
                              df_list,
-                             survey_dates) |> 
+                             ab_survey_dates) |> 
   plot_comp_trend_dem(.facet_choice = "demographic",
                       .caption = "Arab Barometer Wave VI")
 
@@ -399,7 +399,7 @@ df_list <- list(
   survey3
 )
 
-survey_dates <- c("Survey 1",
+ab_survey_dates <- c("Survey 1",
                   "Survey 2",
                   "Survey 3")
 
@@ -408,14 +408,14 @@ survey_dates <- c("Survey 1",
 calculate_comp_trend_dem("Q1COVID19",
                              "gender",
                              df_list,
-                             survey_dates) |> 
+                             ab_survey_dates) |> 
   plot_comp_trend_dem(.caption = "Arab Barometer Wave VI")
 
 # One plot per demographic
 calculate_comp_trend_dem("Q1COVID19",
                              "gender",
                              df_list,
-                             survey_dates) |> 
+                             ab_survey_dates) |> 
   plot_comp_trend_dem(.facet_choice = "demographic",
                       .caption = "Arab Barometer Wave VI")
 
@@ -433,10 +433,10 @@ By default, `human_readable` is set to `FALSE` and each row is unique to the sur
 ```{r 08.21-human-readable-f, eval=FALSE}
 
 calculate_comp_trend_dem(
-  .var           = "Q1COVID19",   
-  .dem           = "gender",
-  data_frames    = df_list,        
-  survey_dates   = survey_dates,   
+  ab_var           = "Q1COVID19",   
+  demographic           = "gender",
+  ab_df_list    = df_list,        
+  ab_survey_dates   = ab_survey_dates,   
   human_readable = FALSE       # This is the default
   )
 
@@ -448,7 +448,7 @@ comparative_demographic_trend_summary_f <- calculate_comp_trend_dem(
   "Q1COVID19",
   "gender",
   df_list,        
-  survey_dates  
+  ab_survey_dates  
   )
 
 knitr::kable(
@@ -464,10 +464,10 @@ knitr::kable(
 ```{r 08.23-human-readable-3, eval=FALSE}
 
 calculate_comp_trend_dem(
-  .var           = "Q1COVID19",    
-  .dem           = "gender",
-  data_frames    = df_list,        
-  survey_dates   = survey_dates,   
+  ab_var           = "Q1COVID19",    
+  demographic           = "gender",
+  ab_df_list    = df_list,        
+  ab_survey_dates   = ab_survey_dates,   
   human_readable = TRUE       # This is NOT the default
   )
 
@@ -479,7 +479,7 @@ comparative_demographic_trend_summary_t <- calculate_comp_trend_dem(
   "Q1COVID19",  
   "gender",
   df_list,        
-  survey_dates,
+  ab_survey_dates,
   human_readable = T
   )
 

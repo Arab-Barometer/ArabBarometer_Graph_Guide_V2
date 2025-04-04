@@ -14,13 +14,13 @@ df_list <- list(
   survey3
 )
 
-survey_dates <- c("Survey 1",
+ab_survey_dates <- c("Survey 1",
                   "Survey 2",
                   "Survey 3")
 
 calculate_comp_trend("Q1COVID19",
                 df_list,
-                survey_dates) |> 
+                ab_survey_dates) |> 
   plot_comp_trend(.caption = "Arab Barometer Wave VI")
 
 
@@ -36,13 +36,13 @@ df_list <- list(
   survey3
 )
 
-survey_dates <- c("Survey 1",
+ab_survey_dates <- c("Survey 1",
                   "Survey 2",
                   "Survey 3")
 
 calculate_comp_trend("Q1COVID19",
                      df_list,
-                     survey_dates) |> 
+                     ab_survey_dates) |> 
   plot_comp_trend(.caption = "Arab Barometer Wave VI")
 
 
@@ -90,7 +90,7 @@ You need a date for each data frame in your data frame list. Otherwise, the func
 
 ```{r 07.4-Single-Trend,echo=T,eval=FALSE}
 
-survey_dates <- c("Survey 1 Year",
+ab_survey_dates <- c("Survey 1 Year",
                   "Survey 2 Year",
                   "Survey 3 Year")
 
@@ -108,24 +108,24 @@ Now that we have defined our data frame list and survey dates, we can create our
 
 To calculate a trend summary for multiple countries, use the `calculate_comp_trend()` function.
 
-This function takes a few more parameters, and in a different order, than the functions we have worked with so far. In total, there are *three* necessary parameters: `.var`, `data_frames`, and `survey_dates`. To see a complete list of parameters, including optional ones, use `?calculate_comp_trend()` in your `R` console.
+This function takes a few more parameters, and in a different order, than the functions we have worked with so far. In total, there are *three* necessary parameters: `ab_var`, `ab_df_list`, and `ab_survey_dates`. To see a complete list of parameters, including optional ones, use `?calculate_comp_trend()` in your `R` console.
 
-The parameter `.var` is the variable you want to plot. **It must have the same name in every data frame in the data frame list.** If the variable you want to plot is named `"Q101"` in one sure, but `"Q102"` in another, the function will not include `"Q102"` in the plot. Computers can do a lot but as of yet they cannot think critically, so the onus is on you.
+The parameter `ab_var` is the variable you want to plot. **It must have the same name in every data frame in the data frame list.** If the variable you want to plot is named `"Q101"` in one sure, but `"Q102"` in another, the function will not include `"Q102"` in the plot. Computers can do a lot but as of yet they cannot think critically, so the onus is on you.
 
 > The trend data lists from the `Wave8TrendData` package ensure this is true for Wave VIII variables.
 
-The parameter `data_frames` is a list of data frames. This is what we created [here](chp7-trend-df-list). 
+The parameter `ab_df_list` is a list of data frames. This is what we created [here](chp7-trend-df-list). 
 
-The parameter `survey_dates` is a character vector of dates that will show up on the x-axis of the graph. This is what we created [here](chp7-trend-date-vector).
+The parameter `ab_survey_dates` is a character vector of dates that will show up on the x-axis of the graph. This is what we created [here](chp7-trend-date-vector).
 
 Now let's fill it in.
 
 ```{r 07.5, collapse=TRUE, eval=FALSE}
 
 calculate_comp_trend(
-  .var           = "Q1COVID19",    # Variable to graph
-  data_frames    = df_list,        # List of data frames
-  survey_dates   = survey_dates    # Vector of survey dates
+  ab_var           = "Q1COVID19",    # Variable to graph
+  ab_df_list    = df_list,        # List of data frames
+  ab_survey_dates   = ab_survey_dates    # Vector of survey dates
   )
 
 
@@ -135,9 +135,9 @@ The output should look like the following, with the `Survey` column labeled.
 
 ```{r 07.5-output, collapse=TRUE, echo=FALSE}
 comparative_trend_summary <- calculate_comp_trend(
-  .var           = "Q1COVID19",    # Variable to graph
-  data_frames    = df_list,        # List of data frames
-  survey_dates   = survey_dates    # Vector of survey dates
+  ab_var           = "Q1COVID19",    # Variable to graph
+  ab_df_list    = df_list,        # List of data frames
+  ab_survey_dates   = ab_survey_dates    # Vector of survey dates
   )
 
 
@@ -157,7 +157,7 @@ We can see the output has nine rows; one for each country for each survey. Let's
 comparative_trend_summary <- calculate_comp_trend(
   "Q1COVID19",    
   df_list,        
-  survey_dates    
+  ab_survey_dates    
   )
 
 ```
@@ -202,13 +202,13 @@ df_list <- list(
   survey3
 )
 
-survey_dates <- c("Survey 1",
+ab_survey_dates <- c("Survey 1",
                   "Survey 2",
                   "Survey 3")
 
 calculate_comp_trend("Q1COVID19",
                 df_list,
-                survey_dates) |> 
+                ab_survey_dates) |> 
   plot_comp_trend(.caption = "Arab Barometer Wave VI")
 
 ```
@@ -221,13 +221,13 @@ df_list <- list(
   survey3
 )
 
-survey_dates <- c("Survey 1",
+ab_survey_dates <- c("Survey 1",
                   "Survey 2",
                   "Survey 3")
 
 calculate_comp_trend("Q1COVID19",
                 df_list,
-                survey_dates) |> 
+                ab_survey_dates) |> 
   plot_comp_trend(.caption = "Arab Barometer Wave VI")
 
 
@@ -245,9 +245,9 @@ By default, `human_readable` is set to `FALSE` and each row is unique to the sur
 ```{r 07.11-human-readable-f, eval=FALSE}
 
 calculate_comp_trend(
-  .var           = "Q1COVID19",    
-  data_frames    = df_list,        
-  survey_dates   = survey_dates,   
+  ab_var           = "Q1COVID19",    
+  ab_df_list    = df_list,        
+  ab_survey_dates   = ab_survey_dates,   
   human_readable = FALSE       # This is the default
   )
 
@@ -258,7 +258,7 @@ calculate_comp_trend(
 comparative_trend_summary_f <- calculate_comp_trend(
   "Q1COVID19",    
   df_list,        
-  survey_dates  
+  ab_survey_dates  
   )
 
 knitr::kable(
@@ -274,9 +274,9 @@ knitr::kable(
 ```{r 07.13-human-readable-3, eval=FALSE}
 
 calculate_comp_trend(
-  .var           = "Q1COVID19",    
-  data_frames    = df_list,        
-  survey_dates   = survey_dates,   
+  ab_var           = "Q1COVID19",    
+  ab_df_list    = df_list,        
+  ab_survey_dates   = ab_survey_dates,   
   human_readable = TRUE       # This is NOT the default
   )
 
@@ -287,7 +287,7 @@ calculate_comp_trend(
 comparative_trend_summary_t <- calculate_comp_trend(
   "Q1COVID19",  
   df_list,        
-  survey_dates,
+  ab_survey_dates,
   human_readable = T
   )
 
@@ -312,7 +312,7 @@ Sometimes you may want to compare all the countries in one graph, but not have a
 
 calculate_comp_trend("Q1COVID19",
                 df_list,
-                survey_dates) |> 
+                ab_survey_dates) |> 
   plot_comp_trend(.caption = "Arab Barometer Wave VI",
                   .country_wrap = TRUE)
 

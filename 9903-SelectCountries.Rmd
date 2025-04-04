@@ -10,10 +10,10 @@ To choose only certain countries to plot, use the parameter `select_countries`. 
 ```{r How.5.6.1-SelectCountries, fig.dim=c(13,12)}
 
 survey1 %>%
-  calculate_smry_comp("Q1COVID19",
+  calculate_comp_smry("Q1COVID19",
                       select_countries = c("Morocco","Lebanon")) %>%
   
-  plot_smry_comp(.caption = "Arab Barometer Wave VI, Survey I")
+  plot_comp_smry(.caption = "Arab Barometer Wave VI, Survey I")
 
 
 ```
@@ -44,4 +44,4 @@ plot_trend_comp("Q1COVID19",
 
 ## In Single Country Graphs
 
-Instead of subsetting the Arab Barometer data by country to create individual country data frames, most users tend to want to use the whole data frame but only show results for one country. Most of the chapters in this book offer instruction based on this premise. When creating a single country graph with data that contains more than one country, use the parameter `.select_country`.
+Instead of subsetting the Arab Barometer data by country to create individual country data frames, most users tend to want to use the whole data frame but only show results for one country. Most of the chapters in this book offer instruction based on this premise. When creating a single country graph with data that contains more than one country, use the parameter `select_countries`.

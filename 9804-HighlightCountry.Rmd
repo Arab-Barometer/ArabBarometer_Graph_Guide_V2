@@ -5,8 +5,8 @@
 ```{r How.4.6.1-Highlight, eval=FALSE}
 
 survey1 %>%
-  calculate_smry_comp("Q1COVID19") %>%
-  plot_smry_comp(.caption = "Arab Barometer Wave VI, Survey I",
+  calculate_comp_smry("Q1COVID19") %>%
+  plot_comp_smry(.caption = "Arab Barometer Wave VI, Survey I",
                  .highlight = "Algeria")
 
 
@@ -19,8 +19,8 @@ That code will produce the following graph:
 
 
 survey1 %>%
-  calculate_smry_comp("Q1COVID19") %>%
-  plot_smry_comp(.caption = "Arab Barometer Wave VI, Survey I",
+  calculate_comp_smry("Q1COVID19") %>%
+  plot_comp_smry(.caption = "Arab Barometer Wave VI, Survey I",
                  .highlight = "Algeria")
 
 ```
@@ -30,8 +30,8 @@ survey1 %>%
 ```{r How.4.7.1-Highlight, eval=FALSE}
 
 survey1 %>%
-  calculate_smry_comp("Q1COVID19") %>%
-  plot_smry_comp(.caption = "Arab Barometer Wave VI, Survey I",
+  calculate_comp_smry("Q1COVID19") %>%
+  plot_comp_smry(.caption = "Arab Barometer Wave VI, Survey I",
                  .highlight = c("Algeria","Lebanon"))
 
 
@@ -44,8 +44,8 @@ That code will produce the following graph:
 
 
 survey1 %>%
-  calculate_smry_comp("Q1COVID19") %>%
-  plot_smry_comp(.caption = "Arab Barometer Wave VI, Survey I",
+  calculate_comp_smry("Q1COVID19") %>%
+  plot_comp_smry(.caption = "Arab Barometer Wave VI, Survey I",
                  .highlight = c("Algeria","Lebanon"))
 
 ```
@@ -55,8 +55,8 @@ survey1 %>%
 ```{r How.4.8.1-Highlight, eval=FALSE}
 
 survey1 %>%
-  calculate_smry_comp("Q1COVID19") %>%
-  plot_smry_comp(.caption = "Arab Barometer Wave VI, Survey I",
+  calculate_comp_smry("Q1COVID19") %>%
+  plot_comp_smry(.caption = "Arab Barometer Wave VI, Survey I",
                  .highlight = "Algeria",
                  .highlight_clr = "salma")
 
@@ -70,8 +70,8 @@ That code will produce the following graph:
 
 
 survey1 %>%
-  calculate_smry_comp("Q1COVID19") %>%
-  plot_smry_comp(.caption = "Arab Barometer Wave VI, Survey I",
+  calculate_comp_smry("Q1COVID19") %>%
+  plot_comp_smry(.caption = "Arab Barometer Wave VI, Survey I",
                  .highlight = "Algeria",
                  .highlight_clr = "salma")
 

@@ -22,11 +22,11 @@ questions_labels <- c("Is there corruption?",
                       "Is the gov't cracking down?")
 
 # "Short" Summary:
-calculate_ind_multiq_smry_short(survey1,
+calculate_ind_smry_multiq_short(survey1,
                                 questions_2_compare,
                                 questions_labels,
                                 "Algeria") |> 
-  plot_ind_multiq_smry_short(.title = "Perceptions of Corruption in Algeria",
+  plot_ind_smry_multiq_short(.title = "Perceptions of Corruption in Algeria",
                              .subtitle = "% saying to a medium or large extent",
                              .caption = "Arab Barometer Wave VI, Survey 1, Algeria")
 
@@ -42,11 +42,11 @@ questions_2_compare <- c("Q210",
 questions_labels <- c("Is there corruption?",
                       "Is the gov't cracking down?")
 
-calculate_ind_multiq_smry_short(survey1,
+calculate_ind_smry_multiq_short(survey1,
                                 questions_2_compare,
                                 questions_labels,
                                 "Algeria") |> 
-  plot_ind_multiq_smry_short(.title = "Perceptions of Corruption in Algeria",
+  plot_ind_smry_multiq_short(.title = "Perceptions of Corruption in Algeria",
                              .subtitle = "% saying to a medium or large extent",
                              .caption = "Arab Barometer Wave VI, Survey 1, Algeria")
 ```
@@ -63,11 +63,11 @@ questions_labels <- c("Is there corruption?",
                       "Is the gov't cracking down?")
 
 # "Long" Summary:
-calculate_ind_multiq_smry_long(survey1,
+calculate_ind_smry_multiq_long(survey1,
                                questions_2_compare,
                                questions_labels,
                                "Algeria") |> 
-  plot_ind_multiq_smry_long(.title = "Perceptions of Corruption in Algeria",
+  plot_ind_smry_multiq_long(.title = "Perceptions of Corruption in Algeria",
                             .subtitle = "% saying",
                             .caption = "Arab Barometer Wave VI, Survey 1, Algeria")
 
@@ -83,11 +83,11 @@ questions_2_compare <- c("Q210",
 questions_labels <- c("Is there corruption?",
                       "Is the gov't cracking down?")
 
-calculate_ind_multiq_smry_long(survey1,
+calculate_ind_smry_multiq_long(survey1,
                                questions_2_compare,
                                questions_labels,
                                "Algeria") |> 
-  plot_ind_multiq_smry_long(.title = "Perceptions of Corruption in Algeria",
+  plot_ind_smry_multiq_long(.title = "Perceptions of Corruption in Algeria",
                             .subtitle = "% saying",
                             .caption = "Arab Barometer Wave VI, Survey 1, Algeria")
 ```
@@ -137,7 +137,7 @@ The "short" and "long" summary functions require the same four main parameters: 
 
 In the example for this chapter, the data we are using is `survey1`; the variables we want to plot are in the vector `questions_2_compare`; the labels we want to give them are in `questions_labels`; and the country we want to plot the data for is `"Algeria"`.
 
-Both `calculate_ind_multiq_smry_short()` and `calculate_ind_multiq_smry_long()` take the same required arguments. We can see the different outputs below.
+Both `calculate_ind_smry_multiq_short()` and `calculate_ind_smry_multiq_long()` take the same required arguments. We can see the different outputs below.
 
 ### "Short" Summary {#short-summary-calc}
 
@@ -145,7 +145,7 @@ The "short" summary version summarizes the variables in question like a comparat
 
 ```{r 09.05-short-summary}
 
-calculate_ind_multiq_smry_short(survey1,              # Data
+calculate_ind_smry_multiq_short(survey1,              # Data
                                 questions_2_compare,  # Question vector
                                 questions_labels,     # Label vector
                                 "Algeria"             # Country
@@ -157,7 +157,7 @@ Let's save this output to an object we can graph.
 
 ```{r 09.06-short-summary-save}
 
-ind_multiq_smry_short <- calculate_ind_multiq_smry_short(survey1,
+ind_multiq_smry_short <- calculate_ind_smry_multiq_short(survey1,
                                                          questions_2_compare,
                                                          questions_labels,
                                                          "Algeria"
@@ -172,7 +172,7 @@ The "long" summary version summarizes the variables in question like an individu
 ```{r 09.07-long-summary}
 
 
-calculate_ind_multiq_smry_long(survey1,              # Data
+calculate_ind_smry_multiq_long(survey1,              # Data
                                questions_2_compare,  # Question vector
                                questions_labels,     # Label vector
                                "Algeria"             # Country
@@ -184,7 +184,7 @@ Let's save this output to an object we can graph.
 
 ```{r 09.08-long-summary-save,message=FALSE}
 
-ind_multiq_smry_long <- calculate_ind_multiq_smry_long(survey1,
+ind_multiq_smry_long <- calculate_ind_smry_multiq_long(survey1,
                                                        questions_2_compare,
                                                        questions_labels,
                                                        "Algeria"
@@ -201,12 +201,12 @@ Each `calculate_` function has its own `plot_` function. If you try to plot a lo
 
 ### "Short" Plots
 
-To plot a "short" summary, use the function `plot_ind_multiq_smry_short()`. The function only requires one input: a data frame created by `calculate_ind_multiq_smry_short()`. In our example, we saved this data frame as `ind_multiq_smry_short`.
+To plot a "short" summary, use the function `plot_ind_smry_multiq_short()`. The function only requires one input: a data frame created by `calculate_ind_smry_multiq_short()`. In our example, we saved this data frame as `ind_multiq_smry_short`.
 
 
 ```{r 09.9-short-first-graph,fig.dim=c(13,12),warning=FALSE}
 
-plot_ind_multiq_smry_short(ind_multiq_smry_short)
+plot_ind_smry_multiq_short(ind_multiq_smry_short)
 
 ```
 
@@ -218,7 +218,7 @@ We can fill these in to create our final graph.
 
 ```{r 09.10-second-graph-short, fig.dim=c(13,12),warning=FALSE}
 
-plot_ind_multiq_smry_short(
+plot_ind_smry_multiq_short(
   ind_multiq_smry_short,                                  # Data frame
   .title = "Perceptions of Corruption in Algeria",        # Title
   .subtitle = "% saying to a medium or large extent",     # Subtitle
@@ -227,17 +227,17 @@ plot_ind_multiq_smry_short(
 
 ```
 
-Recall the object `ind_multiq_smry_short` is just the name we gave the output of `calculate_ind_multiq_smry_short()` from section (#short-summary-calc). We can substitute the calculation code back in here to produce the code (and graph) from the initial example.
+Recall the object `ind_multiq_smry_short` is just the name we gave the output of `calculate_ind_smry_multiq_short()` from section (#short-summary-calc). We can substitute the calculation code back in here to produce the code (and graph) from the initial example.
 
 
 ```{r 09.11-final-graph-short, fig.dim=c(13,12),warning=FALSE}
 
 
-calculate_ind_multiq_smry_short(survey1,
+calculate_ind_smry_multiq_short(survey1,
                                 questions_2_compare,
                                 questions_labels,
                                 "Algeria") |> 
-  plot_ind_multiq_smry_short(.title = "Perceptions of Corruption in Algeria",
+  plot_ind_smry_multiq_short(.title = "Perceptions of Corruption in Algeria",
                              .subtitle = "% saying to a medium or large extent",
                              .caption = "Arab Barometer Wave VI, Survey 1, Algeria")
 
@@ -247,12 +247,12 @@ calculate_ind_multiq_smry_short(survey1,
 
 ### "Long" Plots
 
-To plot a "long" summary, use the function `plot_ind_multiq_smry_long()`. The function only requires one input: a data frame created by `calculate_ind_multiq_smry_long()`. In our example, we saved this data frame as `ind_multiq_smry_long`.
+To plot a "long" summary, use the function `plot_ind_smry_multiq_long()`. The function only requires one input: a data frame created by `calculate_ind_smry_multiq_long()`. In our example, we saved this data frame as `ind_multiq_smry_long`.
 
 
 ```{r 09.12-short-first-graph,fig.dim=c(13,12),warning=FALSE}
 
-plot_ind_multiq_smry_short(ind_multiq_smry_short)
+plot_ind_smry_multiq_short(ind_multiq_smry_short)
 
 ```
 
@@ -266,7 +266,7 @@ We can fill these in to create our final graph.
 
 ```{r 09.13-second-graph-long, fig.dim=c(13,12),warning=FALSE}
 
-plot_ind_multiq_smry_long(
+plot_ind_smry_multiq_long(
   ind_multiq_smry_long,                                   # Data frame
   .title = "Perceptions of Corruption in Algeria",        # Title
   .subtitle = "% saying",                                 # Subtitle
@@ -275,17 +275,17 @@ plot_ind_multiq_smry_long(
 
 ```
 
-Recall the object `ind_multiq_smry_long` is just the name we gave the output of `calculate_ind_multiq_smry_long()` from section (#long-summary-calc). We can substitute the calculation code back in here to produce the code (and graph) from the initial example.
+Recall the object `ind_multiq_smry_long` is just the name we gave the output of `calculate_ind_smry_multiq_long()` from section (#long-summary-calc). We can substitute the calculation code back in here to produce the code (and graph) from the initial example.
 
 
 ```{r 09.14-final-graph-long, fig.dim=c(13,12),warning=FALSE}
 
 
-calculate_ind_multiq_smry_long(survey1,
+calculate_ind_smry_multiq_long(survey1,
                                 questions_2_compare,
                                 questions_labels,
                                 "Algeria") |> 
-  plot_ind_multiq_smry_long(.title = "Perceptions of Corruption in Algeria",
+  plot_ind_smry_multiq_long(.title = "Perceptions of Corruption in Algeria",
                              .subtitle = "% saying",
                              .caption = "Arab Barometer Wave VI, Survey 1, Algeria")
 
@@ -313,11 +313,11 @@ questions_labels <- c("Joseph Biden",
                       "Ali Khameni",
                       "Mohammed bin Salman")
 
-calculate_ind_multiq_smry_short(survey1,
+calculate_ind_smry_multiq_short(survey1,
                                 questions_2_compare,
                                 questions_labels,
                                 "Algeria") |> 
-  plot_ind_multiq_smry_short(.title = "Perceptions of world leader's foreign policies towards MENA",
+  plot_ind_smry_multiq_short(.title = "Perceptions of world leader's foreign policies towards MENA",
                              .subtitle = "% saying it is very good or good",
                              .caption = "Arab Barometer Wave VI, Survey 1, Algeria")
 ```
@@ -337,11 +337,11 @@ questions_labels <- c("Joseph Biden",
 
 
 # "Long" Summary:
-calculate_ind_multiq_smry_long(survey1,
+calculate_ind_smry_multiq_long(survey1,
                                questions_2_compare,
                                questions_labels,
                                "Algeria") |> 
-  plot_ind_multiq_smry_long(.title = "Perceptions world leader's foreign policies towards MENA",
+  plot_ind_smry_multiq_long(.title = "Perceptions world leader's foreign policies towards MENA",
                             .subtitle = "% saying",
                             .caption = "Arab Barometer Wave VI, Survey 1, Algeria")
 
@@ -358,6 +358,6 @@ By default, the colors for the graph are randomly selected from `ArabBarometer_c
 
 There are several points in this code when warnings or messages will appear **even if you are using the code correctly.** No need to panic. You can read about all of the messages and warnings that may appear *even when the code is correct* in the section [How do I Understand (some) Messages, Warnings, and Errors](#standard-warnings).
 
-The functions `calculate_ind_multiq_smry_short()` and `calculate_ind_multiq_smry_long()` will produce a `position_dodge()` warning. You can read a bit about that [here](#warning-dodge).
+The functions `calculate_ind_smry_multiq_short()` and `calculate_ind_smry_multiq_long()` will produce a `position_dodge()` warning. You can read a bit about that [here](#warning-dodge).
 
 If you do not supply a title or subtitle, a plot will still be created but you will receive a missing title and/or subtitle warning. You can read more about this [here](#warning-title).

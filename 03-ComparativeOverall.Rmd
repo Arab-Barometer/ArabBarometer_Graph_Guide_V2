@@ -13,8 +13,8 @@ At the end, your code will look like the following:
 ```{r 03.1-Complete-Code-Example, eval=FALSE}
 
 survey1 %>%
-  calculate_smry_comp("Q1COVID19") %>%
-  plot_smry_comp(.caption = "Arab Barometer Wave VI, Survey I")
+  calculate_comp_smry("Q1COVID19") %>%
+  plot_comp_smry(.caption = "Arab Barometer Wave VI, Survey I")
 
 
 ```
@@ -26,22 +26,22 @@ That code will produce the following graph:
 
 
 survey1 %>%
-  calculate_smry_comp("Q1COVID19") %>%
-  plot_smry_comp(.caption = "Arab Barometer Wave VI, Survey I")
+  calculate_comp_smry("Q1COVID19") %>%
+  plot_comp_smry(.caption = "Arab Barometer Wave VI, Survey I")
 
 ```
 
 ### Create a Summary
 
-The process of creating an overall comparative graph is intentionally similar to creating a overall individual graph. As always, the first step is to organize the data we want to graph. For this we use the function `calculate_smry_comp()`, which is the comparative version of the individual summary function. The function requires only two parameters: (1) the data you are using, and (2) the variable you want to summarize. There are several other optional parameters. To see all the input parameters for the function, type the code `?calculate_smry_comp` in your R console.
+The process of creating an overall comparative graph is intentionally similar to creating a overall individual graph. As always, the first step is to organize the data we want to graph. For this we use the function `calculate_comp_smry()`, which is the comparative version of the individual summary function. The function requires only two parameters: (1) the data you are using, and (2) the variable you want to summarize. There are several other optional parameters. To see all the input parameters for the function, type the code `?calculate_comp_smry` in your R console.
 
 For the example in this section, we are using the data set `survey1` and summarizing the variable `Q1COVID19`.
 
 ```{r 03.3-summary, eval=FALSE}
 
-calculate_smry_comp(
-  .ab = survey1,          # The data you are using
-  .var = "Q1COVID19"       # The variable you want to plot
+calculate_comp_smry(
+  ab_data = survey1,          # The data you are using
+  ab_var = "Q1COVID19"       # The variable you want to plot
 )
 
 ```
@@ -51,7 +51,7 @@ Recall the above code is the same as typing:
 ```{r 03.4-summary, eval=FALSE}
 
 survey1 %>%
-  calculate_smry_comp("Q1COVID19")
+  calculate_comp_smry("Q1COVID19")
 
 ```
 
@@ -60,7 +60,7 @@ Let's take a look at the output:
 ```{r 03.5-summary, echo=FALSE}
 
 survey1 %>%
-  calculate_smry_comp("Q1COVID19")
+  calculate_comp_smry("Q1COVID19")
 
 ```
 
@@ -76,29 +76,29 @@ Now we'll store the summary as an object `comparative_summary` and move on to pl
 ```{r 03.6-summary, eval=FALSE}
 
 comparative_summary <- survey1 %>%
-  calculate_smry_comp("Q1COVID19")
+  calculate_comp_smry("Q1COVID19")
 
 ```
 
 ```{r 03.7-summary, echo=FALSE}
 
 comparative_summary <- survey1 %>%
-  calculate_smry_comp("Q1COVID19")
+  calculate_comp_smry("Q1COVID19")
 
 ```
 
 ### Plot the Summary
 
-The next step is plot the summary we just created. To do this, we use the function `plot_smry_comp()`.
+The next step is plot the summary we just created. To do this, we use the function `plot_comp_smry()`.
 
-There is only *one* necessary parameter to use `plot_smry_comp()`: the summary data frame. For a complete list of acceptable parameters and documentation, you can run `?plot_smry_comp` in your R console.
+There is only *one* necessary parameter to use `plot_comp_smry()`: the summary data frame. For a complete list of acceptable parameters and documentation, you can run `?plot_comp_smry` in your R console.
 
 Now, we can plug our summary into the plot function:
 
 ```{r 03.8-plot, eval=FALSE}
 
-plot_smry_comp(
-  .df = comparative_summary  # The summary data frame
+plot_comp_smry(
+  ab_summary = comparative_summary  # The summary data frame
 )
 
 ```
@@ -108,7 +108,7 @@ The above code is the same as:
 ```{r 03.9-plot, eval=FALSE}
 
 comparative_summary %>%
-  plot_smry_comp()
+  plot_comp_smry()
 
 ```
 
@@ -117,13 +117,13 @@ Which is the SAME as:
 ```{r 03.10-plot, eval=FALSE}
 
 survey1 %>%
-  calculate_smry_comp("Q1COVID19") %>%
-  plot_smry_comp()
+  calculate_comp_smry("Q1COVID19") %>%
+  plot_comp_smry()
 
 
 ```
 
-We can do this because `comparative_summary` is equal to `survey1 %>% calculate_smry_comp("Q1COVID19")`.
+We can do this because `comparative_summary` is equal to `survey1 %>% calculate_comp_smry("Q1COVID19")`.
 
 
 Any of the above code gives the following graph:
@@ -132,8 +132,8 @@ Any of the above code gives the following graph:
 ```{r 03.11-plot, echo=FALSE, fig.dim=c(13,12)}
 
 survey1 %>%
-  calculate_smry_comp("Q1COVID19") %>%
-  plot_smry_comp()
+  calculate_comp_smry("Q1COVID19") %>%
+  plot_comp_smry()
 
 
 ```
@@ -145,8 +145,8 @@ Almost done! Notice how the caption says **Arab Barometer Wave N (DATE)**? Let's
 ```{r 03.12-plot, eval=FALSE}
 
 survey1 %>%
-  calculate_smry_comp("Q1COVID19") %>%
-  plot_smry_comp(
+  calculate_comp_smry("Q1COVID19") %>%
+  plot_comp_smry(
     .caption = "Arab Barometer Wave VI, Survey I"  # NEW caption
   )
 
@@ -159,8 +159,8 @@ Now we have the plot we started with! We're done!
 ```{r 03.13-plot, echo=FALSE, fig.dim=c(13,12)}
 
 survey1 %>%
-  calculate_smry_comp("Q1COVID19") %>%
-  plot_smry_comp(
+  calculate_comp_smry("Q1COVID19") %>%
+  plot_comp_smry(
     .caption = "Arab Barometer Wave VI, Survey I"  # NEW caption
   )
 
@@ -198,11 +198,11 @@ names(variables_2_plot) <- c("Q1COVID19",
 
      #......................Create the summaries......................
 summaries <- survey1 %>%
-  calculate_smry_comp(variables_2_plot) 
+  calculate_comp_smry(variables_2_plot) 
 
      #.......................Plot the summaries.......................
 plots <- map(summaries,
-             plot_smry_comp,
+             plot_comp_smry,
              .caption = "Arab Barometer Wave VI, Survey I")
 
 ```
@@ -225,11 +225,11 @@ names(variables_2_plot) <- c("Q1COVID19",
 
      #......................Create the summaries......................
 comparative_summaries <- survey1 %>%
-  calculate_smry_comp(variables_2_plot) 
+  calculate_comp_smry(variables_2_plot) 
 
      #.......................Plot the summaries.......................
 comparative_plots <- map(comparative_summaries,
-                         plot_smry_comp,
+                         plot_comp_smry,
                          .caption = "Arab Barometer Wave VI, Survey I")
 
 ```
@@ -289,13 +289,13 @@ Now, you have a named list of variables. Time to summarize them.
 
 ### Create Summaries
 
-The same function used to create a single summary is used to create many summaries: `calculate_smry_comp()`. Recall it takes three parameters: (1) the data you are using, and (2) the variable(s) you want to plot. Now, instead of one variable, you supply the list of variables.
+The same function used to create a single summary is used to create many summaries: `calculate_comp_smry()`. Recall it takes three parameters: (1) the data you are using, and (2) the variable(s) you want to plot. Now, instead of one variable, you supply the list of variables.
 
 ```{r 03.20-summaries, eval=FALSE}
 
-calculate_smry_comp(
-  .ab = survey1,               # The data you are using
-  .var = variables_2_plot        # The variables you want to plot
+calculate_comp_smry(
+  ab_data = survey1,               # The data you are using
+  ab_var = variables_2_plot        # The variables you want to plot
 )
 
 ```
@@ -304,7 +304,7 @@ The above is the same as:
 
 ```{r 03.21-summaries, eval=FALSE}
 
-calculate_smry_comp(survey1,variables_2_plot)
+calculate_comp_smry(survey1,variables_2_plot)
 
 ```
 
@@ -315,7 +315,7 @@ Which is the same as:
 
 
 survey1 %>%
-  calculate_smry_comp(variables_2_plot)
+  calculate_comp_smry(variables_2_plot)
 
 ```
 
@@ -326,7 +326,7 @@ All of the above code in this section produces the same result: a named list. Ea
 
 
 survey1 %>%
-  calculate_smry_comp(variables_2_plot)
+  calculate_comp_smry(variables_2_plot)
 
 ```
 
@@ -337,14 +337,14 @@ Let's save this outcome as an object and move on to plotting. We will save the l
 
 
 comparative_summaries <- survey1 %>%
-  calculate_smry_comp(variables_2_plot)
+  calculate_comp_smry(variables_2_plot)
 
 ```
 
 
 ### Plot the Summaries {#plot-many-comparative}
 
-Again, the same function to create one plot is used to create many plots: `plot_smry_comp()`. Unlike last time, a helper function is needed to create multiple plots. 
+Again, the same function to create one plot is used to create many plots: `plot_comp_smry()`. Unlike last time, a helper function is needed to create multiple plots. 
 
 The helper function is called `map()`. The map function takes two inputs: (1) a list of things to pass to a function, and (2) a function. Essentially, `map()` takes each item in the list, and passes it to the function very efficiently. 
 
@@ -354,7 +354,7 @@ In this case, you supply the list of summaries you just created, and the `plot_s
 
 map(
   comparative_summaries, # List of summaries
-  plot_smry_comp         # Plotting function
+  plot_comp_smry         # Plotting function
 )
 
 ```
@@ -363,7 +363,7 @@ The code produces the following output:
 ```{r 03.26-plots, figures-side, fig.show="hold", out.width="50%"}
 map(
   comparative_summaries, # List of summaries
-  plot_smry_comp         # Plotting function
+  plot_comp_smry         # Plotting function
 )
 
 ```
@@ -375,7 +375,7 @@ Notice, yet again, the caption needs to be changed. To change the caption for al
 ```{r 03.27-plots, figures-side, fig.show="hold", out.width="50%"}
 map(
   comparative_summaries,                          # List of summaries
-  plot_smry_comp,                                 # Plotting function
+  plot_comp_smry,                                 # Plotting function
   .caption = "Arab Barometer Wave VI, Survey I"   # Caption
 )
 
@@ -387,7 +387,7 @@ Congratulations! You have created three plots at once. You can store them in as 
 ```{r 03.28-plots, eval=FALSE}
 comparative_plots <- map(
   comparative_summaries,                          # List of summaries
-  plot_smry_comp,                                 # Plotting function
+  plot_comp_smry,                                 # Plotting function
   .caption = "Arab Barometer Wave VI, Survey I"   # Caption
 )
 
@@ -397,7 +397,7 @@ comparative_plots <- map(
 ```{r 03.28.5-plots, echo=FALSE}
 comparative_plots <- map(
   comparative_summaries,                          # List of summaries
-  plot_smry_comp,                                 # Plotting function
+  plot_comp_smry,                                 # Plotting function
   .caption = "Arab Barometer Wave VI, Survey I"   # Caption
 )
 

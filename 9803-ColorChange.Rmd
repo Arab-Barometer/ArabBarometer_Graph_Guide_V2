@@ -8,13 +8,13 @@ The parameter is called **`.color_choice`**. This parameter accepts either a col
 ```{r How.3.1-Complete-Code-Example, fig.dim=c(13,12)}
 
 survey1  |> 
-  calculate_smry_individual("Q1COVID19",
+  calculate_ind_smry("Q1COVID19",
                             "Algeria") |>
-  plot_smry_individual(.color_choice = "zeke")
+  plot_ind_smry(.color_choice = "zeke")
 
 survey1 |>
-  calculate_smry_comp("Q1COVID19") |>
-  plot_smry_comp(.color_choice = "#FF5E64")
+  calculate_comp_smry("Q1COVID19") |>
+  plot_comp_smry(.color_choice = "#FF5E64")
 
 
 ```
@@ -34,32 +34,34 @@ If you choose to use a vector of either color names or hex codes, it **must** be
 ```{r How.3.2-Complete-Code-Example, fig.dim=c(13,12),warning=FALSE}
 
 survey1 |>
-  calculate_demographic_smry_individual("Q1COVID19",
+  calculate_ind_smry_dem("Q1COVID19",
                                         "Algeria",
-                                        .dem = "gender") |> 
-  plot_demographic_smry_individual(.color_choice = "blue pair")
+                                        demographic = "gender") |> 
+  plot_ind_smry_dem(.color_choice = "blue pair")
 
 survey1 |>
-  calculate_demographic_smry_comp("Q1COVID19",
-                                  .dem = "gender") |> 
-  plot_demographic_smry_comp(.color_choice = c("salma","mary clare"))
+  calculate_comp_smry_dem("Q1COVID19",
+                                  demographic = "gender") |> 
+  plot_comp_smry_dem(.color_choice = c("salma","mary clare"))
 
 data_frame_2_plot <- survey1 |>
-  calculate_demographic_smry_comp("Q1COVID19",
-                                  .dem = "Q101") 
+  calculate_comp_smry_dem("Q1COVID19",
+                                  demographic = "Q101") 
 
 data_frame_2_plot
 
 
 # 6 categories means 6 colors needed
 data_frame_2_plot |> 
-  plot_demographic_smry_comp(.color_choice = c("#0098BE",
+  plot_comp_smry_dem(.color_choice = c("#0098BE",
                                                          "#DF6E21",
                                                          "#AC517F",
                                                          "#7CBBC7",
                                                          "#796391",
                                                          "#CF83A3"))
-
+x <- data_frame_2_plot
+x$Q101 <- as.factor(x$Q101)
+plot_comp_smry_dem(data_frame_2_plot)
 
 ```
 
@@ -74,18 +76,18 @@ The parameter is called **`.color_choice`**. The parameter accepts any of the fo
   
 If you choose to use a vector of either color names or hex codes, it **must** be the same length as the number of categories. Recall that the categories "don't know" and "refuse" are combined into a single category unless otherwise specified. When determining the number of colors you need for your vector, only count the "don't know" and "refuse" categories as one category.
 
-Take `Q2061A` as an example. In the first survey of wave six, question `Q2061A` had ten response options including "don't know" and "refuse". The `calculate_stacked_df()` function combines "don't konw" and "refuse" into one category, so the color palette vector only needs to be length nine.
+Take `Q2061A` as an example. In the first survey of wave six, question `Q2061A` had ten response options including "don't know" and "refuse". The `calculate_comp_smry_stacked()` function combines "don't know" and "refuse" into one category, so the color palette vector only needs to be length nine.
 
 ```{r How.3.3-Complete-Code-Example, fig.dim=c(13,12),warning=FALSE}
 
-calculate_stacked_df(survey1,
+calculate_comp_smry_stacked(survey1,
                      "Q2061A") |>
-  plot_stacked_comp(.caption = "Arab Barometer Wave VI, Survey 1",
+  plot_comp_smry_stacked(.caption = "Arab Barometer Wave VI, Survey 1",
                     .color_choice = "soft rainbow")
 
-calculate_stacked_df(survey1,
+calculate_comp_smry_stacked(survey1,
                      "Q2061A") |>
-  plot_stacked_comp(.caption = "Arab Barometer Wave VI, Survey 1",
+  plot_comp_smry_stacked(.caption = "Arab Barometer Wave VI, Survey 1",
                     .color_choice = c("AB blue",
                                        "AB orange",
                                        "AB magenta",
@@ -109,20 +111,20 @@ Changing the color for single country trend graphs is exactly the same as for [b
 
 ```{r How.3.4-Complete-Code-Example, fig.dim=c(13,12),eval=FALSE}
 
-
-plot_trend_individual("Q1COVID19",
-                      df_list,
-                      survey_dates,
-                      "Algeria",
-                      .caption = "Arab Barometer Wave VI, Algeria",
+calculate_ind_trend("Q1COVID19",
+                    df_list,
+                    survey_dates,
+                    "Algeria") |> 
+  plot_ind_trend(.caption = "Arab Barometer Wave VI, Algeria",
                       .color_choice = "bright apple")  # Arab Barometer color name
 
-plot_trend_individual("Q1COVID19",
-                      df_list,
-                      survey_dates,
-                      "Algeria",
-                      .caption = "Arab Barometer Wave VI, Algeria",
-                      .color_choice = "#C8C6A2") # hex code
+
+calculate_ind_trend("Q1COVID19",
+                    df_list,
+                    survey_dates,
+                    "Algeria") |> 
+  plot_ind_trend(.caption = "Arab Barometer Wave VI, Algeria",
+                      .color_choice = "#C8C6A2")  # Arab Barometer color name
 
 ```
 
@@ -144,40 +146,37 @@ survey_dates <- c("Survey 1",
                   "Survey 3")
 
 # Unnamed color example
-plot_trend_comp("Q1COVID19",
+calculate_comp_trend("Q1COVID19",
                 df_list,
-                survey_dates,
-                .caption = "Arab Barometer Wave VI",
-                select_countries = c("Lebanon","Morocco"),
-                .color_choice = c("bright apple","james bond")
-)
+                ab_survey_dates,
+                select_countries = c("Lebanon","Morocco")) |> 
+  plot_comp_trend(.caption = "Arab Barometer Wave VI",
+                .color_choice = c("bright apple","james bond"))
 
 
 # Named color example
 trend_colors <- c("bright apple","james bond")
 names(trend_colors) <- c("Morocco","Lebanon")
 
-
-plot_trend_comp("Q1COVID19",
+calculate_comp_trend("Q1COVID19",
                 df_list,
-                survey_dates,
-                .caption = "Arab Barometer Wave VI",
-                select_countries = c("Morocco","Lebanon"),
-                .color_choice = trend_colors
-)
+                ab_survey_dates,
+                select_countries = c("Lebanon","Morocco")) |> 
+  plot_comp_trend(.caption = "Arab Barometer Wave VI",
+                .color_choice = trend_colors)
+
 ```
 
 The user can also change the color of some but not all countries.
 
 ```{r How.3.6-Complete-Code-Example, fig.dim=c(13,12),warning=FALSE,eval=FALSE}
 # Change one color example
-plot_trend_comp("Q1COVID19",
+calculate_comp_trend("Q1COVID19",
                 df_list,
-                survey_dates,
-                .caption = "Arab Barometer Wave VI",
-                select_countries = c("Morocco","Lebanon"),
-                .color_choice = c("Lebanon" = "#C8C6A2") 
-) 
+                ab_survey_dates) |> 
+  plot_comp_trend(.caption = "Arab Barometer Wave VI",
+                select_countries = c("Lebanon","Morocco"),
+                .color_choice = c("Lebanon" = "#C8C6A2"))
 
 
 ```

@@ -6,7 +6,7 @@ This chapter will cover how to make a comparative frequency graph by demographic
 
 This section will go over how to make a one-off comparative frequency graph by demographic for a multiple countries.
 
-**You will get a warning when you use the `plot_demographic_smry_comp()` function. Do not be afraid.** The warning is a result of the function forcing the order of the bars. You can safely ignore it. It is displayed in the example code at the top of this tutorial to demonstrate everything is ok, but suppressed for the rest of the chapter.
+**You will get a warning when you use the `plot_comp_smry_dem()` function. Do not be afraid.** The warning is a result of the function forcing the order of the bars. You can safely ignore it. It is displayed in the example code at the top of this tutorial to demonstrate everything is ok, but suppressed for the rest of the chapter.
 
 ### TL;DR {#tldr-chapter4-single -}
 
@@ -15,9 +15,9 @@ At the end, your code will look like the following:
 ```{r 04.1-Complete-Code-Example, eval=FALSE}
 
 survey1 %>%
-  calculate_demographic_smry_comp("Q1COVID19",
+  calculate_comp_smry_dem("Q1COVID19",
                                   "gender") %>%
-  plot_demographic_smry_comp(.caption = "Arab Barometer Wave VI, Survey I")
+  plot_comp_smry_dem(.caption = "Arab Barometer Wave VI, Survey I")
 
 
 ```
@@ -29,9 +29,9 @@ That code will produce the following graph:
 
 
 survey1 %>%
-  calculate_demographic_smry_comp("Q1COVID19",
+  calculate_comp_smry_dem("Q1COVID19",
                                   "gender") %>%
-  plot_demographic_smry_comp(.caption = "Arab Barometer Wave VI, Survey I")
+  plot_comp_smry_dem(.caption = "Arab Barometer Wave VI, Survey I")
 
 
 ```
@@ -42,16 +42,16 @@ Let's make it.
 
 ### Creating a Summary
 
-The first step in creating a plot is to gather the data you want to display and organize it. You do this with the `calculate_demographic_smry_comp()` function.
+The first step in creating a plot is to gather the data you want to display and organize it. You do this with the `calculate_comp_smry_dem()` function.
 
-Just like `calculate_smry_comp()`, the three main parameters you need to provide to this function are (1) the data you are using, (2) the variable you want to plot, and (3) the demographic you want to organize the variable by. To see all the input parameters for the function, type the code `?calculate_demographic_smry_comp` in your R console.
+Just like `calculate_smry_comp()`, the three main parameters you need to provide to this function are (1) the data you are using, (2) the variable you want to plot, and (3) the demographic you want to organize the variable by. To see all the input parameters for the function, type the code `?calculate_comp_smry_dem` in your R console.
 
 In this example, the variable we want to plot is `Q1COVID19` and the demographic is `"gender"`^[If the style of this code is confusing, see [Create a Summary in Chapter 1][Single Country Overall Graphs]].
 
 ```{r 04.3-summary, eval=FALSE}
 
 survey1 %>%                                       # Data
-  calculate_demographic_smry_comp("Q1COVID19",    # Variable to summarize  
+  calculate_comp_smry_dem("Q1COVID19",    # Variable to summarize  
                                   "gender"        # Demographic
                                   )  
                                   
@@ -63,7 +63,7 @@ The above code will produce the following output:
 ```{r 04.4-summary, echo=FALSE, warning=FALSE,message=FALSE}
 
 survey1 %>%
-  calculate_demographic_smry_comp("Q1COVID19",
+  calculate_comp_smry_dem("Q1COVID19",
                                   "gender")
 
 ```
@@ -74,7 +74,7 @@ Let's save our gender demographic summary and move on to plotting it.
 ```{r 04.7-summary, eval=FALSE}
 
 comparative_Q1COVID19_gender <- survey1 %>%
-  calculate_demographic_smry_comp("Q1COVID19",
+  calculate_comp_smry_dem("Q1COVID19",
                                   "gender")
 
 ```
@@ -83,7 +83,7 @@ comparative_Q1COVID19_gender <- survey1 %>%
 ```{r 04.8-summary, echo=FALSE, warning=FALSE,message=FALSE}
 
 comparative_Q1COVID19_gender <- survey1 %>%
-  calculate_demographic_smry_comp("Q1COVID19",
+  calculate_comp_smry_dem("Q1COVID19",
                                   "gender")
 
 ```
@@ -92,15 +92,15 @@ comparative_Q1COVID19_gender <- survey1 %>%
 ### Plotting the Summary
 
 
-The next step is plot the summary we just created. To do this, we use the function `plot_demographic_smry_comp()`.
+The next step is plot the summary we just created. To do this, we use the function `plot_comp_smry_dem()`.
 
-There is only *one* necessary parameter to use `plot_smry_comp()`: the summary data frame. For a complete list of acceptable parameters and documentation, you can run `?plot_demographic_smry_comp` in your R console.
+There is only *one* necessary parameter to use `plot_smry_comp()`: the summary data frame. For a complete list of acceptable parameters and documentation, you can run `?plot_comp_smry_dem` in your R console.
 
 Now, we can plug our summary into the plot function:
 
 ```{r 04.9-plot, eval=FALSE}
 
-plot_demographic_smry_comp(comparative_Q1COVID19_gender)
+plot_comp_smry_dem(comparative_Q1COVID19_gender)
 
 ```
 
@@ -109,7 +109,7 @@ The above code is the same as:
 ```{r 04.10-plot, eval=FALSE}
 
 comparative_Q1COVID19_gender %>%
-  plot_demographic_smry_comp()
+  plot_comp_smry_dem()
 
 ```
 
@@ -117,7 +117,7 @@ Both stylings of code produce the following graph:
 
 ```{r 04.11-plot, echo=FALSE, fig.dim=c(13,12), warning=FALSE,message=FALSE}
 
-plot_demographic_smry_comp(comparative_Q1COVID19_gender)
+plot_comp_smry_dem(comparative_Q1COVID19_gender)
 
 ```
 
@@ -126,7 +126,7 @@ Yet again, we see the caption needs to be changed. We can change it the same way
 ```{r 04.12-plot, eval=FALSE}
 
 comparative_Q1COVID19_gender %>%
-  plot_demographic_smry_comp(
+  plot_comp_smry_dem(
     .caption = "Arab Barometer Wave VI, Survey I"
   )
 
@@ -137,7 +137,7 @@ Now we have the graph:
 ```{r 04.13-plot, echo=FALSE, fig.dim=c(13,12), warning=FALSE,message=FALSE}
 
 comparative_Q1COVID19_gender %>%
-  plot_demographic_smry_comp(
+  plot_comp_smry_dem(
     .caption = "Arab Barometer Wave VI, Survey I"
   )
 
@@ -145,14 +145,14 @@ comparative_Q1COVID19_gender %>%
 ```
 
 
-Since `comparative_Q1COVID19_gender` is the same as `survey1 %>% calculate_demographic_smry_comp("Q1COVID19", "gender")`, we can substitute the former with the latter to get the original code in our example. This will give us the same plot that we just created.
+Since `comparative_Q1COVID19_gender` is the same as `survey1 %>% calculate_comp_smry_dem("Q1COVID19", "gender")`, we can substitute the former with the latter to get the original code in our example. This will give us the same plot that we just created.
 
 ```{r 04.14-plot, eval=FALSE}
 
 survey1 %>%
-  calculate_demographic_smry_comp("Q1COVID19",
+  calculate_comp_smry_dem("Q1COVID19",
                                   "gender") %>%
-  plot_demographic_smry_comp(.caption = "Arab Barometer Wave VI, Survey I")
+  plot_comp_smry_dem(.caption = "Arab Barometer Wave VI, Survey I")
 
 
 
@@ -187,12 +187,12 @@ names(variables_2_plot) <- c("Q1COVID19",
 
      #......................Create the summaries......................
 comparative_gender_summaries <- survey1 %>%
-  calculate_demographic_smry_comp(variables_2_plot,
+  calculate_comp_smry_dem(variables_2_plot,
                                   "gender") 
 
      #.......................Plot the summaries.......................
 comparative_gender_plots <- map(comparative_gender_summaries,
-                                plot_demographic_smry_comp,
+                                plot_comp_smry_dem,
                                 .caption = "Arab Barometer Wave VI, Survey I")
 
 ```
@@ -215,12 +215,12 @@ names(variables_2_plot) <- c("Q1COVID19",
 
       #......................Create the summaries......................
 comparative_gender_summaries <- survey1 %>%
-  calculate_demographic_smry_comp(variables_2_plot,
+  calculate_comp_smry_dem(variables_2_plot,
                                   "gender") 
 
      #.......................Plot the summaries.......................
 comparative_gender_plots <- map(comparative_gender_summaries,
-                                plot_demographic_smry_comp,
+                                plot_comp_smry_dem,
                                 .caption = "Arab Barometer Wave VI, Survey I")
 
 
@@ -258,12 +258,12 @@ Let's begin.
 
 ### Create Summaries
 
-The same function used to create a single summary is used to create many summaries: `calculate_demographic_smry_comp()`. Recall it takes three parameters: (1) the data you are using, (2) the variable(s) you want to plot, and (3) the demographic you are creating the plot for. Now, instead of one variable, you supply the list of variables.
+The same function used to create a single summary is used to create many summaries: `calculate_comp_smry_dem()`. Recall it takes three parameters: (1) the data you are using, (2) the variable(s) you want to plot, and (3) the demographic you are creating the plot for. Now, instead of one variable, you supply the list of variables.
 
 ```{r 04.20-summaries, eval=FALSE}
 
 survey1 %>%                                         # Data
-  calculate_demographic_smry_comp(variables_2_plot, # Variables to summarize
+  calculate_comp_smry_dem(variables_2_plot, # Variables to summarize
                                   "gender"          # Demographic
                                   )  
 
@@ -271,7 +271,7 @@ survey1 %>%                                         # Data
 
 The above code produces a named list. Each element in the list is a data frame. You can think of it like the following bullet point list:
 
-* `calculate_demographic_smry_comp()` output
+* `calculate_comp_smry_dem()` output
   * `Q1COVID19`
     * `Q1COVID19` summary grouped by gender
   * `Q2061A_1`
@@ -285,7 +285,7 @@ Let's save this outcome as an object and move on to plotting.
 ```{r 04.22-summaries, eval=FALSE}
 
 comparative_gender_summaries <- survey1 %>%                                               
-  calculate_demographic_smry_comp(variables_2_plot,
+  calculate_comp_smry_dem(variables_2_plot,
                                   "gender")  
 
 ```
@@ -295,7 +295,7 @@ comparative_gender_summaries <- survey1 %>%
 ```{r 04.23-summaries, echo=FALSE}
 
 comparative_gender_summaries <- survey1 %>%                                               
-  calculate_demographic_smry_comp(variables_2_plot, 
+  calculate_comp_smry_dem(variables_2_plot, 
                                   "gender")  
 
 ```
@@ -303,7 +303,7 @@ comparative_gender_summaries <- survey1 %>%
 
 ### Plot the Summaries {#plot-many-comparative-demographic}
 
-Again, the same function to create one plot is used to create many plots: `plot_demographic_smry_comp()`. Just like in Chapter 3, we need to use the `map()` function from the `purrr` package. For a refresher, see the Appendix chapter [Using a `map()`](#using-map).
+Again, the same function to create one plot is used to create many plots: `plot_comp_smry_dem()`. Just like in Chapter 3, we need to use the `map()` function from the `purrr` package. For a refresher, see the Appendix chapter [Using a `map()`](#using-map).
 
 In this case, you supply the list of summaries you just created, and the `plot_demographic_sumry_comp()` function. The code follows:
 
@@ -311,7 +311,7 @@ In this case, you supply the list of summaries you just created, and the `plot_d
 
 map(
   comparative_gender_summaries,   # List of summaries
-  plot_demographic_smry_comp      # Plotting function
+  plot_comp_smry_dem      # Plotting function
 )
 
 ```
@@ -322,7 +322,7 @@ The code produces the following output:
 
 map(
   comparative_gender_summaries,     # List of summaries
-  plot_demographic_smry_comp        # Plotting function
+  plot_comp_smry_dem        # Plotting function
 )
 
 ```
@@ -334,7 +334,7 @@ Notice, yet again, the caption needs to be changed. To change the caption for al
 ```{r 04.26-plots, figures-side, fig.show="hold", out.width="50%", warning=FALSE,message=FALSE}
 map(
   comparative_gender_summaries,                  # List of summaries
-  plot_demographic_smry_comp,                    # Plotting function
+  plot_comp_smry_dem,                    # Plotting function
   .caption = "Arab Barometer Wave VI, Survey I"  # Caption
 )
 
@@ -347,7 +347,7 @@ Congratulations! You have created three plots at once. You can store them in as 
 
 comparative_gender_plots <- map(
   comparative_gender_summaries,                  # List of summaries
-  plot_demographic_smry_comp,                    # Plotting function
+  plot_comp_smry_dem,                    # Plotting function
   .caption = "Arab Barometer Wave VI, Survey I"  # Caption
 )
 
@@ -358,7 +358,7 @@ comparative_gender_plots <- map(
 
 comparative_gender_plots <- map(
   comparative_gender_summaries,                  # List of summaries
-  plot_demographic_smry_comp,                    # Plotting function
+  plot_comp_smry_dem,                    # Plotting function
   .caption = "Arab Barometer Wave VI, Survey I"  # Caption
 )
 

@@ -17,13 +17,13 @@ df_list <- list(survey1,
                 survey2,
                 survey3)
 
-survey_dates <- c("Survey 1",
+ab_survey_dates <- c("Survey 1",
                   "Survey 2",
                   "Survey 3")
 
 calculate_ind_trend_multiq(questions_2_compare,
                            df_list,
-                           survey_dates,
+                           ab_survey_dates,
                            "Algeria") |> 
 plot_ind_trend_multiq(.title = "What is the most important challenge facing Algeria today?",
                       .subtitle = "% saying",
@@ -47,13 +47,13 @@ df_list <- list(survey1,
                 survey2,
                 survey3)
 
-survey_dates <- c("Survey 1",
+ab_survey_dates <- c("Survey 1",
                   "Survey 2",
                   "Survey 3")
 
 calculate_ind_trend_multiq(questions_2_compare,
                            df_list,
-                           survey_dates,
+                           ab_survey_dates,
                            "Algeria",
                            legend_names = question_labels) |> 
 plot_ind_trend_multiq(.title = "What is the most important challenge facing Algeria today?",
@@ -133,7 +133,7 @@ You need a date for each data frame in your data frame list. Otherwise, the func
 
 ```{r 12.4-Single-Trend,echo=T,eval=FALSE}
 
-survey_dates <- c("Survey 1 Year",
+ab_survey_dates <- c("Survey 1 Year",
                   "Survey 2 Year",
                   "Survey 3 Year")
 
@@ -151,15 +151,15 @@ Now that we have defined our data frame list and survey dates, we can create our
 
 To create a multiquestion trend summary for an individual country, use the `calculate_ind_trend_multiq()` function.
 
-This function takes a few more parameters, and in a different order, than the functions we have worked with so far. In total, there are *four* necessary parameters: `ab_questions`, `data_frames`, `survey_dates`, and `select_country`. To see a complete list of parameters, including optional ones, use `?calculate_ind_trend_multiq()` in your `R` console.
+This function takes a few more parameters, and in a different order, than the functions we have worked with so far. In total, there are *four* necessary parameters: `ab_var_list`, `ab_df_list`, `ab_survey_dates`, and `select_country`. To see a complete list of parameters, including optional ones, use `?calculate_ind_trend_multiq()` in your `R` console.
 
-The parameter `ab_questions` are the variables you want to plot. This is what we created [here](chapter-12-1-1). **They must have the same name in every data frame in the data frame list.** If one of the variables you want to plot is named `"Q101"` in one sure, but `"Q102"` in another, the function will not include `"Q102"` in the plot. Computers can do a lot but as of yet they cannot think critically, so the onus is on you.
+The parameter `ab_var_list` are the variables you want to plot. This is what we created [here](chapter-12-1-1). **They must have the same name in every data frame in the data frame list.** If one of the variables you want to plot is named `"Q101"` in one sure, but `"Q102"` in another, the function will not include `"Q102"` in the plot. Computers can do a lot but as of yet they cannot think critically, so the onus is on you.
 
 > The trend data lists from the `Wave8TrendData` package ensure this is true for Wave VIII variables.
 
-The parameter `data_frames` is a list of data frames. This is what we created [here](chapter-12-1-3). 
+The parameter `ab_df_list` is a list of data frames. This is what we created [here](chapter-12-1-3). 
 
-The parameter `survey_dates` is a character vector of dates that will show up on the x-axis of the graph. This is what we created [here](chapter-12-1-4).
+The parameter `ab_survey_dates` is a character vector of dates that will show up on the x-axis of the graph. This is what we created [here](chapter-12-1-4).
 
 The parameter `select_country` is the name of the country you want to create the graph for.
 
@@ -168,9 +168,9 @@ Now let's fill it in.
 ```{r 12.5-First-Example, eval=FALSE}
 
 calculate_ind_trend_multiq(
-  ab_questions   = questions_2_compare, # Variable to graph
-  data_frames    = df_list,             # List of data frames
-  survey_dates   = survey_dates,        # Vector of survey dates
+  ab_var_list   = questions_2_compare, # Variable to graph
+  ab_df_list    = df_list,             # List of data frames
+  ab_survey_dates   = ab_survey_dates,        # Vector of survey dates
   select_country = "Algeria"            # Country to graph
   )
 
@@ -181,9 +181,9 @@ The output should look like the following, with the `Survey` column labeled.
 
 ```{r 12.12-First-Example, echo=FALSE}
 individual_multiq_trend_summary <- calculate_ind_trend_multiq(
-  ab_questions   = questions_2_compare, # Variable to graph
-  data_frames    = df_list,             # List of data frames
-  survey_dates   = survey_dates,        # Vector of survey dates
+  ab_var_list   = questions_2_compare, # Variable to graph
+  ab_df_list    = df_list,             # List of data frames
+  ab_survey_dates   = ab_survey_dates,        # Vector of survey dates
   select_country = "Algeria"            # Country to graph
   )
 
@@ -204,7 +204,7 @@ We can see the resulting data frame has six rows; one for each question in each 
 individual_multiq_trend_summary <- calculate_ind_trend_multiq(
   questions_2_compare,
   df_list,        
-  survey_dates,   
+  ab_survey_dates,   
   "Algeria"       
   )
 
@@ -275,13 +275,13 @@ df_list <- list(survey1,
                 survey2,
                 survey3)
 
-survey_dates <- c("Survey 1",
+ab_survey_dates <- c("Survey 1",
                   "Survey 2",
                   "Survey 3")
 
 calculate_ind_trend_multiq(questions_2_compare,
                            df_list,
-                           survey_dates,
+                           ab_survey_dates,
                            "Algeria") |> 
 plot_ind_trend_multiq(.title = "What is the most important challenge facing Algeria today?",
                       .subtitle = "% saying",
@@ -306,13 +306,13 @@ df_list <- list(survey1,
                 survey2,
                 survey3)
 
-survey_dates <- c("Survey 1",
+ab_survey_dates <- c("Survey 1",
                   "Survey 2",
                   "Survey 3")
 
 calculate_ind_trend_multiq(questions_2_compare,
                            df_list,
-                           survey_dates,
+                           ab_survey_dates,
                            "Algeria") |> 
 plot_ind_trend_multiq(.title = "What is the most important challenge facing Algeria today?",
                       .subtitle = "% saying",
@@ -334,9 +334,9 @@ By default, `human_readable` is set to `FALSE` and each row is unique to the sur
 ```{r 12.13-human-readable-f, eval=FALSE}
 
 calculate_ind_trend_multiq(
-  ab_questions   = questions_2_compare,     
-  data_frames    = df_list,        
-  survey_dates   = survey_dates,   
+  ab_var_list   = questions_2_compare,     
+  ab_df_list    = df_list,        
+  ab_survey_dates   = ab_survey_dates,   
   select_country = "Algeria",
   human_readable = FALSE       # This is the default
   )
@@ -346,9 +346,9 @@ calculate_ind_trend_multiq(
 
 ```{r 12.14-human-readable-f, echo=FALSE}
 individual_multiq_trend_summary_f <- calculate_ind_trend_multiq(
-  ab_questions   = questions_2_compare,     
-  data_frames    = df_list,        
-  survey_dates   = survey_dates,   
+  ab_var_list   = questions_2_compare,     
+  ab_df_list    = df_list,        
+  ab_survey_dates   = ab_survey_dates,   
   select_country = "Algeria",  
   )
 
@@ -365,9 +365,9 @@ knitr::kable(
 ```{r 12.15-human-readable-3, eval=FALSE}
 
 calculate_ind_trend_multiq(
-  ab_questions   = questions_2_compare,     
-  data_frames    = df_list,        
-  survey_dates   = survey_dates,   
+  ab_var_list   = questions_2_compare,     
+  ab_df_list    = df_list,        
+  ab_survey_dates   = ab_survey_dates,   
   select_country = "Algeria",
   human_readable = TRUE       # This is NOT the default
   )
@@ -377,9 +377,9 @@ calculate_ind_trend_multiq(
 
 ```{r 12.16-human-readable-t, echo=FALSE}
 individual_multiq_trend_summary_t <- calculate_ind_trend_multiq(
-  ab_questions   = questions_2_compare,     
-  data_frames    = df_list,        
-  survey_dates   = survey_dates,   
+  ab_var_list   = questions_2_compare,     
+  ab_df_list    = df_list,        
+  ab_survey_dates   = ab_survey_dates,   
   select_country = "Algeria",
   human_readable = T
   )
@@ -407,7 +407,7 @@ The code below shows that setting the parameter `legend_names` in either the `ca
 calculate_ind_trend_multiq(
   questions_2_compare,
   df_list,
-  survey_dates,
+  ab_survey_dates,
   "Algeria"
   ) |> 
 plot_ind_trend_multiq(
@@ -420,7 +420,7 @@ plot_ind_trend_multiq(
 calculate_ind_trend_multiq(
   questions_2_compare,
   df_list,
-  survey_dates,
+  ab_survey_dates,
   "Algeria",
   legend_names = question_labels # Adding labels during the calculate phase
   ) |> 

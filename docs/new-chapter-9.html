@@ -1,0 +1,841 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 6 Single Country Multi-Question Plots | ArabBarometR Graphing Guide</title>
+  <meta name="description" content="Chapter 6 Single Country Multi-Question Plots | ArabBarometR Graphing Guide" />
+  <meta name="generator" content="bookdown 0.40 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 6 Single Country Multi-Question Plots | ArabBarometR Graphing Guide" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 6 Single Country Multi-Question Plots | ArabBarometR Graphing Guide" />
+  
+  
+  
+
+<meta name="author" content="MaryClare Roche" />
+
+
+<meta name="date" content="2025-04-04" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="stacked-plots.html"/>
+<link rel="next" href="chapter-dem-multiq.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+
+<link rel="stylesheet" href="AB-custom.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">GraphGuide</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Introduction</a>
+<ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#purpose"><i class="fa fa-check"></i>Purpose</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#best-practices"><i class="fa fa-check"></i>Best Practices</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#general-guide-process"><i class="fa fa-check"></i>General Guide Process</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#example-data"><i class="fa fa-check"></i>Example Data</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#headercode"><i class="fa fa-check"></i>Header Code</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="package-workflow.html"><a href="package-workflow.html"><i class="fa fa-check"></i>Package Workflow and Grammar</a>
+<ul>
+<li class="chapter" data-level="" data-path="package-workflow.html"><a href="package-workflow.html#calculate_-functions"><i class="fa fa-check"></i><code>calculate_</code> functions</a></li>
+<li class="chapter" data-level="" data-path="package-workflow.html"><a href="package-workflow.html#plot_-functions"><i class="fa fa-check"></i><code>plot_</code> functions</a></li>
+<li class="chapter" data-level="" data-path="package-workflow.html"><a href="package-workflow.html#ab_save"><i class="fa fa-check"></i><code>AB_save()</code></a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="arabic.html"><a href="arabic.html"><i class="fa fa-check"></i><span style="font-family: Tajawal;"> العربيه </span></a></li>
+<li class="chapter" data-level="" data-path="table-of-contents.html"><a href="table-of-contents.html"><i class="fa fa-check"></i>Table of Contents</a></li>
+<li class="chapter" data-level="" data-path=""><a href="#prepare-data"><i class="fa fa-check"></i>(PART) Data Prepperation Functions</a>
+<ul>
+<li class="chapter" data-level="0.1" data-path="table-of-contents.html"><a href="table-of-contents.html#tldr"><i class="fa fa-check"></i><b>0.1</b> TL;DR</a></li>
+<li class="chapter" data-level="0.2" data-path="table-of-contents.html"><a href="table-of-contents.html#recode_country"><i class="fa fa-check"></i><b>0.2</b> <code>recode_country()</code></a>
+<ul>
+<li class="chapter" data-level="0.2.1" data-path="table-of-contents.html"><a href="table-of-contents.html#example-1"><i class="fa fa-check"></i><b>0.2.1</b> Example:</a></li>
+</ul></li>
+<li class="chapter" data-level="0.3" data-path="table-of-contents.html"><a href="table-of-contents.html#demographic-functions"><i class="fa fa-check"></i><b>0.3</b> Demographic functions</a>
+<ul>
+<li class="chapter" data-level="0.3.1" data-path="table-of-contents.html"><a href="table-of-contents.html#basics"><i class="fa fa-check"></i><b>0.3.1</b> Basics</a></li>
+</ul></li>
+<li class="chapter" data-level="0.4" data-path="table-of-contents.html"><a href="table-of-contents.html#advanced"><i class="fa fa-check"></i><b>0.4</b> Advanced</a></li>
+<li class="chapter" data-level="0.5" data-path="table-of-contents.html"><a href="table-of-contents.html#age_demographic"><i class="fa fa-check"></i><b>0.5</b> <code>age_demographic()</code></a></li>
+<li class="chapter" data-level="0.6" data-path="table-of-contents.html"><a href="table-of-contents.html#education_demographic"><i class="fa fa-check"></i><b>0.6</b> <code>education_demographic()</code></a>
+<ul>
+<li class="chapter" data-level="0.6.1" data-path="table-of-contents.html"><a href="table-of-contents.html#examples"><i class="fa fa-check"></i><b>0.6.1</b> Examples:</a></li>
+</ul></li>
+<li class="chapter" data-level="0.7" data-path="table-of-contents.html"><a href="table-of-contents.html#dummy-all"><i class="fa fa-check"></i><b>0.7</b> <code>dummy_all()</code></a>
+<ul>
+<li class="chapter" data-level="0.7.1" data-path="table-of-contents.html"><a href="table-of-contents.html#examples-1"><i class="fa fa-check"></i><b>0.7.1</b> Examples:</a></li>
+</ul></li>
+<li class="chapter" data-level="0.8" data-path="table-of-contents.html"><a href="table-of-contents.html#dummy_select"><i class="fa fa-check"></i><b>0.8</b> <code>dummy_select()</code></a>
+<ul>
+<li class="chapter" data-level="0.8.1" data-path="table-of-contents.html"><a href="table-of-contents.html#examples-2"><i class="fa fa-check"></i><b>0.8.1</b> Examples:</a></li>
+</ul></li>
+<li class="chapter" data-level="0.9" data-path="table-of-contents.html"><a href="table-of-contents.html#in-practice"><i class="fa fa-check"></i><b>0.9</b> In Practice</a>
+<ul>
+<li class="chapter" data-level="0.9.1" data-path="table-of-contents.html"><a href="table-of-contents.html#example-3"><i class="fa fa-check"></i><b>0.9.1</b> Example:</a></li>
+</ul></li>
+</ul></li>
+<li class="part"><span><b>I Cross Tabulation Graphs</b></span></li>
+<li class="chapter" data-level="1" data-path="chapter-1.html"><a href="chapter-1.html"><i class="fa fa-check"></i><b>1</b> Single Country Overall Graphs</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="chapter-1.html"><a href="chapter-1.html#chapter-1-1"><i class="fa fa-check"></i><b>1.1</b> Create a Single Graph</a>
+<ul>
+<li class="chapter" data-level="" data-path="chapter-1.html"><a href="chapter-1.html#tldr-chapter1-single"><i class="fa fa-check"></i>TL;DR</a></li>
+<li class="chapter" data-level="1.1.1" data-path="chapter-1.html"><a href="chapter-1.html#chapter-1-1-1"><i class="fa fa-check"></i><b>1.1.1</b> Create a Summary</a></li>
+<li class="chapter" data-level="1.1.2" data-path="chapter-1.html"><a href="chapter-1.html#chapter-1-1-2"><i class="fa fa-check"></i><b>1.1.2</b> Plot the Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="1.2" data-path="chapter-1.html"><a href="chapter-1.html#chapter-1-2"><i class="fa fa-check"></i><b>1.2</b> Create Many Graphs</a>
+<ul>
+<li class="chapter" data-level="" data-path="chapter-1.html"><a href="chapter-1.html#tldr-chapter1-many"><i class="fa fa-check"></i>TL;DR</a></li>
+<li class="chapter" data-level="1.2.1" data-path="chapter-1.html"><a href="chapter-1.html#chapter-1-2-1"><i class="fa fa-check"></i><b>1.2.1</b> Identify the Variables</a></li>
+<li class="chapter" data-level="1.2.2" data-path="chapter-1.html"><a href="chapter-1.html#chapter-1-2-2"><i class="fa fa-check"></i><b>1.2.2</b> Create Summaries</a></li>
+<li class="chapter" data-level="1.2.3" data-path="chapter-1.html"><a href="chapter-1.html#plot-many-graphs-single-country"><i class="fa fa-check"></i><b>1.2.3</b> Plot the Summaries</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="chapter-2.html"><a href="chapter-2.html"><i class="fa fa-check"></i><b>2</b> Single Country Demographic Plots</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="chapter-2.html"><a href="chapter-2.html#create-a-single-graph"><i class="fa fa-check"></i><b>2.1</b> Create a Single Graph</a>
+<ul>
+<li class="chapter" data-level="" data-path="chapter-2.html"><a href="chapter-2.html#tldr-chapter2-single"><i class="fa fa-check"></i>TL;DR</a></li>
+<li class="chapter" data-level="2.1.1" data-path="chapter-2.html"><a href="chapter-2.html#creating-a-summary"><i class="fa fa-check"></i><b>2.1.1</b> Creating a Summary</a></li>
+<li class="chapter" data-level="2.1.2" data-path="chapter-2.html"><a href="chapter-2.html#plotting-the-summary"><i class="fa fa-check"></i><b>2.1.2</b> Plotting the Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="chapter-2.html"><a href="chapter-2.html#create-many-graphs"><i class="fa fa-check"></i><b>2.2</b> Create Many Graphs</a>
+<ul>
+<li class="chapter" data-level="" data-path="chapter-2.html"><a href="chapter-2.html#tldr-chapter2-mnay"><i class="fa fa-check"></i>TL;DR</a></li>
+<li class="chapter" data-level="2.2.1" data-path="chapter-2.html"><a href="chapter-2.html#create-summaries"><i class="fa fa-check"></i><b>2.2.1</b> Create Summaries</a></li>
+<li class="chapter" data-level="2.2.2" data-path="chapter-2.html"><a href="chapter-2.html#plot-many-graphs-single-country-demographic"><i class="fa fa-check"></i><b>2.2.2</b> Plot the Summaries</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="chapter-2.html"><a href="chapter-2.html#extras"><i class="fa fa-check"></i><b>2.3</b> Extras</a>
+<ul>
+<li class="chapter" data-level="2.3.1" data-path="chapter-2.html"><a href="chapter-2.html#font-size"><i class="fa fa-check"></i><b>2.3.1</b> Font Size</a></li>
+<li class="chapter" data-level="2.3.2" data-path="chapter-2.html"><a href="chapter-2.html#colors"><i class="fa fa-check"></i><b>2.3.2</b> Colors</a></li>
+<li class="chapter" data-level="2.3.3" data-path="chapter-2.html"><a href="chapter-2.html#warnings"><i class="fa fa-check"></i><b>2.3.3</b> Warnings</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="chapter-3.html"><a href="chapter-3.html"><i class="fa fa-check"></i><b>3</b> Comparative Overall Graphs</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="chapter-3.html"><a href="chapter-3.html#create-a-single-graph-1"><i class="fa fa-check"></i><b>3.1</b> Create a Single Graph</a>
+<ul>
+<li class="chapter" data-level="" data-path="chapter-3.html"><a href="chapter-3.html#tildr-chapter3-single"><i class="fa fa-check"></i>TL;DR</a></li>
+<li class="chapter" data-level="3.1.1" data-path="chapter-3.html"><a href="chapter-3.html#create-a-summary"><i class="fa fa-check"></i><b>3.1.1</b> Create a Summary</a></li>
+<li class="chapter" data-level="3.1.2" data-path="chapter-3.html"><a href="chapter-3.html#plot-the-summary"><i class="fa fa-check"></i><b>3.1.2</b> Plot the Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="chapter-3.html"><a href="chapter-3.html#create-many-graphs-1"><i class="fa fa-check"></i><b>3.2</b> Create Many Graphs</a>
+<ul>
+<li class="chapter" data-level="" data-path="chapter-3.html"><a href="chapter-3.html#tildr-chapter3-mnay"><i class="fa fa-check"></i>TL;DR</a></li>
+<li class="chapter" data-level="3.2.1" data-path="chapter-3.html"><a href="chapter-3.html#identify-the-variables"><i class="fa fa-check"></i><b>3.2.1</b> Identify the Variables</a></li>
+<li class="chapter" data-level="3.2.2" data-path="chapter-3.html"><a href="chapter-3.html#create-summaries-1"><i class="fa fa-check"></i><b>3.2.2</b> Create Summaries</a></li>
+<li class="chapter" data-level="3.2.3" data-path="chapter-3.html"><a href="chapter-3.html#plot-many-comparative"><i class="fa fa-check"></i><b>3.2.3</b> Plot the Summaries</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="chapter-4.html"><a href="chapter-4.html"><i class="fa fa-check"></i><b>4</b> Comparative Demographic Graphs</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="chapter-4.html"><a href="chapter-4.html#create-a-single-graph-2"><i class="fa fa-check"></i><b>4.1</b> Create a Single Graph</a>
+<ul>
+<li class="chapter" data-level="" data-path="chapter-4.html"><a href="chapter-4.html#tldr-chapter4-single"><i class="fa fa-check"></i>TL;DR</a></li>
+<li class="chapter" data-level="4.1.1" data-path="chapter-4.html"><a href="chapter-4.html#creating-a-summary-1"><i class="fa fa-check"></i><b>4.1.1</b> Creating a Summary</a></li>
+<li class="chapter" data-level="4.1.2" data-path="chapter-4.html"><a href="chapter-4.html#plotting-the-summary-1"><i class="fa fa-check"></i><b>4.1.2</b> Plotting the Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="chapter-4.html"><a href="chapter-4.html#create-many-graphs-2"><i class="fa fa-check"></i><b>4.2</b> Create Many Graphs</a>
+<ul>
+<li class="chapter" data-level="" data-path="chapter-4.html"><a href="chapter-4.html#tldr-chapter4-many"><i class="fa fa-check"></i>TL;DR</a></li>
+<li class="chapter" data-level="4.2.1" data-path="chapter-4.html"><a href="chapter-4.html#create-summaries-2"><i class="fa fa-check"></i><b>4.2.1</b> Create Summaries</a></li>
+<li class="chapter" data-level="4.2.2" data-path="chapter-4.html"><a href="chapter-4.html#plot-many-comparative-demographic"><i class="fa fa-check"></i><b>4.2.2</b> Plot the Summaries</a></li>
+</ul></li>
+</ul></li>
+<li class="part"><span><b>II Stacked Plots</b></span></li>
+<li class="chapter" data-level="5" data-path="stacked-plots.html"><a href="stacked-plots.html"><i class="fa fa-check"></i><b>5</b> Stacked Plots</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="stacked-plots.html"><a href="stacked-plots.html#create-a-single-graph-3"><i class="fa fa-check"></i><b>5.1</b> Create a Single Graph</a>
+<ul>
+<li class="chapter" data-level="5.1.1" data-path="stacked-plots.html"><a href="stacked-plots.html#create-a-summary-1"><i class="fa fa-check"></i><b>5.1.1</b> Create a Summary</a></li>
+<li class="chapter" data-level="5.1.2" data-path="stacked-plots.html"><a href="stacked-plots.html#plot-the-summary-1"><i class="fa fa-check"></i><b>5.1.2</b> Plot the Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="stacked-plots.html"><a href="stacked-plots.html#create-many-graphs-3"><i class="fa fa-check"></i><b>5.2</b> Create Many Graphs</a>
+<ul>
+<li class="chapter" data-level="5.2.1" data-path="stacked-plots.html"><a href="stacked-plots.html#identify-the-variables-1"><i class="fa fa-check"></i><b>5.2.1</b> Identify the Variables</a></li>
+<li class="chapter" data-level="5.2.2" data-path="stacked-plots.html"><a href="stacked-plots.html#create-many-summaries"><i class="fa fa-check"></i><b>5.2.2</b> Create Many Summaries</a></li>
+<li class="chapter" data-level="5.2.3" data-path="stacked-plots.html"><a href="stacked-plots.html#create-many-plots"><i class="fa fa-check"></i><b>5.2.3</b> Create Many Plots</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="stacked-plots.html"><a href="stacked-plots.html#extras-1"><i class="fa fa-check"></i><b>5.3</b> Extras</a>
+<ul>
+<li class="chapter" data-level="5.3.1" data-path="stacked-plots.html"><a href="stacked-plots.html#long-legends"><i class="fa fa-check"></i><b>5.3.1</b> Long Legends</a></li>
+<li class="chapter" data-level="5.3.2" data-path="stacked-plots.html"><a href="stacked-plots.html#font-size-1"><i class="fa fa-check"></i><b>5.3.2</b> Font Size</a></li>
+<li class="chapter" data-level="5.3.3" data-path="stacked-plots.html"><a href="stacked-plots.html#colors-1"><i class="fa fa-check"></i><b>5.3.3</b> Colors</a></li>
+<li class="chapter" data-level="5.3.4" data-path="stacked-plots.html"><a href="stacked-plots.html#order"><i class="fa fa-check"></i><b>5.3.4</b> Order</a></li>
+</ul></li>
+</ul></li>
+<li class="part"><span><b>III Multiquestion Graphs</b></span></li>
+<li class="chapter" data-level="6" data-path="new-chapter-9.html"><a href="new-chapter-9.html"><i class="fa fa-check"></i><b>6</b> Single Country Multi-Question Plots</a>
+<ul>
+<li class="chapter" data-level="" data-path="new-chapter-9.html"><a href="new-chapter-9.html#tldr-1"><i class="fa fa-check"></i>TL;DR</a></li>
+<li class="chapter" data-level="6.1" data-path="new-chapter-9.html"><a href="new-chapter-9.html#new-chapter-9-1"><i class="fa fa-check"></i><b>6.1</b> Prep Work</a>
+<ul>
+<li class="chapter" data-level="6.1.1" data-path="new-chapter-9.html"><a href="new-chapter-9.html#new-chapter-9-1-1"><i class="fa fa-check"></i><b>6.1.1</b> Question Vector</a></li>
+<li class="chapter" data-level="6.1.2" data-path="new-chapter-9.html"><a href="new-chapter-9.html#new-chapter-9-1-2"><i class="fa fa-check"></i><b>6.1.2</b> Question Labels</a></li>
+</ul></li>
+<li class="chapter" data-level="6.2" data-path="new-chapter-9.html"><a href="new-chapter-9.html#create-a-multiquestion-summary"><i class="fa fa-check"></i><b>6.2</b> Create a Multiquestion Summary</a>
+<ul>
+<li class="chapter" data-level="6.2.1" data-path="new-chapter-9.html"><a href="new-chapter-9.html#short-summary-calc"><i class="fa fa-check"></i><b>6.2.1</b> “Short” Summary</a></li>
+<li class="chapter" data-level="6.2.2" data-path="new-chapter-9.html"><a href="new-chapter-9.html#long-summary-calc"><i class="fa fa-check"></i><b>6.2.2</b> “Long” Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="new-chapter-9.html"><a href="new-chapter-9.html#new-chapter-9-2"><i class="fa fa-check"></i><b>6.3</b> Plot the Summary</a>
+<ul>
+<li class="chapter" data-level="6.3.1" data-path="new-chapter-9.html"><a href="new-chapter-9.html#short-plots"><i class="fa fa-check"></i><b>6.3.1</b> “Short” Plots</a></li>
+<li class="chapter" data-level="6.3.2" data-path="new-chapter-9.html"><a href="new-chapter-9.html#long-plots"><i class="fa fa-check"></i><b>6.3.2</b> “Long” Plots</a></li>
+</ul></li>
+<li class="chapter" data-level="6.4" data-path="new-chapter-9.html"><a href="new-chapter-9.html#new-chapter-9-3"><i class="fa fa-check"></i><b>6.4</b> Extras</a>
+<ul>
+<li class="chapter" data-level="6.4.1" data-path="new-chapter-9.html"><a href="new-chapter-9.html#new-chapter-9-3-3"><i class="fa fa-check"></i><b>6.4.1</b> Explict Grid Example</a></li>
+<li class="chapter" data-level="6.4.2" data-path="new-chapter-9.html"><a href="new-chapter-9.html#new-chapter-9-3-1"><i class="fa fa-check"></i><b>6.4.2</b> Setting Colors</a></li>
+<li class="chapter" data-level="6.4.3" data-path="new-chapter-9.html"><a href="new-chapter-9.html#new-chapter-9-warnings"><i class="fa fa-check"></i><b>6.4.3</b> Warnings</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="chapter-dem-multiq.html"><a href="chapter-dem-multiq.html"><i class="fa fa-check"></i><b>7</b> Demographic Single Country Multi-Question Plots</a>
+<ul>
+<li class="chapter" data-level="" data-path="chapter-dem-multiq.html"><a href="chapter-dem-multiq.html#tldr-2"><i class="fa fa-check"></i>TL;DR</a></li>
+<li class="chapter" data-level="7.1" data-path="chapter-dem-multiq.html"><a href="chapter-dem-multiq.html#prep-work"><i class="fa fa-check"></i><b>7.1</b> Prep Work</a>
+<ul>
+<li class="chapter" data-level="7.1.1" data-path="chapter-dem-multiq.html"><a href="chapter-dem-multiq.html#chapter-dem-multiq-1-1"><i class="fa fa-check"></i><b>7.1.1</b> Question Vector</a></li>
+<li class="chapter" data-level="7.1.2" data-path="chapter-dem-multiq.html"><a href="chapter-dem-multiq.html#chapter-dem-multiq-1-2"><i class="fa fa-check"></i><b>7.1.2</b> Question Labels</a></li>
+</ul></li>
+<li class="chapter" data-level="7.2" data-path="chapter-dem-multiq.html"><a href="chapter-dem-multiq.html#create-a-summary-2"><i class="fa fa-check"></i><b>7.2</b> Create a Summary</a></li>
+<li class="chapter" data-level="7.3" data-path="chapter-dem-multiq.html"><a href="chapter-dem-multiq.html#plot-a-multiquestion-demographic-summary-for-an-individual-country"><i class="fa fa-check"></i><b>7.3</b> Plot a Multiquestion Demographic Summary for an Individual Country</a></li>
+<li class="chapter" data-level="7.4" data-path="chapter-dem-multiq.html"><a href="chapter-dem-multiq.html#extras-2"><i class="fa fa-check"></i><b>7.4</b> Extras</a>
+<ul>
+<li class="chapter" data-level="7.4.1" data-path="chapter-dem-multiq.html"><a href="chapter-dem-multiq.html#chapter-dem-multiq-3-1"><i class="fa fa-check"></i><b>7.4.1</b> Setting Colors</a></li>
+<li class="chapter" data-level="7.4.2" data-path="chapter-dem-multiq.html"><a href="chapter-dem-multiq.html#chapter-dem-multiq-warnings"><i class="fa fa-check"></i><b>7.4.2</b> Warnings</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="chapter-10.html"><a href="chapter-10.html"><i class="fa fa-check"></i><b>8</b> Comparative Multi-Question Plots</a>
+<ul>
+<li class="chapter" data-level="" data-path="chapter-10.html"><a href="chapter-10.html#tldr-3"><i class="fa fa-check"></i>TL;DR</a></li>
+<li class="chapter" data-level="8.1" data-path="chapter-10.html"><a href="chapter-10.html#chapter-10-1"><i class="fa fa-check"></i><b>8.1</b> Prep Work</a>
+<ul>
+<li class="chapter" data-level="8.1.1" data-path="chapter-10.html"><a href="chapter-10.html#chapter-10-1-1"><i class="fa fa-check"></i><b>8.1.1</b> Question List</a></li>
+<li class="chapter" data-level="8.1.2" data-path="chapter-10.html"><a href="chapter-10.html#chapter-10-1-2"><i class="fa fa-check"></i><b>8.1.2</b> Question Labels</a></li>
+</ul></li>
+<li class="chapter" data-level="8.2" data-path="chapter-10.html"><a href="chapter-10.html#chapter-10-2"><i class="fa fa-check"></i><b>8.2</b> Create a Summary</a></li>
+<li class="chapter" data-level="8.3" data-path="chapter-10.html"><a href="chapter-10.html#chapter-10-3"><i class="fa fa-check"></i><b>8.3</b> Plot a Comparative Multiquestion Graph</a></li>
+<li class="chapter" data-level="8.4" data-path="chapter-10.html"><a href="chapter-10.html#chapter-10-4"><i class="fa fa-check"></i><b>8.4</b> Extras</a>
+<ul>
+<li class="chapter" data-level="8.4.1" data-path="chapter-10.html"><a href="chapter-10.html#chapter-10-4-1"><i class="fa fa-check"></i><b>8.4.1</b> Setting Colors</a></li>
+<li class="chapter" data-level="8.4.2" data-path="chapter-10.html"><a href="chapter-10.html#chapter-10-4-2"><i class="fa fa-check"></i><b>8.4.2</b> Select Countries</a></li>
+<li class="chapter" data-level="8.4.3" data-path="chapter-10.html"><a href="chapter-10.html#chapter-10-4-3"><i class="fa fa-check"></i><b>8.4.3</b> Explict Grid Example</a></li>
+<li class="chapter" data-level="8.4.4" data-path="chapter-10.html"><a href="chapter-10.html#chapter-10-warnings"><i class="fa fa-check"></i><b>8.4.4</b> Warnings</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="chapter-5.html"><a href="chapter-5.html"><i class="fa fa-check"></i><b>9</b> Single Country Trend Graphs</a>
+<ul>
+<li class="chapter" data-level="" data-path="chapter-5.html"><a href="chapter-5.html#tldr-4"><i class="fa fa-check"></i>TL;DR</a></li>
+<li class="chapter" data-level="9.1" data-path="chapter-5.html"><a href="chapter-5.html#chapter-5-1-1"><i class="fa fa-check"></i><b>9.1</b> Prep Work</a>
+<ul>
+<li class="chapter" data-level="" data-path="chapter-5.html"><a href="chapter-5.html#chp5-trend-df-list"><i class="fa fa-check"></i>Create a Data Frame List</a></li>
+<li class="chapter" data-level="" data-path="chapter-5.html"><a href="chapter-5.html#chp5-trend-date-vector"><i class="fa fa-check"></i>Create a Date Vector</a></li>
+</ul></li>
+<li class="chapter" data-level="9.2" data-path="chapter-5.html"><a href="chapter-5.html#chapter-5-1-2"><i class="fa fa-check"></i><b>9.2</b> Create a Summary</a></li>
+<li class="chapter" data-level="9.3" data-path="chapter-5.html"><a href="chapter-5.html#chapter-5-1-3"><i class="fa fa-check"></i><b>9.3</b> Plot the Summary</a></li>
+<li class="chapter" data-level="9.4" data-path="chapter-5.html"><a href="chapter-5.html#extras-3"><i class="fa fa-check"></i><b>9.4</b> Extras</a>
+<ul>
+<li class="chapter" data-level="9.4.1" data-path="chapter-5.html"><a href="chapter-5.html#font-size-2"><i class="fa fa-check"></i><b>9.4.1</b> Font Size</a></li>
+<li class="chapter" data-level="9.4.2" data-path="chapter-5.html"><a href="chapter-5.html#colors-2"><i class="fa fa-check"></i><b>9.4.2</b> Colors</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="chapter-6.html"><a href="chapter-6.html"><i class="fa fa-check"></i><b>10</b> Single Country Demographic Trend Graphs</a>
+<ul>
+<li class="chapter" data-level="" data-path="chapter-6.html"><a href="chapter-6.html#tldr-5"><i class="fa fa-check"></i>TL;DR</a></li>
+<li class="chapter" data-level="10.1" data-path="chapter-6.html"><a href="chapter-6.html#chapter-6-1-1"><i class="fa fa-check"></i><b>10.1</b> Prep Work</a>
+<ul>
+<li class="chapter" data-level="" data-path="chapter-6.html"><a href="chapter-6.html#chp6-trend-df-list"><i class="fa fa-check"></i>Create a Data Frame List</a></li>
+<li class="chapter" data-level="" data-path="chapter-6.html"><a href="chapter-6.html#chp6-trend-date-vector"><i class="fa fa-check"></i>Create a Date Vector</a></li>
+</ul></li>
+<li class="chapter" data-level="10.2" data-path="chapter-6.html"><a href="chapter-6.html#chapter-6-1-2"><i class="fa fa-check"></i><b>10.2</b> Create a Summary</a></li>
+<li class="chapter" data-level="10.3" data-path="chapter-6.html"><a href="chapter-6.html#chapter-6-1-3"><i class="fa fa-check"></i><b>10.3</b> Plot the Summary</a></li>
+<li class="chapter" data-level="10.4" data-path="chapter-6.html"><a href="chapter-6.html#extras-4"><i class="fa fa-check"></i><b>10.4</b> Extras</a>
+<ul>
+<li class="chapter" data-level="10.4.1" data-path="chapter-6.html"><a href="chapter-6.html#human-readable"><i class="fa fa-check"></i><b>10.4.1</b> Human Readable</a></li>
+<li class="chapter" data-level="10.4.2" data-path="chapter-6.html"><a href="chapter-6.html#font-size-3"><i class="fa fa-check"></i><b>10.4.2</b> Font Size</a></li>
+<li class="chapter" data-level="10.4.3" data-path="chapter-6.html"><a href="chapter-6.html#colors-3"><i class="fa fa-check"></i><b>10.4.3</b> Colors</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="chapter-7.html"><a href="chapter-7.html"><i class="fa fa-check"></i><b>11</b> Comparative Country Trend Graphs</a>
+<ul>
+<li class="chapter" data-level="" data-path="chapter-7.html"><a href="chapter-7.html#tldr-6"><i class="fa fa-check"></i>TL;DR</a></li>
+<li class="chapter" data-level="11.1" data-path="chapter-7.html"><a href="chapter-7.html#chapter-7-1-1"><i class="fa fa-check"></i><b>11.1</b> Prep Work</a>
+<ul>
+<li class="chapter" data-level="11.1.1" data-path="chapter-7.html"><a href="chapter-7.html#chp7-trend-df-list"><i class="fa fa-check"></i><b>11.1.1</b> Create a Data Frame List</a></li>
+<li class="chapter" data-level="11.1.2" data-path="chapter-7.html"><a href="chapter-7.html#chp7-trend-date-vector"><i class="fa fa-check"></i><b>11.1.2</b> Create a Date Vector</a></li>
+</ul></li>
+<li class="chapter" data-level="11.2" data-path="chapter-7.html"><a href="chapter-7.html#chapter-7-2-1"><i class="fa fa-check"></i><b>11.2</b> Create a Summary</a></li>
+<li class="chapter" data-level="11.3" data-path="chapter-7.html"><a href="chapter-7.html#chapter-7-3-1"><i class="fa fa-check"></i><b>11.3</b> Plot the Summary</a></li>
+<li class="chapter" data-level="11.4" data-path="chapter-7.html"><a href="chapter-7.html#extras-5"><i class="fa fa-check"></i><b>11.4</b> Extras</a>
+<ul>
+<li class="chapter" data-level="11.4.1" data-path="chapter-7.html"><a href="chapter-7.html#human-readable-1"><i class="fa fa-check"></i><b>11.4.1</b> Human Readable</a></li>
+<li class="chapter" data-level="11.4.2" data-path="chapter-7.html"><a href="chapter-7.html#country-wrap"><i class="fa fa-check"></i><b>11.4.2</b> Country Wrap</a></li>
+<li class="chapter" data-level="11.4.3" data-path="chapter-7.html"><a href="chapter-7.html#select-countries"><i class="fa fa-check"></i><b>11.4.3</b> Select Countries</a></li>
+<li class="chapter" data-level="11.4.4" data-path="chapter-7.html"><a href="chapter-7.html#font-size-4"><i class="fa fa-check"></i><b>11.4.4</b> Font Size</a></li>
+<li class="chapter" data-level="11.4.5" data-path="chapter-7.html"><a href="chapter-7.html#colors-4"><i class="fa fa-check"></i><b>11.4.5</b> Colors</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="chapter-8.html"><a href="chapter-8.html"><i class="fa fa-check"></i><b>12</b> Comparative Country Demographic Trend Graphs</a>
+<ul>
+<li class="chapter" data-level="" data-path="chapter-8.html"><a href="chapter-8.html#tldr-7"><i class="fa fa-check"></i>TL;DR</a></li>
+<li class="chapter" data-level="12.1" data-path="chapter-8.html"><a href="chapter-8.html#chapter-8-1-1"><i class="fa fa-check"></i><b>12.1</b> Prep Work</a>
+<ul>
+<li class="chapter" data-level="" data-path="chapter-8.html"><a href="chapter-8.html#chp8-trend-df-list"><i class="fa fa-check"></i>Create a Data Frame List</a></li>
+<li class="chapter" data-level="" data-path="chapter-8.html"><a href="chapter-8.html#chp8-trend-date-vector"><i class="fa fa-check"></i>Create a Date Vector</a></li>
+</ul></li>
+<li class="chapter" data-level="12.2" data-path="chapter-8.html"><a href="chapter-8.html#chapter-8-2"><i class="fa fa-check"></i><b>12.2</b> Create a Summary</a></li>
+<li class="chapter" data-level="12.3" data-path="chapter-8.html"><a href="chapter-8.html#chapter-8-3"><i class="fa fa-check"></i><b>12.3</b> Plot the Summary</a>
+<ul>
+<li class="chapter" data-level="12.3.1" data-path="chapter-8.html"><a href="chapter-8.html#option-1-facet-choice-is-country-default"><i class="fa fa-check"></i><b>12.3.1</b> Option 1: Facet choice is <code>"Country"</code> (default)</a></li>
+<li class="chapter" data-level="" data-path="chapter-8.html"><a href="chapter-8.html#option-2-facet-choice-is-demographic"><i class="fa fa-check"></i>Option 2: Facet choice is <code>"demographic"</code></a></li>
+</ul></li>
+<li class="chapter" data-level="12.4" data-path="chapter-8.html"><a href="chapter-8.html#extras-6"><i class="fa fa-check"></i><b>12.4</b> Extras</a>
+<ul>
+<li class="chapter" data-level="12.4.1" data-path="chapter-8.html"><a href="chapter-8.html#human-readable-2"><i class="fa fa-check"></i><b>12.4.1</b> Human Readable</a></li>
+<li class="chapter" data-level="12.4.2" data-path="chapter-8.html"><a href="chapter-8.html#select-countries-1"><i class="fa fa-check"></i><b>12.4.2</b> Select Countries</a></li>
+<li class="chapter" data-level="12.4.3" data-path="chapter-8.html"><a href="chapter-8.html#font-size-5"><i class="fa fa-check"></i><b>12.4.3</b> Font Size</a></li>
+<li class="chapter" data-level="12.4.4" data-path="chapter-8.html"><a href="chapter-8.html#colors-5"><i class="fa fa-check"></i><b>12.4.4</b> Colors</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="13" data-path="chapter-12.html"><a href="chapter-12.html"><i class="fa fa-check"></i><b>13</b> Single Country Multi-Question Trend Plots</a>
+<ul>
+<li class="chapter" data-level="" data-path="chapter-12.html"><a href="chapter-12.html#tldr-8"><i class="fa fa-check"></i>TL;DR</a></li>
+<li class="chapter" data-level="13.1" data-path="chapter-12.html"><a href="chapter-12.html#chapter-12-1"><i class="fa fa-check"></i><b>13.1</b> Prep Work</a>
+<ul>
+<li class="chapter" data-level="13.1.1" data-path="chapter-12.html"><a href="chapter-12.html#chapter-12-1-1"><i class="fa fa-check"></i><b>13.1.1</b> Question Vector</a></li>
+<li class="chapter" data-level="13.1.2" data-path="chapter-12.html"><a href="chapter-12.html#chapter-12-1-2"><i class="fa fa-check"></i><b>13.1.2</b> Question Labels</a></li>
+<li class="chapter" data-level="13.1.3" data-path="chapter-12.html"><a href="chapter-12.html#chapter-12-1-3"><i class="fa fa-check"></i><b>13.1.3</b> Create a Data Frame List</a></li>
+<li class="chapter" data-level="13.1.4" data-path="chapter-12.html"><a href="chapter-12.html#chapter-12-1-4"><i class="fa fa-check"></i><b>13.1.4</b> Create a Date Vector</a></li>
+</ul></li>
+<li class="chapter" data-level="13.2" data-path="chapter-12.html"><a href="chapter-12.html#chapter-12-2-1"><i class="fa fa-check"></i><b>13.2</b> Create a Summary</a></li>
+<li class="chapter" data-level="13.3" data-path="chapter-12.html"><a href="chapter-12.html#chapter-12-3-1"><i class="fa fa-check"></i><b>13.3</b> Plot the Summary</a></li>
+<li class="chapter" data-level="13.4" data-path="chapter-12.html"><a href="chapter-12.html#extras-7"><i class="fa fa-check"></i><b>13.4</b> Extras</a>
+<ul>
+<li class="chapter" data-level="13.4.1" data-path="chapter-12.html"><a href="chapter-12.html#human-readable-3"><i class="fa fa-check"></i><b>13.4.1</b> Human Readable</a></li>
+<li class="chapter" data-level="13.4.2" data-path="chapter-12.html"><a href="chapter-12.html#legend-names"><i class="fa fa-check"></i><b>13.4.2</b> Legend Names</a></li>
+<li class="chapter" data-level="13.4.3" data-path="chapter-12.html"><a href="chapter-12.html#font-size-6"><i class="fa fa-check"></i><b>13.4.3</b> Font Size</a></li>
+<li class="chapter" data-level="13.4.4" data-path="chapter-12.html"><a href="chapter-12.html#colors-6"><i class="fa fa-check"></i><b>13.4.4</b> Colors</a></li>
+</ul></li>
+</ul></li>
+<li class="part"><span><b>IV All Things Colors</b></span></li>
+<li class="chapter" data-level="14" data-path="color-options.html"><a href="color-options.html"><i class="fa fa-check"></i><b>14</b> Color Options</a>
+<ul>
+<li class="chapter" data-level="14.1" data-path="color-options.html"><a href="color-options.html#available-colors"><i class="fa fa-check"></i><b>14.1</b> Available Colors</a></li>
+<li class="chapter" data-level="14.2" data-path="color-options.html"><a href="color-options.html#available-palettes"><i class="fa fa-check"></i><b>14.2</b> Available Palettes</a></li>
+</ul></li>
+<li class="chapter" data-level="15" data-path="change-colors.html"><a href="change-colors.html"><i class="fa fa-check"></i><b>15</b> Change Default Colors</a>
+<ul>
+<li class="chapter" data-level="15.1" data-path="change-colors.html"><a href="change-colors.html#change-colors-basic"><i class="fa fa-check"></i><b>15.1</b> Basic Cross Tabs</a></li>
+<li class="chapter" data-level="15.2" data-path="change-colors.html"><a href="change-colors.html#change-colors-demographic"><i class="fa fa-check"></i><b>15.2</b> Demographic Cross Tabs</a></li>
+<li class="chapter" data-level="15.3" data-path="change-colors.html"><a href="change-colors.html#change-colors-stacked"><i class="fa fa-check"></i><b>15.3</b> Stacked Graphs</a></li>
+<li class="chapter" data-level="15.4" data-path="change-colors.html"><a href="change-colors.html#change-colors-trend"><i class="fa fa-check"></i><b>15.4</b> Trend Graphs</a>
+<ul>
+<li class="chapter" data-level="" data-path="change-colors.html"><a href="change-colors.html#change-colors-trend-single"><i class="fa fa-check"></i>Single Country Trend Graphs</a></li>
+<li class="chapter" data-level="" data-path="change-colors.html"><a href="change-colors.html#change-colors-trend-comparative"><i class="fa fa-check"></i>Comparative Trend Graphs</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="16" data-path="highlight-certain-countries.html"><a href="highlight-certain-countries.html"><i class="fa fa-check"></i><b>16</b> Highlight Certain Countries</a>
+<ul>
+<li class="chapter" data-level="16.1" data-path="highlight-certain-countries.html"><a href="highlight-certain-countries.html#single-country-highlight"><i class="fa fa-check"></i><b>16.1</b> Single Country Highlight</a></li>
+<li class="chapter" data-level="16.2" data-path="highlight-certain-countries.html"><a href="highlight-certain-countries.html#multiple-country-highlight"><i class="fa fa-check"></i><b>16.2</b> Multiple Country Highlight</a></li>
+<li class="chapter" data-level="16.3" data-path="highlight-certain-countries.html"><a href="highlight-certain-countries.html#change-highlight-color"><i class="fa fa-check"></i><b>16.3</b> Change Highlight Color</a></li>
+</ul></li>
+<li class="part"><span><b>V How do I …?</b></span></li>
+<li class="chapter" data-level="17" data-path="change-font-size.html"><a href="change-font-size.html"><i class="fa fa-check"></i><b>17</b> Change the Font Size</a></li>
+<li class="chapter" data-level="18" data-path="change-the-titlesubtitlecaption.html"><a href="change-the-titlesubtitlecaption.html"><i class="fa fa-check"></i><b>18</b> Change the Title/Subtitle/Caption</a></li>
+<li class="chapter" data-level="19" data-path="select-countries-chp.html"><a href="select-countries-chp.html"><i class="fa fa-check"></i><b>19</b> Show Only Certain Countries?</a>
+<ul>
+<li class="chapter" data-level="19.1" data-path="select-countries-chp.html"><a href="select-countries-chp.html#in-comparative-graphs"><i class="fa fa-check"></i><b>19.1</b> In Comparative Graphs</a>
+<ul>
+<li class="chapter" data-level="19.1.1" data-path="select-countries-chp.html"><a href="select-countries-chp.html#select-countries-calculate"><i class="fa fa-check"></i><b>19.1.1</b> Plots that go with <code>calculate_</code> functions</a></li>
+<li class="chapter" data-level="19.1.2" data-path="select-countries-chp.html"><a href="select-countries-chp.html#select-countries-no-calculate"><i class="fa fa-check"></i><b>19.1.2</b> Plots with no <code>calculate_</code> functions</a></li>
+</ul></li>
+<li class="chapter" data-level="19.2" data-path="select-countries-chp.html"><a href="select-countries-chp.html#in-single-country-graphs"><i class="fa fa-check"></i><b>19.2</b> In Single Country Graphs</a></li>
+</ul></li>
+<li class="chapter" data-level="20" data-path="order-change-stacked-graphs.html"><a href="order-change-stacked-graphs.html"><i class="fa fa-check"></i><b>20</b> Change the order of a stacked graph?</a>
+<ul>
+<li class="chapter" data-level="" data-path="order-change-stacked-graphs.html"><a href="order-change-stacked-graphs.html#move-one-factor"><i class="fa fa-check"></i>Move One Factor</a></li>
+<li class="chapter" data-level="" data-path="order-change-stacked-graphs.html"><a href="order-change-stacked-graphs.html#swap-factors"><i class="fa fa-check"></i>Swap Factors</a></li>
+</ul></li>
+<li class="chapter" data-level="21" data-path="standard-warnings.html"><a href="standard-warnings.html"><i class="fa fa-check"></i><b>21</b> Understand (some) Messages, Warnings, and Errors</a>
+<ul>
+<li class="chapter" data-level="21.1" data-path="standard-warnings.html"><a href="standard-warnings.html#messages"><i class="fa fa-check"></i><b>21.1</b> Messages</a>
+<ul>
+<li class="chapter" data-level="21.1.1" data-path="standard-warnings.html"><a href="standard-warnings.html#messages-join"><i class="fa fa-check"></i><b>21.1.1</b> Joining</a></li>
+</ul></li>
+<li class="chapter" data-level="21.2" data-path="standard-warnings.html"><a href="standard-warnings.html#warnings-1"><i class="fa fa-check"></i><b>21.2</b> Warnings</a>
+<ul>
+<li class="chapter" data-level="21.2.1" data-path="standard-warnings.html"><a href="standard-warnings.html#warning-dodge"><i class="fa fa-check"></i><b>21.2.1</b> <code>position_dodge()</code></a></li>
+<li class="chapter" data-level="21.2.2" data-path="standard-warnings.html"><a href="standard-warnings.html#warning-title"><i class="fa fa-check"></i><b>21.2.2</b> No Default Title/Subtitle</a></li>
+</ul></li>
+</ul></li>
+<li class="part"><span><b>VI Appendix</b></span></li>
+<li class="chapter" data-level="" data-path="guide-features.html"><a href="guide-features.html"><i class="fa fa-check"></i>Guide Features</a></li>
+<li class="chapter" data-level="" data-path="installing-and-updating-arabbarometr.html"><a href="installing-and-updating-arabbarometr.html"><i class="fa fa-check"></i>Installing and Updating <code>ArabBarometR</code></a>
+<ul>
+<li class="chapter" data-level="" data-path="installing-and-updating-arabbarometr.html"><a href="installing-and-updating-arabbarometr.html#installing-arabbaromtr"><i class="fa fa-check"></i>Installing <code>ArabBaromtR</code></a>
+<ul>
+<li class="chapter" data-level="" data-path="installing-and-updating-arabbarometr.html"><a href="installing-and-updating-arabbarometr.html#installing-from-github"><i class="fa fa-check"></i>Installing from GitHub</a></li>
+<li class="chapter" data-level="" data-path="installing-and-updating-arabbarometr.html"><a href="installing-and-updating-arabbarometr.html#downloading-from-github"><i class="fa fa-check"></i>Downloading from GitHub</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="installing-and-updating-arabbarometr.html"><a href="installing-and-updating-arabbarometr.html#updating-arabbarometr"><i class="fa fa-check"></i>Updating <code>ArabBarometR</code></a>
+<ul>
+<li class="chapter" data-level="" data-path="installing-and-updating-arabbarometr.html"><a href="installing-and-updating-arabbarometr.html#updating-via-install_github"><i class="fa fa-check"></i>Updating via <code>install_github</code></a></li>
+<li class="chapter" data-level="" data-path="installing-and-updating-arabbarometr.html"><a href="installing-and-updating-arabbarometr.html#updating-via-downloads"><i class="fa fa-check"></i>Updating via downloads</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="piping-note.html"><a href="piping-note.html"><i class="fa fa-check"></i>A Note On Piping</a>
+<ul>
+<li class="chapter" data-level="" data-path="piping-note.html"><a href="piping-note.html#piping-puts-the-object-on-the-left-into-the-function-on-the-right."><i class="fa fa-check"></i>Piping puts the object on the left into the function on the right.</a></li>
+<li class="chapter" data-level="" data-path="piping-note.html"><a href="piping-note.html#piping-operators-can-chain-code-together."><i class="fa fa-check"></i>Piping operators can chain code together.</a></li>
+<li class="chapter" data-level="" data-path="piping-note.html"><a href="piping-note.html#the-order-matters."><i class="fa fa-check"></i>The order matters.</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="using-map.html"><a href="using-map.html"><i class="fa fa-check"></i>Using a <code>map()</code></a>
+<ul>
+<li class="chapter" data-level="" data-path="using-map.html"><a href="using-map.html#map-basics"><i class="fa fa-check"></i>Functions with One Argument</a></li>
+<li class="chapter" data-level="" data-path="using-map.html"><a href="using-map.html#advanced-map"><i class="fa fa-check"></i>Functions with Multiple Arguments</a></li>
+<li class="chapter" data-level="" data-path="using-map.html"><a href="using-map.html#conclusion"><i class="fa fa-check"></i>Conclusion</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">ArabBarometR Graphing Guide</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="new-chapter-9" class="section level1 hasAnchor" number="6">
+<h1><span class="header-section-number">Chapter 6</span> Single Country Multi-Question Plots<a href="new-chapter-9.html#new-chapter-9" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>This chapter introduces two different ways to compare multiple questions in one country. One graphs summarizes questions like comparative graphs and plots those summaries. The other plots questions with the same value labels together in the style of individual graphs. The former is called a “short” summary, while the latter is called a “long” summary.</p>
+<p>These types of graphs are especially useful for plotting <strong>grid</strong> questions. Grid questions use the same stem, but have different endings. Technically, while related, they are all unique questions. Therefore, plotting a set of grid questions on the same graph, is the same thing as plotting multiple question on one graph.</p>
+<p><strong>All questions are required to be the same type when using this function.</strong> Comparing the responses to different question types is not advised, so the function does not allow for it.</p>
+<div id="tldr-1" class="section level3 unnumbered hasAnchor">
+<h3>TL;DR<a href="new-chapter-9.html#tldr-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="tldr-short-smry-multiq" class="section level4 unnumbered hasAnchor">
+<h4>“Short” Summary<a href="new-chapter-9.html#tldr-short-smry-multiq" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>At the end, your code will look like the following:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="new-chapter-9.html#cb1-1" tabindex="-1"></a>questions_2_compare <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;Q210&quot;</span>,</span>
+<span id="cb1-2"><a href="new-chapter-9.html#cb1-2" tabindex="-1"></a>                         <span class="st">&quot;Q211&quot;</span>)</span>
+<span id="cb1-3"><a href="new-chapter-9.html#cb1-3" tabindex="-1"></a>questions_labels <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;Is there corruption?&quot;</span>,</span>
+<span id="cb1-4"><a href="new-chapter-9.html#cb1-4" tabindex="-1"></a>                      <span class="st">&quot;Is the gov&#39;t cracking down?&quot;</span>)</span>
+<span id="cb1-5"><a href="new-chapter-9.html#cb1-5" tabindex="-1"></a></span>
+<span id="cb1-6"><a href="new-chapter-9.html#cb1-6" tabindex="-1"></a><span class="co"># &quot;Short&quot; Summary:</span></span>
+<span id="cb1-7"><a href="new-chapter-9.html#cb1-7" tabindex="-1"></a><span class="fu">calculate_ind_smry_multiq_short</span>(survey1,</span>
+<span id="cb1-8"><a href="new-chapter-9.html#cb1-8" tabindex="-1"></a>                                questions_2_compare,</span>
+<span id="cb1-9"><a href="new-chapter-9.html#cb1-9" tabindex="-1"></a>                                questions_labels,</span>
+<span id="cb1-10"><a href="new-chapter-9.html#cb1-10" tabindex="-1"></a>                                <span class="st">&quot;Algeria&quot;</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb1-11"><a href="new-chapter-9.html#cb1-11" tabindex="-1"></a>  <span class="fu">plot_ind_smry_multiq_short</span>(<span class="at">.title =</span> <span class="st">&quot;Perceptions of Corruption in Algeria&quot;</span>,</span>
+<span id="cb1-12"><a href="new-chapter-9.html#cb1-12" tabindex="-1"></a>                             <span class="at">.subtitle =</span> <span class="st">&quot;% saying to a medium or large extent&quot;</span>,</span>
+<span id="cb1-13"><a href="new-chapter-9.html#cb1-13" tabindex="-1"></a>                             <span class="at">.caption =</span> <span class="st">&quot;Arab Barometer Wave VI, Survey 1, Algeria&quot;</span>)</span></code></pre></div>
+<p>That code will produce the following graph:</p>
+<pre><code>## Warning: `position_dodge()` requires non-overlapping x intervals.</code></pre>
+<p><img src="bookdownproj_files/figure-html/09.2-Complete-Graph-Example-1.png" width="1248" /></p>
+</div>
+<div id="tldr-long-smry-multiq" class="section level4 unnumbered hasAnchor">
+<h4>“Long” Summary<a href="new-chapter-9.html#tldr-long-smry-multiq" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>At the end, your code will look like the following:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="new-chapter-9.html#cb3-1" tabindex="-1"></a>questions_2_compare <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;Q210&quot;</span>,</span>
+<span id="cb3-2"><a href="new-chapter-9.html#cb3-2" tabindex="-1"></a>                         <span class="st">&quot;Q211&quot;</span>)</span>
+<span id="cb3-3"><a href="new-chapter-9.html#cb3-3" tabindex="-1"></a>questions_labels <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;Is there corruption?&quot;</span>,</span>
+<span id="cb3-4"><a href="new-chapter-9.html#cb3-4" tabindex="-1"></a>                      <span class="st">&quot;Is the gov&#39;t cracking down?&quot;</span>)</span>
+<span id="cb3-5"><a href="new-chapter-9.html#cb3-5" tabindex="-1"></a></span>
+<span id="cb3-6"><a href="new-chapter-9.html#cb3-6" tabindex="-1"></a><span class="co"># &quot;Long&quot; Summary:</span></span>
+<span id="cb3-7"><a href="new-chapter-9.html#cb3-7" tabindex="-1"></a><span class="fu">calculate_ind_smry_multiq_long</span>(survey1,</span>
+<span id="cb3-8"><a href="new-chapter-9.html#cb3-8" tabindex="-1"></a>                               questions_2_compare,</span>
+<span id="cb3-9"><a href="new-chapter-9.html#cb3-9" tabindex="-1"></a>                               questions_labels,</span>
+<span id="cb3-10"><a href="new-chapter-9.html#cb3-10" tabindex="-1"></a>                               <span class="st">&quot;Algeria&quot;</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb3-11"><a href="new-chapter-9.html#cb3-11" tabindex="-1"></a>  <span class="fu">plot_ind_smry_multiq_long</span>(<span class="at">.title =</span> <span class="st">&quot;Perceptions of Corruption in Algeria&quot;</span>,</span>
+<span id="cb3-12"><a href="new-chapter-9.html#cb3-12" tabindex="-1"></a>                            <span class="at">.subtitle =</span> <span class="st">&quot;% saying&quot;</span>,</span>
+<span id="cb3-13"><a href="new-chapter-9.html#cb3-13" tabindex="-1"></a>                            <span class="at">.caption =</span> <span class="st">&quot;Arab Barometer Wave VI, Survey 1, Algeria&quot;</span>)</span></code></pre></div>
+<p>That code will produce the following graph:</p>
+<pre><code>## Warning: `position_dodge()` requires non-overlapping x intervals.</code></pre>
+<p><img src="bookdownproj_files/figure-html/09.4-Complete-Graph-Example-1.png" width="1248" /></p>
+<p>Let’s go!</p>
+</div>
+</div>
+<div id="new-chapter-9-1" class="section level2 hasAnchor" number="6.1">
+<h2><span class="header-section-number">6.1</span> Prep Work<a href="new-chapter-9.html#new-chapter-9-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>It is useful to do some prep work to keep everything clear.</p>
+<div id="new-chapter-9-1-1" class="section level3 hasAnchor" number="6.1.1">
+<h3><span class="header-section-number">6.1.1</span> Question Vector<a href="new-chapter-9.html#new-chapter-9-1-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>First create a vector of questions you want to include on your graph. For the example in this chapter we are comparing questions <code>Q210</code> and <code>Q211</code>. We put the names of those variables in a vector and save that vector as an object.</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="new-chapter-9.html#cb5-1" tabindex="-1"></a>questions_2_compare <span class="ot">&lt;-</span> <span class="fu">c</span>(</span>
+<span id="cb5-2"><a href="new-chapter-9.html#cb5-2" tabindex="-1"></a>  <span class="st">&quot;Q210&quot;</span>,</span>
+<span id="cb5-3"><a href="new-chapter-9.html#cb5-3" tabindex="-1"></a>  <span class="st">&quot;Q211&quot;</span></span>
+<span id="cb5-4"><a href="new-chapter-9.html#cb5-4" tabindex="-1"></a>  )</span></code></pre></div>
+<p>Now the variables we want to graph as saved to the object <code>questions_2_compare</code> in a vector.</p>
+</div>
+<div id="new-chapter-9-1-2" class="section level3 hasAnchor" number="6.1.2">
+<h3><span class="header-section-number">6.1.2</span> Question Labels<a href="new-chapter-9.html#new-chapter-9-1-2" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>The next step is to create a vector of labels for the questions. This is the text that will display on the y-axis. The labels should appear in the same order as they variables they are referring to.</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="new-chapter-9.html#cb6-1" tabindex="-1"></a>question_labels <span class="ot">&lt;-</span> <span class="fu">c</span>(</span>
+<span id="cb6-2"><a href="new-chapter-9.html#cb6-2" tabindex="-1"></a>  <span class="st">&quot;Is there corruption?&quot;</span>,       <span class="co"># Text for Q210</span></span>
+<span id="cb6-3"><a href="new-chapter-9.html#cb6-3" tabindex="-1"></a>  <span class="st">&quot;Is the gov&#39;t cracking down?&quot;</span> <span class="co"># Text for Q211</span></span>
+<span id="cb6-4"><a href="new-chapter-9.html#cb6-4" tabindex="-1"></a>  )</span></code></pre></div>
+<p>The object <code>question_labels</code> represents the text that will serve to label the responses on the graph.</p>
+</div>
+</div>
+<div id="create-a-multiquestion-summary" class="section level2 hasAnchor" number="6.2">
+<h2><span class="header-section-number">6.2</span> Create a Multiquestion Summary<a href="new-chapter-9.html#create-a-multiquestion-summary" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Just like with the basic overall and demographic graphs, we begin by creating a data frame that summarizes our questions.</p>
+<p>The “short” and “long” summary functions require the same four main parameters: (1) the data you are using, (2) a vector of the variables you want to plot (<strong>not</strong> a list), (3) how you want the variables to be labeled in the legend, and (4) the country you want to plot it for.</p>
+<p>In the example for this chapter, the data we are using is <code>survey1</code>; the variables we want to plot are in the vector <code>questions_2_compare</code>; the labels we want to give them are in <code>questions_labels</code>; and the country we want to plot the data for is <code>"Algeria"</code>.</p>
+<p>Both <code>calculate_ind_smry_multiq_short()</code> and <code>calculate_ind_smry_multiq_long()</code> take the same required arguments. We can see the different outputs below.</p>
+<div id="short-summary-calc" class="section level3 hasAnchor" number="6.2.1">
+<h3><span class="header-section-number">6.2.1</span> “Short” Summary<a href="new-chapter-9.html#short-summary-calc" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>The “short” summary version summarizes the variables in question like a comparative graph. That is, we see the results of who selected options <code>1</code> or <code>2</code> for ordinal variables and who selected option <code>1</code> for dichotomous or nominal variables.</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="new-chapter-9.html#cb7-1" tabindex="-1"></a><span class="fu">calculate_ind_smry_multiq_short</span>(survey1,              <span class="co"># Data</span></span>
+<span id="cb7-2"><a href="new-chapter-9.html#cb7-2" tabindex="-1"></a>                                questions_2_compare,  <span class="co"># Question vector</span></span>
+<span id="cb7-3"><a href="new-chapter-9.html#cb7-3" tabindex="-1"></a>                                questions_labels,     <span class="co"># Label vector</span></span>
+<span id="cb7-4"><a href="new-chapter-9.html#cb7-4" tabindex="-1"></a>                                <span class="st">&quot;Algeria&quot;</span>             <span class="co"># Country</span></span>
+<span id="cb7-5"><a href="new-chapter-9.html#cb7-5" tabindex="-1"></a>                                )</span></code></pre></div>
+<pre><code>## # A tibble: 2 × 3
+##   Country Question                           Percent
+##   &lt;chr&gt;   &lt;chr+lbl&gt;                            &lt;dbl&gt;
+## 1 Algeria Q210 [Is there corruption?]             82
+## 2 Algeria Q211 [Is the gov&#39;t cracking down?]      73</code></pre>
+<p>Let’s save this output to an object we can graph.</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="new-chapter-9.html#cb9-1" tabindex="-1"></a>ind_multiq_smry_short <span class="ot">&lt;-</span> <span class="fu">calculate_ind_smry_multiq_short</span>(survey1,</span>
+<span id="cb9-2"><a href="new-chapter-9.html#cb9-2" tabindex="-1"></a>                                                         questions_2_compare,</span>
+<span id="cb9-3"><a href="new-chapter-9.html#cb9-3" tabindex="-1"></a>                                                         questions_labels,</span>
+<span id="cb9-4"><a href="new-chapter-9.html#cb9-4" tabindex="-1"></a>                                                         <span class="st">&quot;Algeria&quot;</span></span>
+<span id="cb9-5"><a href="new-chapter-9.html#cb9-5" tabindex="-1"></a>                                                         )</span></code></pre></div>
+</div>
+<div id="long-summary-calc" class="section level3 hasAnchor" number="6.2.2">
+<h3><span class="header-section-number">6.2.2</span> “Long” Summary<a href="new-chapter-9.html#long-summary-calc" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>The “long” summary version summarizes the variables in question like an individual country graph. That is, in this case we see each the percent of citizens choosing each response option.</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="new-chapter-9.html#cb10-1" tabindex="-1"></a><span class="fu">calculate_ind_smry_multiq_long</span>(survey1,              <span class="co"># Data</span></span>
+<span id="cb10-2"><a href="new-chapter-9.html#cb10-2" tabindex="-1"></a>                               questions_2_compare,  <span class="co"># Question vector</span></span>
+<span id="cb10-3"><a href="new-chapter-9.html#cb10-3" tabindex="-1"></a>                               questions_labels,     <span class="co"># Label vector</span></span>
+<span id="cb10-4"><a href="new-chapter-9.html#cb10-4" tabindex="-1"></a>                               <span class="st">&quot;Algeria&quot;</span>             <span class="co"># Country</span></span>
+<span id="cb10-5"><a href="new-chapter-9.html#cb10-5" tabindex="-1"></a>                               )</span></code></pre></div>
+<pre><code>## # A tibble: 10 × 3
+##    Question                    Response                 Percent
+##    &lt;chr&gt;                       &lt;dbl+lbl&gt;                  &lt;dbl&gt;
+##  1 Is there corruption?          1 [To a large extent]       26
+##  2 Is there corruption?          2 [To a medium extent]      43
+##  3 Is there corruption?          3 [To a small extent]        7
+##  4 Is there corruption?          4 [Not at all]               3
+##  5 Is there corruption?        666 [Don&#39;t know/Refuse]        6
+##  6 Is the gov&#39;t cracking down?   1 [To a large extent]       30
+##  7 Is the gov&#39;t cracking down?   2 [To a medium extent]      29
+##  8 Is the gov&#39;t cracking down?   3 [To a small extent]       14
+##  9 Is the gov&#39;t cracking down?   4 [Not at all]               7
+## 10 Is the gov&#39;t cracking down? 666 [Don&#39;t know/Refuse]        1</code></pre>
+<p>Let’s save this output to an object we can graph.</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="new-chapter-9.html#cb12-1" tabindex="-1"></a>ind_multiq_smry_long <span class="ot">&lt;-</span> <span class="fu">calculate_ind_smry_multiq_long</span>(survey1,</span>
+<span id="cb12-2"><a href="new-chapter-9.html#cb12-2" tabindex="-1"></a>                                                       questions_2_compare,</span>
+<span id="cb12-3"><a href="new-chapter-9.html#cb12-3" tabindex="-1"></a>                                                       questions_labels,</span>
+<span id="cb12-4"><a href="new-chapter-9.html#cb12-4" tabindex="-1"></a>                                                       <span class="st">&quot;Algeria&quot;</span></span>
+<span id="cb12-5"><a href="new-chapter-9.html#cb12-5" tabindex="-1"></a>                                                       )</span></code></pre></div>
+</div>
+</div>
+<div id="new-chapter-9-2" class="section level2 hasAnchor" number="6.3">
+<h2><span class="header-section-number">6.3</span> Plot the Summary<a href="new-chapter-9.html#new-chapter-9-2" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>We are now ready to create our graphs.</p>
+<p>Each <code>calculate_</code> function has its own <code>plot_</code> function. If you try to plot a long summary with the short plot function or vise versa, your graph will look bad. The <code>plot_</code> functions assume the data they are given is in a certain format. They do not adapt.</p>
+<div id="short-plots" class="section level3 hasAnchor" number="6.3.1">
+<h3><span class="header-section-number">6.3.1</span> “Short” Plots<a href="new-chapter-9.html#short-plots" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>To plot a “short” summary, use the function <code>plot_ind_smry_multiq_short()</code>. The function only requires one input: a data frame created by <code>calculate_ind_smry_multiq_short()</code>. In our example, we saved this data frame as <code>ind_multiq_smry_short</code>.</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="new-chapter-9.html#cb13-1" tabindex="-1"></a><span class="fu">plot_ind_smry_multiq_short</span>(ind_multiq_smry_short)</span></code></pre></div>
+<p><img src="bookdownproj_files/figure-html/09.9-short-first-graph-1.png" width="1248" /></p>
+<p>Notice there are several missing elements in this graph. Namely, an appropriate title, subtitle, and caption. These three aspects are not included in the list of <em>required</em> arguments, because a graph can be created without them. If you want to use the graph publicly, however, it would be prudent to include them.</p>
+<p>The parameters for including a title, subtitle, and caption are the same as they are in any other function: <code>.title</code>, <code>.subtitle</code>, and <code>.caption</code>, respectively. If you do not supply a title or subtitle, you <strong>will</strong> get a warning, like we see above. The graph is still created, but you are reminded that there is no title or subtitle.</p>
+<p>We can fill these in to create our final graph.</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="new-chapter-9.html#cb14-1" tabindex="-1"></a><span class="fu">plot_ind_smry_multiq_short</span>(</span>
+<span id="cb14-2"><a href="new-chapter-9.html#cb14-2" tabindex="-1"></a>  ind_multiq_smry_short,                                  <span class="co"># Data frame</span></span>
+<span id="cb14-3"><a href="new-chapter-9.html#cb14-3" tabindex="-1"></a>  <span class="at">.title =</span> <span class="st">&quot;Perceptions of Corruption in Algeria&quot;</span>,        <span class="co"># Title</span></span>
+<span id="cb14-4"><a href="new-chapter-9.html#cb14-4" tabindex="-1"></a>  <span class="at">.subtitle =</span> <span class="st">&quot;% saying to a medium or large extent&quot;</span>,     <span class="co"># Subtitle</span></span>
+<span id="cb14-5"><a href="new-chapter-9.html#cb14-5" tabindex="-1"></a>  <span class="at">.caption =</span> <span class="st">&quot;Arab Barometer Wave VI, Survey 1, Algeria&quot;</span>  <span class="co"># Caption</span></span>
+<span id="cb14-6"><a href="new-chapter-9.html#cb14-6" tabindex="-1"></a>)</span></code></pre></div>
+<p><img src="bookdownproj_files/figure-html/09.10-second-graph-short-1.png" width="1248" /></p>
+<p>Recall the object <code>ind_multiq_smry_short</code> is just the name we gave the output of <code>calculate_ind_smry_multiq_short()</code> from section (#short-summary-calc). We can substitute the calculation code back in here to produce the code (and graph) from the initial example.</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="new-chapter-9.html#cb15-1" tabindex="-1"></a><span class="fu">calculate_ind_smry_multiq_short</span>(survey1,</span>
+<span id="cb15-2"><a href="new-chapter-9.html#cb15-2" tabindex="-1"></a>                                questions_2_compare,</span>
+<span id="cb15-3"><a href="new-chapter-9.html#cb15-3" tabindex="-1"></a>                                questions_labels,</span>
+<span id="cb15-4"><a href="new-chapter-9.html#cb15-4" tabindex="-1"></a>                                <span class="st">&quot;Algeria&quot;</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb15-5"><a href="new-chapter-9.html#cb15-5" tabindex="-1"></a>  <span class="fu">plot_ind_smry_multiq_short</span>(<span class="at">.title =</span> <span class="st">&quot;Perceptions of Corruption in Algeria&quot;</span>,</span>
+<span id="cb15-6"><a href="new-chapter-9.html#cb15-6" tabindex="-1"></a>                             <span class="at">.subtitle =</span> <span class="st">&quot;% saying to a medium or large extent&quot;</span>,</span>
+<span id="cb15-7"><a href="new-chapter-9.html#cb15-7" tabindex="-1"></a>                             <span class="at">.caption =</span> <span class="st">&quot;Arab Barometer Wave VI, Survey 1, Algeria&quot;</span>)</span></code></pre></div>
+<p><img src="bookdownproj_files/figure-html/09.11-final-graph-short-1.png" width="1248" /></p>
+</div>
+<div id="long-plots" class="section level3 hasAnchor" number="6.3.2">
+<h3><span class="header-section-number">6.3.2</span> “Long” Plots<a href="new-chapter-9.html#long-plots" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>To plot a “long” summary, use the function <code>plot_ind_smry_multiq_long()</code>. The function only requires one input: a data frame created by <code>calculate_ind_smry_multiq_long()</code>. In our example, we saved this data frame as <code>ind_multiq_smry_long</code>.</p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="new-chapter-9.html#cb16-1" tabindex="-1"></a><span class="fu">plot_ind_smry_multiq_short</span>(ind_multiq_smry_short)</span></code></pre></div>
+<p><img src="bookdownproj_files/figure-html/09.12-short-first-graph-1.png" width="1248" /></p>
+<p>Notice there are several missing elements in this graph. Namely, an appropriate title, subtitle, and caption. These three aspects are not included in the list of <em>required</em> arguments, because a graph can be created without them. If you want to use the graph publicly, however, it would be prudent to include them.</p>
+<p>The parameters for including a title, subtitle, and caption are the same as they are in any other function: <code>.title</code>, <code>.subtitle</code>, and <code>.caption</code>, respectively. If you do not supply a title or subtitle, you <strong>will</strong> get a warning, like we see above. The graph is still created, but you are reminded that there is no title or subtitle.</p>
+<p>Note: you’ll probably want to use a different title or subtitle from a short summary graph.</p>
+<p>We can fill these in to create our final graph.</p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="new-chapter-9.html#cb17-1" tabindex="-1"></a><span class="fu">plot_ind_smry_multiq_long</span>(</span>
+<span id="cb17-2"><a href="new-chapter-9.html#cb17-2" tabindex="-1"></a>  ind_multiq_smry_long,                                   <span class="co"># Data frame</span></span>
+<span id="cb17-3"><a href="new-chapter-9.html#cb17-3" tabindex="-1"></a>  <span class="at">.title =</span> <span class="st">&quot;Perceptions of Corruption in Algeria&quot;</span>,        <span class="co"># Title</span></span>
+<span id="cb17-4"><a href="new-chapter-9.html#cb17-4" tabindex="-1"></a>  <span class="at">.subtitle =</span> <span class="st">&quot;% saying&quot;</span>,                                 <span class="co"># Subtitle</span></span>
+<span id="cb17-5"><a href="new-chapter-9.html#cb17-5" tabindex="-1"></a>  <span class="at">.caption =</span> <span class="st">&quot;Arab Barometer Wave VI, Survey 1, Algeria&quot;</span>  <span class="co"># Caption</span></span>
+<span id="cb17-6"><a href="new-chapter-9.html#cb17-6" tabindex="-1"></a>)</span></code></pre></div>
+<p><img src="bookdownproj_files/figure-html/09.13-second-graph-long-1.png" width="1248" /></p>
+<p>Recall the object <code>ind_multiq_smry_long</code> is just the name we gave the output of <code>calculate_ind_smry_multiq_long()</code> from section (#long-summary-calc). We can substitute the calculation code back in here to produce the code (and graph) from the initial example.</p>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="new-chapter-9.html#cb18-1" tabindex="-1"></a><span class="fu">calculate_ind_smry_multiq_long</span>(survey1,</span>
+<span id="cb18-2"><a href="new-chapter-9.html#cb18-2" tabindex="-1"></a>                                questions_2_compare,</span>
+<span id="cb18-3"><a href="new-chapter-9.html#cb18-3" tabindex="-1"></a>                                questions_labels,</span>
+<span id="cb18-4"><a href="new-chapter-9.html#cb18-4" tabindex="-1"></a>                                <span class="st">&quot;Algeria&quot;</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb18-5"><a href="new-chapter-9.html#cb18-5" tabindex="-1"></a>  <span class="fu">plot_ind_smry_multiq_long</span>(<span class="at">.title =</span> <span class="st">&quot;Perceptions of Corruption in Algeria&quot;</span>,</span>
+<span id="cb18-6"><a href="new-chapter-9.html#cb18-6" tabindex="-1"></a>                             <span class="at">.subtitle =</span> <span class="st">&quot;% saying&quot;</span>,</span>
+<span id="cb18-7"><a href="new-chapter-9.html#cb18-7" tabindex="-1"></a>                             <span class="at">.caption =</span> <span class="st">&quot;Arab Barometer Wave VI, Survey 1, Algeria&quot;</span>)</span></code></pre></div>
+<p><img src="bookdownproj_files/figure-html/09.14-final-graph-long-1.png" width="1248" /></p>
+</div>
+</div>
+<div id="new-chapter-9-3" class="section level2 hasAnchor" number="6.4">
+<h2><span class="header-section-number">6.4</span> Extras<a href="new-chapter-9.html#new-chapter-9-3" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="new-chapter-9-3-3" class="section level3 hasAnchor" number="6.4.1">
+<h3><span class="header-section-number">6.4.1</span> Explict Grid Example<a href="new-chapter-9.html#new-chapter-9-3-3" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Remember: plotting a set of grid questions requires exactly the same steps as outlined throughout this chapter. There is <strong>no difference</strong> between plotting 2 (or n) questions that belong to a grid, and 2 (or n) questions that do not.</p>
+<div id="short-summary" class="section level4 unnumbered hasAnchor">
+<h4>“Short” Summary<a href="new-chapter-9.html#short-summary" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="new-chapter-9.html#cb19-1" tabindex="-1"></a></span>
+<span id="cb19-2"><a href="new-chapter-9.html#cb19-2" tabindex="-1"></a>questions_2_compare <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;Q725_1&quot;</span>,</span>
+<span id="cb19-3"><a href="new-chapter-9.html#cb19-3" tabindex="-1"></a>                         <span class="st">&quot;Q725_4&quot;</span>,</span>
+<span id="cb19-4"><a href="new-chapter-9.html#cb19-4" tabindex="-1"></a>                         <span class="st">&quot;Q725_5&quot;</span>,</span>
+<span id="cb19-5"><a href="new-chapter-9.html#cb19-5" tabindex="-1"></a>                         <span class="st">&quot;Q725_6&quot;</span>)</span>
+<span id="cb19-6"><a href="new-chapter-9.html#cb19-6" tabindex="-1"></a>questions_labels <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;Joseph Biden&quot;</span>,</span>
+<span id="cb19-7"><a href="new-chapter-9.html#cb19-7" tabindex="-1"></a>                      <span class="st">&quot;Xi Jingpin&quot;</span>,</span>
+<span id="cb19-8"><a href="new-chapter-9.html#cb19-8" tabindex="-1"></a>                      <span class="st">&quot;Ali Khameni&quot;</span>,</span>
+<span id="cb19-9"><a href="new-chapter-9.html#cb19-9" tabindex="-1"></a>                      <span class="st">&quot;Mohammed bin Salman&quot;</span>)</span>
+<span id="cb19-10"><a href="new-chapter-9.html#cb19-10" tabindex="-1"></a></span>
+<span id="cb19-11"><a href="new-chapter-9.html#cb19-11" tabindex="-1"></a><span class="fu">calculate_ind_smry_multiq_short</span>(survey1,</span>
+<span id="cb19-12"><a href="new-chapter-9.html#cb19-12" tabindex="-1"></a>                                questions_2_compare,</span>
+<span id="cb19-13"><a href="new-chapter-9.html#cb19-13" tabindex="-1"></a>                                questions_labels,</span>
+<span id="cb19-14"><a href="new-chapter-9.html#cb19-14" tabindex="-1"></a>                                <span class="st">&quot;Algeria&quot;</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb19-15"><a href="new-chapter-9.html#cb19-15" tabindex="-1"></a>  <span class="fu">plot_ind_smry_multiq_short</span>(<span class="at">.title =</span> <span class="st">&quot;Perceptions of world leader&#39;s foreign policies towards MENA&quot;</span>,</span>
+<span id="cb19-16"><a href="new-chapter-9.html#cb19-16" tabindex="-1"></a>                             <span class="at">.subtitle =</span> <span class="st">&quot;% saying it is very good or good&quot;</span>,</span>
+<span id="cb19-17"><a href="new-chapter-9.html#cb19-17" tabindex="-1"></a>                             <span class="at">.caption =</span> <span class="st">&quot;Arab Barometer Wave VI, Survey 1, Algeria&quot;</span>)</span></code></pre></div>
+<p><img src="bookdownproj_files/figure-html/09.15-short-grid-1.png" width="1248" /></p>
+</div>
+<div id="long-summary" class="section level4 unnumbered hasAnchor">
+<h4>“Long” Summary<a href="new-chapter-9.html#long-summary" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="new-chapter-9.html#cb20-1" tabindex="-1"></a></span>
+<span id="cb20-2"><a href="new-chapter-9.html#cb20-2" tabindex="-1"></a>questions_2_compare <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;Q725_1&quot;</span>,</span>
+<span id="cb20-3"><a href="new-chapter-9.html#cb20-3" tabindex="-1"></a>                         <span class="st">&quot;Q725_4&quot;</span>,</span>
+<span id="cb20-4"><a href="new-chapter-9.html#cb20-4" tabindex="-1"></a>                         <span class="st">&quot;Q725_5&quot;</span>,</span>
+<span id="cb20-5"><a href="new-chapter-9.html#cb20-5" tabindex="-1"></a>                         <span class="st">&quot;Q725_6&quot;</span>)</span>
+<span id="cb20-6"><a href="new-chapter-9.html#cb20-6" tabindex="-1"></a>questions_labels <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;Joseph Biden&quot;</span>,</span>
+<span id="cb20-7"><a href="new-chapter-9.html#cb20-7" tabindex="-1"></a>                      <span class="st">&quot;Xi Jingpin&quot;</span>,</span>
+<span id="cb20-8"><a href="new-chapter-9.html#cb20-8" tabindex="-1"></a>                      <span class="st">&quot;Ali Khameni&quot;</span>,</span>
+<span id="cb20-9"><a href="new-chapter-9.html#cb20-9" tabindex="-1"></a>                      <span class="st">&quot;Mohammed bin Salman&quot;</span>)</span>
+<span id="cb20-10"><a href="new-chapter-9.html#cb20-10" tabindex="-1"></a></span>
+<span id="cb20-11"><a href="new-chapter-9.html#cb20-11" tabindex="-1"></a></span>
+<span id="cb20-12"><a href="new-chapter-9.html#cb20-12" tabindex="-1"></a><span class="co"># &quot;Long&quot; Summary:</span></span>
+<span id="cb20-13"><a href="new-chapter-9.html#cb20-13" tabindex="-1"></a><span class="fu">calculate_ind_smry_multiq_long</span>(survey1,</span>
+<span id="cb20-14"><a href="new-chapter-9.html#cb20-14" tabindex="-1"></a>                               questions_2_compare,</span>
+<span id="cb20-15"><a href="new-chapter-9.html#cb20-15" tabindex="-1"></a>                               questions_labels,</span>
+<span id="cb20-16"><a href="new-chapter-9.html#cb20-16" tabindex="-1"></a>                               <span class="st">&quot;Algeria&quot;</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb20-17"><a href="new-chapter-9.html#cb20-17" tabindex="-1"></a>  <span class="fu">plot_ind_smry_multiq_long</span>(<span class="at">.title =</span> <span class="st">&quot;Perceptions world leader&#39;s foreign policies towards MENA&quot;</span>,</span>
+<span id="cb20-18"><a href="new-chapter-9.html#cb20-18" tabindex="-1"></a>                            <span class="at">.subtitle =</span> <span class="st">&quot;% saying&quot;</span>,</span>
+<span id="cb20-19"><a href="new-chapter-9.html#cb20-19" tabindex="-1"></a>                            <span class="at">.caption =</span> <span class="st">&quot;Arab Barometer Wave VI, Survey 1, Algeria&quot;</span>)</span></code></pre></div>
+<p><img src="bookdownproj_files/figure-html/09.16-long-grid-1.png" width="1248" /></p>
+</div>
+</div>
+<div id="new-chapter-9-3-1" class="section level3 hasAnchor" number="6.4.2">
+<h3><span class="header-section-number">6.4.2</span> Setting Colors<a href="new-chapter-9.html#new-chapter-9-3-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>By default, the colors for the graph are randomly selected from <code>ArabBarometer_clr</code>. To set the colors of the graph, supply a vector of hex codes or named Arab Barometer brand colors to the parameter <code>.color_choice</code>.</p>
+<p><strong>Order matters.</strong> If you want certain questions to have certain colors, you must put the colors you want in the same order of the questions. For example, if you want <code>Q210</code> to be <code>"AB purple"</code> (<code>#796391</code>) and <code>Q211</code> to be <code>"AB yellow"</code> (<code>#FBA950</code>), you must provide the color vector as <code>c("AB purple","AB yellow")</code>, since the questions are in the order <code>c("Q210","Q211")</code>.</p>
+</div>
+<div id="new-chapter-9-warnings" class="section level3 hasAnchor" number="6.4.3">
+<h3><span class="header-section-number">6.4.3</span> Warnings<a href="new-chapter-9.html#new-chapter-9-warnings" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>There are several points in this code when warnings or messages will appear <strong>even if you are using the code correctly.</strong> No need to panic. You can read about all of the messages and warnings that may appear <em>even when the code is correct</em> in the section <a href="standard-warnings.html#standard-warnings">How do I Understand (some) Messages, Warnings, and Errors</a>.</p>
+<p>The functions <code>calculate_ind_smry_multiq_short()</code> and <code>calculate_ind_smry_multiq_long()</code> will produce a <code>position_dodge()</code> warning. You can read a bit about that <a href="standard-warnings.html#warning-dodge">here</a>.</p>
+<p>If you do not supply a title or subtitle, a plot will still be created but you will receive a missing title and/or subtitle warning. You can read more about this <a href="standard-warnings.html#warning-title">here</a>.</p>
+
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="stacked-plots.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="chapter-dem-multiq.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+  "sharing": {
+    "github": false,
+    "facebook": true,
+    "twitter": true,
+    "linkedin": false,
+    "weibo": false,
+    "instapaper": false,
+    "vk": false,
+    "whatsapp": false,
+    "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+  },
+  "fontsettings": {
+    "theme": "white",
+    "family": "sans",
+    "size": 2
+  },
+  "edit": {
+    "link": "https://github.com/Arab-Barometer/ArabBarometer_Graph_Guide/edit/master/Individual_Multiquestion_Short.Rmd",
+    "text": "Edit"
+  },
+  "history": {
+    "link": null,
+    "text": null
+  },
+  "view": {
+    "link": "https://github.com/Arab-Barometer/ArabBarometer_Graph_Guide/blob/master/Individual_Multiquestion_Short.Rmd",
+    "text": null
+  },
+  "download": null,
+  "search": {
+    "engine": "fuse",
+    "options": null
+  },
+  "toc": {
+    "collapse": "subsection"
+  }
+});
+});
+</script>
+
+</body>
+
+</html>

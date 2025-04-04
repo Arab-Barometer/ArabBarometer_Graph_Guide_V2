@@ -6,31 +6,31 @@ For this example, let's create a comparative stacked bar chart for `Q2ACOVID19`.
 
 ```{r How.4.01-Complete-Code-Example,fig.dim=c(13,12)}
 
-calculate_stacked_df(survey1,
+calculate_comp_smry_stacked(survey1,
                      "Q2ACOVID19") |>
-  plot_stacked_comp(.caption = "Original Order")
+  plot_comp_smry_stacked(.caption = "Original Order")
 
 
 ```
 
-The order of the bars is determined by the factor level. You can see factor level in the data frame produced by the function `calculate_stacked_df`. The numbers are the factor levels, the words in brackets are the factor labels. In this example, you can see the factor levels are 1-7 and 666. The factor labels are the question response options.
+The order of the bars is determined by the factor level. You can see factor level in the data frame produced by the function `calculate_comp_smry_stacked`. The numbers are the factor levels, the words in brackets are the factor labels. In this example, you can see the factor levels are 1-7 and 666. The factor labels are the question response options.
 
 
 ```{r How.04.2-og.factor.look}
 
-calculate_stacked_df(survey1,
+calculate_comp_smry_stacked(survey1,
                      "Q2ACOVID19")
 
 
 ```
 
 
-Instead of leading with "Illness or death of a family member", say we want to lead with "Inadequate gov.t response". We need to change the factor levels. First, we'll save the output of `calculate_stacked_df` to an object we can manipulate.
+Instead of leading with "Illness or death of a family member", say we want to lead with "Inadequate gov.t response". We need to change the factor levels. First, we'll save the output of `calculate_comp_smry_stacked` to an object we can manipulate.
 
 
 ```{r How.04.2-SaveOutput}
 
-new_df <- calculate_stacked_df(survey1,
+new_df <- calculate_comp_smry_stacked(survey1,
                                "Q2ACOVID19")
 
 
@@ -68,7 +68,7 @@ And now when we plot the recoded data frame.
 ```{r How.04.2-PlotRecode1,fig.dim=c(13,12)}
 
 new_df |>
-  plot_stacked_comp(.caption = "New Order, Option 1")
+  plot_comp_smry_stacked(.caption = "New Order, Option 1")
 
 ```
 
@@ -79,7 +79,7 @@ An alternative way to move "Inadequate gov.t response" to the front is to swap p
 
 ```{r How.04.2-SaveOutput2,echo=FALSE}
 
-new_df <- calculate_stacked_df(survey1,
+new_df <- calculate_comp_smry_stacked(survey1,
                                "Q2ACOVID19")
 
 
@@ -112,8 +112,8 @@ Finally, we plot the new data frame.
 ```{r How.04.2-PlotRecode2,fig.dim=c(13,12)}
 
 new_df |>
-  plot_stacked_comp(.caption = "New Order, Option 2")
+  plot_comp_smry_stacked(.caption = "New Order, Option 2")
 
 ```
 
-The main take away here is that if you want to play around with the order of a stacked bar graph, it is best to familiarize yourself with `recode`.
+The main take away here is that if you want to play around with the order of a stacked bar graph, it is best to familiarize yourself with `recode()`.
