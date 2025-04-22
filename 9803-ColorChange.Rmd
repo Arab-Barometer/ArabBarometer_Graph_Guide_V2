@@ -46,23 +46,7 @@ survey1 |>
 
 data_frame_2_plot <- survey1 |>
   calculate_comp_smry_dem("Q1COVID19",
-                                  demographic = "Q101") 
-
-data_frame_2_plot
-
-
-# 6 categories means 6 colors needed
-data_frame_2_plot |> 
-  plot_comp_smry_dem(.color_choice = c("#0098BE",
-                                                         "#DF6E21",
-                                                         "#AC517F",
-                                                         "#7CBBC7",
-                                                         "#796391",
-                                                         "#CF83A3"))
-x <- data_frame_2_plot
-x$Q101 <- as.factor(x$Q101)
-plot_comp_smry_dem(data_frame_2_plot)
-
+                          demographic = "Q101") 
 ```
 
 
@@ -133,7 +117,7 @@ calculate_ind_trend("Q1COVID19",
 There is greater flexibility in colors for comparative trend graphs. The user may supply a named or unnamed vector of hex codes or Arab Barometer brand colors. 
 
 
-```{r How.3.5-Complete-Code-Example, fig.dim=c(13,12),warning=FALSE,eval=FALSE}
+```{r How.3.5-Complete-Code-Example, fig.dim=c(13,12),warning=FALSE}
 
 df_list <- list(
   survey1,
@@ -169,13 +153,13 @@ calculate_comp_trend("Q1COVID19",
 
 The user can also change the color of some but not all countries.
 
-```{r How.3.6-Complete-Code-Example, fig.dim=c(13,12),warning=FALSE,eval=FALSE}
+```{r How.3.6-Complete-Code-Example, fig.dim=c(13,12),warning=FALSE}
 # Change one color example
 calculate_comp_trend("Q1COVID19",
                 df_list,
-                ab_survey_dates) |> 
+                ab_survey_dates,
+                select_countries = c("Lebanon","Morocco")) |> 
   plot_comp_trend(.caption = "Arab Barometer Wave VI",
-                select_countries = c("Lebanon","Morocco"),
                 .color_choice = c("Lebanon" = "#C8C6A2"))
 
 

@@ -10,19 +10,19 @@ Messages are text output in your R console that are meant to be informative. The
 
 Any function that internally uses a `join` function from the `dplyr` function produces a message in your R console telling you which variables are being used to join data frames.
 
-The `calculate_demographic_smry_individual()` function produces this message. We can see it as a result of our example in [Chapter 3](#chapter-3).
+The `calculate_ind_smry_dem()` function produces this message. We can see it as a result of our example in [Chapter 3](#chapter-3).
 
 
 ```{r how-warnings-1, collapse=TRUE,echo=FALSE}
 
 x <- survey1 %>%
-  calculate_demographic_smry_individual("Q1COVID19",
+  calculate_ind_smry_dem("Q1COVID19",
                                         "gender",
                                         "Algeria")
 
 ```
 
-Inside `calculate_demographic_smry_individual()`, two data frames are being joined by the variable `Q1COVID19`. That is all the message is saying. Nothing is wrong with the code.
+Inside `calculate_ind_smry_dem()`, two data frames are being joined by the variable `Q1COVID19`. That is all the message is saying. Nothing is wrong with the code.
 
 ## Warnings
 
@@ -35,10 +35,10 @@ A common warning you will when creating a bar graph that uses two or more colors
 ```{r how-warnings-2, echo=FALSE, message=FALSE, warning=TRUE, fig.keep="none"}
 
 survey1 %>%
-  calculate_demographic_smry_individual("Q1COVID19",
+  calculate_ind_smry_dem("Q1COVID19",
                                         "gender",
                                         "Algeria") |> 
-  plot_demographic_smry_individual()
+  plot_ind_smry_dem()
 
 ```
 
@@ -76,11 +76,11 @@ questions_2_compare <- c("Q210",
 questions_labels <- c("Is there corruption?",
                       "Is the gov't cracking down?")
 
-calculate_ind_multiq_smry_short(survey1,
+calculate_ind_smry_multiq_short(survey1,
                                questions_2_compare,
                                questions_labels,
                                "Algeria") |> 
-  plot_ind_multiq_smry_short(.caption = "Arab Barometer Wave VI, Survey 1, Algeria")
+  plot_ind_smry_multiq_short(.caption = "Arab Barometer Wave VI, Survey 1, Algeria")
 
 
 ```
